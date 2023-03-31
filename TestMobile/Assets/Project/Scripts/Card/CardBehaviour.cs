@@ -2,7 +2,7 @@
 
 public class CardBehaviour : MonoBehaviour {
 
-    public PlayerEngine player;
+    public HeroEngine player;
     public int indexInHand;
     private void OnMouseDown() {
         UseCard();

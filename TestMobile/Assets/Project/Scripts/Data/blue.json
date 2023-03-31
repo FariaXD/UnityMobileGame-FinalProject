@@ -1,0 +1,36 @@
+﻿{
+    "deck":[
+        {
+            "id": 1,
+            "name": "Slice",
+            "type": "CardDamage",
+            "cost": 1,
+            "damage": 7,
+            "ammount": 4
+        },
+        {
+            "id": 2,
+            "name": "Punch",
+            "type": "CardDamage",
+            "cost": 1,
+            "damage": 7,
+            "ammount": 4
+        },
+        {
+            "id": 3,
+            "name": "Kick",
+            "type": "CardDamage",
+            "cost": 1,
+            "damage": 7,
+            "ammount": 4
+        },
+        {
+            "id": 4,
+            "name": "Poke",
+            "type": "CardDamage",
+            "cost": 1,
+            "damage": 7,
+            "ammount": 4
+        }
+    ]
+}

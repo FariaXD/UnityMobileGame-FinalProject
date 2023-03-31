@@ -1,27 +1,22 @@
 ﻿using UnityEngine;
 
-public class PlayerEngine : MonoBehaviour {
+public class HeroEngine : MonoBehaviour {
 
 
-    public Player player;
+    public Hero hero;
     public float startingHealth = 20f;
-    public float startingMana = 4f;
+    public float startingShield = 5f;
     private Animator anim;
-    public CardBehaviour[] usableCardsInHand = new CardBehaviour[Player.MAX_HAND_SIZE];
     private GameEngine engine;
 
     private void Start() {
         anim = GetComponent<Animator>();
-        engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
-        player = new Player(anim, startingHealth, startingMana);
-        for(int i = 0; i < Player.MAX_HAND_SIZE; i++){
-            CardDamage card = new CardDamage("Slice", 1f, 1f, 7f);
-            player.cardsInHand.Add((Card) card);
-        }
+        engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>(); 
+        hero = new Hero(anim, startingHealth, startingShield);
     }
 
     public void UseCard(int _index){
-        Card cardToUse = player.cardsInHand[_index];
+        /* Card cardToUse = hero.cardsInHand[_index];
         switch (cardToUse.type)
         {
             case Card.Card_Type.Damage:
@@ -35,6 +30,6 @@ public class PlayerEngine : MonoBehaviour {
                 break;
             case Card.Card_Type.Special:
                 break;
-        }
+        } */
     }
 }
