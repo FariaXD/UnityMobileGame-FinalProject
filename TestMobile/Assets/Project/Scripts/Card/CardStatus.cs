@@ -7,7 +7,9 @@ public class CardStatus : Card
     public StatusEffect.Effect effect = StatusEffect.Effect.Burn;
     public float duration;
     public float damage;
-    public CardStatus(int _id, string _name, float _manaCost, Card_Type _type, StatusEffect.Effect _effect, float _duration, float _damage) : base(_id, _name, _manaCost, _type)
+    public const Card_Type cardType = Card_Type.Status;
+
+    public CardStatus(int _id, string _name, float _manaCost, StatusEffect.Effect _effect, float _duration, float _damage) : base(_id, _name, _manaCost, cardType)
     {
         this.effect = _effect;
         this.duration = _duration;

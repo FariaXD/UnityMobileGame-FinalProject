@@ -8,7 +8,8 @@ public class StatusEffect
     {
         Burn, //End of turn damage
         Poison, //Action damage
-        Shocked //Stun
+        Shocked, //Stun
+        None
     }
 
     public float duration = 3f;
@@ -26,5 +27,17 @@ public class StatusEffect
         if(duration <= 0)
             return true;
         return false;
+    }
+
+    public static Effect GetEffectByName(string name){
+        switch (name){
+            case "Burn":
+                return Effect.Burn;
+            case "Poison":
+                return Effect.Burn;
+            case "Shocked":
+                return Effect.Burn;   
+        }
+        return Effect.None;      
     }
 }

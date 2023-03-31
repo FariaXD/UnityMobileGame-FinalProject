@@ -7,8 +7,13 @@ public class CardSpecial : Card
     public CardDamage damage;
     public CardStatus status;
     public CardDefense defense;
-    public CardSpecial(int _id, string _name, float _manaCost, Card_Type _type) : base(_id, _name, _manaCost, _type)
+    public const Card_Type cardType = Card_Type.Special;
+
+    public CardSpecial(int _id, string _name, float _manaCost, CardDamage _damage, CardStatus _status, CardDefense _defense) : base(_id, _name, _manaCost, cardType)
     {
+        this.damage = _damage;
+        this.status = _status;
+        this.defense = _defense;
     }
 
     public override void UseCardOnTarget(Character target)

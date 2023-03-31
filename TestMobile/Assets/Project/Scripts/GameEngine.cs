@@ -10,7 +10,7 @@ public class GameEngine : MonoBehaviour
 
     private void Start() {
         team.SetHeroes(GameObject.FindGameObjectsWithTag("Player"));
-        DeckInitializer test = new DeckInitializer();
-        Debug.Log(test.values);
+        List<Card> deck = DeckInitializer.InitializeDeck("blue");
+        Debug.Log(deck.Count);
     }
 }

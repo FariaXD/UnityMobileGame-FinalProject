@@ -1,36 +1,45 @@
 ﻿{
-    "deck":[
+    "1":
         {
             "id": 1,
             "name": "Slice",
             "type": "CardDamage",
             "cost": 1,
             "damage": 7,
-            "ammount": 4
+            "duplicates": 1
         },
+    "2":  
         {
             "id": 2,
             "name": "Punch",
-            "type": "CardDamage",
+            "type": "CardStatus",
             "cost": 1,
-            "damage": 7,
-            "ammount": 4
+            "damage": 4,
+            "status": "Burn",
+            "duration": 3,
+            "duplicates": 1
         },
+    "3":   
         {
             "id": 3,
             "name": "Kick",
-            "type": "CardDamage",
+            "type": "CardDefense",
             "cost": 1,
-            "damage": 7,
-            "ammount": 4
+            "defenseType": "Shielding",
+            "ammount": 3,
+            "duplicates": 1
         },
+    "4":
         {
             "id": 4,
             "name": "Poke",
-            "type": "CardDamage",
+            "type": "CardSpecial",
             "cost": 1,
             "damage": 7,
-            "ammount": 4
+            "status": "Shock",
+            "duration": 1,
+            "defenseType": "Shielding",
+            "ammount": 10,
+            "duplicates": 1
         }
-    ]
 }

@@ -6,7 +6,7 @@
             "type": "CardDamage",
             "cost": 1,
             "damage": 7,
-            "inDeck": 4
+            "duplicates": 4
         },
     "2":  
         {
@@ -17,7 +17,7 @@
             "damage": 4,
             "status": "Burn",
             "duration": 3,
-            "inDeck": 2
+            "duplicates": 2
         },
     "3":   
         {
@@ -27,7 +27,7 @@
             "cost": 1,
             "defenseType": "Shielding",
             "ammount": 3,
-            "inDeck": 3
+            "duplicates": 3
         },
     "4":
         {
@@ -40,6 +40,6 @@
             "duration": 1,
             "defenseType": "Shielding",
             "ammount": 10,
-            "inDeck": 1
+            "duplicates": 1
         }
 }
