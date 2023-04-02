@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 
 public class EnemyEngine : MonoBehaviour {
+    public string enemyName = "Enemy";
     public Enemy enemy;
     public float startingHealth = 20f;
     public float startingShield = 5f;
@@ -13,7 +14,7 @@ public class EnemyEngine : MonoBehaviour {
     {
         anim = GetComponent<Animator>();
         engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
-        enemy = new Enemy(anim, startingHealth, startingShield);
+        enemy = new Enemy(enemyName, anim, startingHealth, startingShield);
     }
     public void UpdateStatus(){
         image.fillAmount = ((100*enemy.currentHealth)/startingHealth) / 100;

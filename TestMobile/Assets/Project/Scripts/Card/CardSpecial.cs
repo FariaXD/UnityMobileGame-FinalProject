@@ -9,7 +9,7 @@ public class CardSpecial : Card
     public CardDefense defense;
     public const Card_Type cardType = Card_Type.Special;
 
-    public CardSpecial(int _id, string _name, float _manaCost, CardDamage _damage, CardStatus _status, CardDefense _defense) : base(_id, _name, _manaCost, cardType)
+    public CardSpecial(int _id, string _name, float _manaCost, CardDamage _damage, CardStatus _status, CardDefense _defense, string imagePath) : base(_id, _name, _manaCost, cardType, imagePath)
     {
         this.damage = _damage;
         this.status = _status;

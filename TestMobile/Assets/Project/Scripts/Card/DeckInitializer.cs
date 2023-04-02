@@ -8,7 +8,7 @@ public class DeckInitializer {
     public static List<Card> InitializeDeck(string heroClass){
         Dictionary<string, Dictionary<string, string>> values = new Dictionary<string, Dictionary<string, string>>();
         List<Card> deck = new List<Card>();
-        string json = File.ReadAllText(Application.dataPath +"/Project/Scripts/Data/"+heroClass+".json");
+        string json = File.ReadAllText(Application.dataPath +"/Resources/data/heroes/"+heroClass+".json");
         values = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(json);
         foreach (var val in values)
         {
@@ -17,13 +17,14 @@ public class DeckInitializer {
             string name = val.Value["name"];
             int cost = int.Parse(val.Value["cost"]);
             int duplicates = int.Parse(val.Value["duplicates"]);
+            string imagePath = val.Value["imagePath"];
 
             switch (val.Value["type"])
             {
                 case "CardDamage":
                     int damageC = int.Parse(val.Value["damage"]);
                     for(int i = 0; i < duplicates; i++)
-                        deck.Add(new CardDamage(id, name, cost, damageC));
+                        deck.Add(new CardDamage(id, name, cost, damageC, imagePath));
                     break;
 
                 case "CardStatus":
@@ -31,14 +32,14 @@ public class DeckInitializer {
                     int duration = int.Parse(val.Value["duration"]);
                     StatusEffect.Effect status = StatusEffect.GetEffectByName(val.Value["status"]);
                     for (int i = 0; i < duplicates; i++)
-                        deck.Add(new CardStatus(id, name, cost, status, duration, damage));
+                        deck.Add(new CardStatus(id, name, cost, status, duration, damage, imagePath));
                     break;
 
                 case "CardDefense":
                     int ammount = int.Parse(val.Value["ammount"]);
                     CardDefense.Defense_Type defType = CardDefense.GetDefenseByName(val.Value["defenseType"]);
                     for (int i = 0; i < duplicates; i++)
-                        deck.Add(new CardDefense(id, name, cost, defType, ammount));
+                        deck.Add(new CardDefense(id, name, cost, defType, ammount, imagePath));
                     break;
 
                 case "CardSpecial":
@@ -47,10 +48,10 @@ public class DeckInitializer {
                     StatusEffect.Effect statusS = StatusEffect.GetEffectByName(val.Value["status"]);
                     int ammountS = int.Parse(val.Value["ammount"]);
                     CardDefense.Defense_Type defTypeS = CardDefense.GetDefenseByName(val.Value["defenseType"]);
-                    CardDamage cdam = new CardDamage(id, name, cost, damageS);
-                    CardStatus csta = new CardStatus(id, name, cost, statusS, durationS, damageS);
-                    CardDefense cdef = new CardDefense(id, name, cost, defTypeS, ammountS);
-                    deck.Add(new CardSpecial(id, name, cost, cdam, csta,cdef));
+                    CardDamage cdam = new CardDamage(id, name, cost, damageS, imagePath);
+                    CardStatus csta = new CardStatus(id, name, cost, statusS, durationS, damageS, imagePath);
+                    CardDefense cdef = new CardDefense(id, name, cost, defTypeS, ammountS, imagePath);
+                    deck.Add(new CardSpecial(id, name, cost, cdam, csta,cdef, imagePath));
                     break;
                 default:
                     break;

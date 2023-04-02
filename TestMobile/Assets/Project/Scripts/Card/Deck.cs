@@ -6,11 +6,7 @@ public class Deck
 {
     public const int MAX_DECK_SIZE = 15;
     public List<Card> deck = new List<Card>(MAX_DECK_SIZE);
-    public Hand hand;
-
-    public Deck(Hand _hand){
-        this.hand = _hand;
-    }
+    
     public Card DrawCard(){
         Card c = deck[0];
         deck.Remove(c);

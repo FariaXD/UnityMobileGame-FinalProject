@@ -6,7 +6,7 @@ public class CardDamage : Card
 {
     public float damage = 7f;
     public const Card_Type cardType = Card_Type.Damage;
-    public CardDamage(int _id, string _name, float _manaCost, float _damage) : base(_id, _name, _manaCost, cardType)
+    public CardDamage(int _id, string _name, float _manaCost, float _damage, string imagePath) : base(_id, _name, _manaCost, cardType, imagePath)
     {
         this.damage = _damage;
     }

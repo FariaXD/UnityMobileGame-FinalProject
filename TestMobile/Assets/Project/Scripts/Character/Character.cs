@@ -4,13 +4,15 @@ using UnityEngine;
 
 public abstract class Character
 {
+    public string name;
     public float maxHealth;
     public float currentHealth;
     public float shield;
     public Animator anim;
     //List containing all the status affecting the character
     public List<StatusEffect> debuffs = new List<StatusEffect>(); 
-    public Character(Animator _anim, float _maxHealth, float _shield){
+    public Character(string _name, Animator _anim, float _maxHealth, float _shield){
+        this.name = _name;
         this.maxHealth = _maxHealth;
         this.currentHealth = _maxHealth;
         this.anim = _anim;

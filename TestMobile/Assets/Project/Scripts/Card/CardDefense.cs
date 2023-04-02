@@ -14,7 +14,7 @@ public class CardDefense : Card
     public float ammount = 7f;
     public const Card_Type cardType = Card_Type.Defense;
     public Defense_Type defType;
-    public CardDefense(int _id, string _name, float _manaCost, Defense_Type _defType, float _ammount) : base(_id, _name, _manaCost, cardType)
+    public CardDefense(int _id, string _name, float _manaCost, Defense_Type _defType, float _ammount, string imagePath) : base(_id, _name, _manaCost, cardType, imagePath)
     {
         this.ammount = _ammount;
         this.defType = _defType;

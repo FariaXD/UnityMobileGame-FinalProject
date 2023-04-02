@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+
 
 public class HeroEngine : MonoBehaviour {
 
-
+    public string heroName = "Color";
     public Hero hero;
     public float startingHealth = 20f;
     public float startingShield = 5f;
@@ -12,24 +14,18 @@ public class HeroEngine : MonoBehaviour {
     private void Start() {
         anim = GetComponent<Animator>();
         engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>(); 
-        hero = new Hero(anim, startingHealth, startingShield);
+        hero = new Hero(heroName, anim, startingHealth, startingShield);
     }
 
-    public void UseCard(int _index){
-        /* Card cardToUse = hero.cardsInHand[_index];
-        switch (cardToUse.type)
-        {
-            case Card.Card_Type.Damage:
-                CardDamage usingCard = (CardDamage) cardToUse;
-                usingCard.UseCardOnTarget((Character) engine.enemies[0].enemy);
-                engine.enemies[0].UpdateStatus();
-                break;
-            case Card.Card_Type.Status:
-                break;
-            case Card.Card_Type.Defense:
-                break;
-            case Card.Card_Type.Special:
-                break;
-        } */
+    public IEnumerator InitializeDeck(){
+        hero.deck.deck = DeckInitializer.InitializeDeck(heroName);
+        for(int i = 0; i < Hand.NUM_STARTING_CARDS;i++)
+            hero.hand.DrawCard();
+        yield return null;
+    }
+
+    private void OnMouseDown() {
+        engine.SwitchActiveCharacter(this);
+        Debug.Log("SWITCHING " + heroName);
     }
 }
