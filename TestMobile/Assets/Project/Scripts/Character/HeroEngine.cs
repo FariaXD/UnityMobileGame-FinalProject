@@ -16,16 +16,15 @@ public class HeroEngine : MonoBehaviour {
         engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>(); 
         hero = new Hero(heroName, anim, startingHealth, startingShield);
     }
-
+    //Get Deck from JSON, and Draw 3 card
     public IEnumerator InitializeDeck(){
         hero.deck.deck = DeckInitializer.InitializeDeck(heroName);
         for(int i = 0; i < Hand.NUM_STARTING_CARDS;i++)
             hero.hand.DrawCard();
         yield return null;
     }
-
+    //Click the object
     private void OnMouseDown() {
         engine.SwitchActiveCharacter(this);
-        Debug.Log("SWITCHING " + heroName);
     }
 }

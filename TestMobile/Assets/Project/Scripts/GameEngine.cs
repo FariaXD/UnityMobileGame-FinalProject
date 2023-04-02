@@ -28,12 +28,16 @@ public class GameEngine : MonoBehaviour
     private void Start() {
         team.SetHeroes(GameObject.FindGameObjectsWithTag("Player"));
         handEngine = GameObject.FindGameObjectWithTag("Hand").GetComponent<HandEngine>();
-        foreach(HeroEngine heroGO in team.teamGO){
+        foreach(HeroEngine heroGO in team.teamGO)
             StartCoroutine(heroGO.InitializeDeck());
-            Debug.Log(heroGO.hero.deck.deck.Count);
-        }
-        
         SwitchActiveCharacter(team.selectedHero);
+        FindEnemies();
+    }
+
+    private void FindEnemies(){
+        GameObject[] enemiesEngines = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemiesEngines)
+            enemies.Add(enemy.GetComponent<EnemyEngine>());
     }
 
     public void SwitchActiveCharacter(HeroEngine hero){
@@ -45,19 +49,24 @@ public class GameEngine : MonoBehaviour
 
     public void UseCard(Card _card)
     {
-         switch (_card.type)
-         {
-             case Card.Card_Type.Damage:
-                 CardDamage usingCard = (CardDamage) _card;
-                 usingCard.UseCardOnTarget((Character) enemies[0].enemy);
-                 enemies[0].UpdateStatus();
-                 break;
-             case Card.Card_Type.Status:
-                 break;
-             case Card.Card_Type.Defense:
-                 break;
-             case Card.Card_Type.Special:
-                 break;
-         }
+        
+        if(enemies.Count > 0){
+            switch (_card.type)
+            {
+                case Card.Card_Type.Damage:
+                    //CardDamage usingCard = (CardDamage)_card;
+                    team.selectedHero.hero.hand.UseCard(_card,(Character)enemies[0].enemy);
+                    if(enemies[0].UpdateStatus())
+                        enemies.Remove(enemies[0]);
+                    SwitchActiveCharacter(team.selectedHero);
+                    break;
+                case Card.Card_Type.Status:
+                    break;
+                case Card.Card_Type.Defense:
+                    break;
+                case Card.Card_Type.Special:
+                    break;
+            }
+        }  
     }
 }

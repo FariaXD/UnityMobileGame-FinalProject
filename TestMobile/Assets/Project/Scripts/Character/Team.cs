@@ -7,6 +7,11 @@ public class Team {
     public float startingMana = 7f;
     public float currentMana = 7f;
     public HeroEngine selectedHero;
+    public enum CLASS{
+        RED,
+        BLUE,
+        GREEN
+    }
 
     public void SetHeroes(GameObject[] heroesGO){
         foreach (GameObject heroGO in heroesGO)

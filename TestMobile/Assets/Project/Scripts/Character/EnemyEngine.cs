@@ -16,7 +16,8 @@ public class EnemyEngine : MonoBehaviour {
         engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
         enemy = new Enemy(enemyName, anim, startingHealth, startingShield);
     }
-    public void UpdateStatus(){
+    public bool UpdateStatus(){
         image.fillAmount = ((100*enemy.currentHealth)/startingHealth) / 100;
+        return (enemy.currentHealth <= 0);
     }
 }

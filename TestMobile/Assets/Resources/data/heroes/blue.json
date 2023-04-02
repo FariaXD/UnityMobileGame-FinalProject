@@ -7,7 +7,7 @@
             "cost": 1,
             "damage": 7,
             "duplicates": 1,            
-            "imagePath": "Assets/Resources/sprites/cards/CardExampleTextRed.png"
+            "imagePath": "sprites/cards/CardExampleTextBlue"
         },
     "2":  
         {
@@ -19,7 +19,7 @@
             "status": "Burn",
             "duration": 3,
             "duplicates": 1,            
-            "imagePath": "Assets/Resources/sprites/cards/CardExampleTextRed.png"
+            "imagePath": "sprites/cards/CardExampleTextBlue"
         },
     "3":   
         {
@@ -30,7 +30,7 @@
             "defenseType": "Shielding",
             "ammount": 3,
             "duplicates": 1,            
-            "imagePath": "Assets/Resources/sprites/cards/CardExampleTextRed.png"
+            "imagePath": "sprites/cards/CardExampleTextBlue"
         },
     "4":
         {
@@ -44,6 +44,6 @@
             "defenseType": "Shielding",
             "ammount": 10,
             "duplicates": 1,            
-            "imagePath": "Assets/Resources/sprites/cards/CardExampleTextRed.png"
+            "imagePath": "sprites/cards/CardExampleTextBlue"
         }
 }
