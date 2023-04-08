@@ -100,7 +100,7 @@ public class GameEngine : MonoBehaviour
     private void UseSingle(Card _card, bool isDefensive, CharacterEngine target){
         team.selectedHero.hero.hand.UseCard(_card, target.ReturnAssociatedCharacter());
         if (target.UpdateStatus()){
-            if(!isDefensive) //If the target is not an alied and its dead then remove it from enemy list
+            if(!isDefensive && target.ReturnAssociatedCharacter() is EnemyEngine) //If the target is not an alied and its dead then remove it from enemy list
                 enemies.Remove((EnemyEngine)target);
         }
     }
