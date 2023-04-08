@@ -72,7 +72,7 @@ public class GameEngine : MonoBehaviour
                     break;
             }
             handEngine.UpdateUsedCard(_cardEngine);
-            //SwitchActiveCharacter(team.selectedHero); //Refresh hand
+            SwitchActiveCharacter(team.selectedHero); //Refresh hand
         }  
     }
 
