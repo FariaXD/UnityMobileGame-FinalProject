@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyEngine : MonoBehaviour {
+public class EnemyEngine : MonoBehaviour, CharacterEngine {
     public string enemyName = "Enemy";
     public Enemy enemy;
     public float startingHealth = 20f;
@@ -19,5 +19,10 @@ public class EnemyEngine : MonoBehaviour {
     public bool UpdateStatus(){
         image.fillAmount = ((100*enemy.currentHealth)/startingHealth) / 100;
         return (enemy.currentHealth <= 0);
+    }
+
+    public Character ReturnAssociatedCharacter()
+    {
+        return enemy;
     }
 }

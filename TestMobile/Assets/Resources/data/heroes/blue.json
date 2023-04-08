@@ -29,7 +29,7 @@
             "cost": 1,
             "defenseType": "Shielding",
             "ammount": 3,
-            "duplicates": 1,            
+            "duplicates": 10,            
             "imagePath": "sprites/cards/CardExampleTextBlue"
         },
     "4":

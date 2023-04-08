@@ -8,6 +8,7 @@ TagManager:
   - Engine
   - Hand
   - Deck
+  - Card
   layers:
   - Default
   - TransparentFX

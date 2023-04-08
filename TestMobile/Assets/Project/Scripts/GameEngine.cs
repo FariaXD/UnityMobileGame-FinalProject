@@ -29,7 +29,7 @@ public class GameEngine : MonoBehaviour
         team.SetHeroes(GameObject.FindGameObjectsWithTag("Player"));
         handEngine = GameObject.FindGameObjectWithTag("Hand").GetComponent<HandEngine>();
         foreach(HeroEngine heroGO in team.teamGO)
-            StartCoroutine(heroGO.InitializeDeck());
+            heroGO.InitializeDeck();
         SwitchActiveCharacter(team.selectedHero);
         FindEnemies();
     }
@@ -47,26 +47,64 @@ public class GameEngine : MonoBehaviour
         }
     }
 
-    public void UseCard(Card _card)
-    {
-        
-        if(enemies.Count > 0){
+    private void EndTurn(){
+        if(active == Turn.PLAYER)
+            active = Turn.ENEMY;
+        else
+            active = Turn.PLAYER;
+    }
+
+    public void UseCard(CardEngine _cardEngine, CharacterEngine target = default(CharacterEngine))
+    {  
+        Card _card = _cardEngine.card;
+        if(enemies.Count > 0 && active == Turn.PLAYER){
+            Debug.Log(_card.id);
             switch (_card.type)
-            {
-                case Card.Card_Type.Damage:
-                    //CardDamage usingCard = (CardDamage)_card;
-                    team.selectedHero.hero.hand.UseCard(_card,(Character)enemies[0].enemy);
-                    if(enemies[0].UpdateStatus())
-                        enemies.Remove(enemies[0]);
-                    SwitchActiveCharacter(team.selectedHero);
-                    break;
-                case Card.Card_Type.Status:
-                    break;
-                case Card.Card_Type.Defense:
+            {  
+                default:
+                    if (target != null)
+                        UseSingle(_card, false, target);
+                    else
+                        UseAOE(_card, false);
                     break;
                 case Card.Card_Type.Special:
+                    UseSpecial(_card, target);
                     break;
             }
+            handEngine.UpdateUsedCard(_cardEngine);
+            //SwitchActiveCharacter(team.selectedHero); //Refresh hand
         }  
     }
+
+    public void DrawCard(){
+        team.selectedHero.hero.hand.DrawCard();
+        SwitchActiveCharacter(team.selectedHero);
+    }
+
+    /*
+        Use an AREA OF EFFECT card on all targets
+        isDefensive - if card is a defensive card then works only on friendly chars
+    */
+    private void UseAOE(Card _card, bool isDefensive){
+        if(!isDefensive)
+            foreach (EnemyEngine enemy in enemies)
+                team.selectedHero.hero.hand.UseCard(_card, enemy.enemy);
+        else
+            foreach(HeroEngine hero in team.teamGO)
+                team.selectedHero.hero.hand.UseCard(_card, hero.hero);
+    }
+
+    /*
+        Use a card on single target, and check if target died (if enemy remove it from list of enemies)
+    */
+    private void UseSingle(Card _card, bool isDefensive, CharacterEngine target){
+        team.selectedHero.hero.hand.UseCard(_card, target.ReturnAssociatedCharacter());
+        if (target.UpdateStatus()){
+            if(!isDefensive) //If the target is not an alied and its dead then remove it from enemy list
+                enemies.Remove((EnemyEngine)target);
+        }
+    }
+
+    //TODO Special interaction
+    private void UseSpecial(Card _card, CharacterEngine target){}
 }

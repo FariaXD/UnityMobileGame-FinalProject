@@ -13,7 +13,8 @@ public class Hand
         this.deck = _deck;
     }
     public void DrawCard(){
-        hand.Add(deck.DrawCard());
+        if(hand.Count < MAX_HAND_SIZE)
+            hand.Add(deck.DrawCard());
     }
     public void UseCard(Card c, Character target){
         c.UseCardOnTarget(target);

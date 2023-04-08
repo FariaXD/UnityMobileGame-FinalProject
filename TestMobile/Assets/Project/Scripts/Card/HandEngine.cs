@@ -16,11 +16,10 @@ public class HandEngine : MonoBehaviour
         for(int i = cards.Count; i < Hand.MAX_HAND_SIZE; i++)
             cardsEngine[i].UpdateCard(GenerateEmpty());
     }
+    public void UpdateUsedCard(CardEngine _cardEngine){
+        _cardEngine.UpdateCard(GenerateEmpty());
+    }
     private Card GenerateEmpty(){
         return new CardDamage(-1, null,-1,-1,null) as Card;
-    }
-
-    private void OnMouseDown() {
-        Debug.Log("open hand");    
     }
 }
