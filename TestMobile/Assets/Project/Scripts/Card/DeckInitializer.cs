@@ -5,11 +5,17 @@ using System.IO;
 using Newtonsoft.Json;
 
 public class DeckInitializer { 
-    public static List<Card> InitializeDeck(string heroClass){
+
+    public GameEngine engine;
+    public DeckInitializer(GameEngine engine){
+        this.engine = engine;
+    }
+    public List<Card> InitializeDeck(string heroClass){
         Dictionary<string, Dictionary<string, string>> values = new Dictionary<string, Dictionary<string, string>>();
         List<Card> deck = new List<Card>();
-        string json = File.ReadAllText(Application.dataPath +"/Resources/data/heroes/"+heroClass+".json");
-        values = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(json);
+        TextAsset mytxtData = (TextAsset)Resources.Load("data/heroes/"+heroClass); //Load from Resources folder
+        string txt = mytxtData.text; 
+        values = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(txt); //Convert to JSON
         foreach (var val in values)
         {
             // stats common for all cards
@@ -18,7 +24,6 @@ public class DeckInitializer {
             int cost = int.Parse(val.Value["cost"]);
             int duplicates = int.Parse(val.Value["duplicates"]);
             string imagePath = val.Value["imagePath"];
-
             switch (val.Value["type"])
             {
                 case "CardDamage":

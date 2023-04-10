@@ -10,6 +10,7 @@ public class GameEngine : MonoBehaviour
     public PlayerTurnState state = PlayerTurnState.WAITING;
     public HandEngine handEngine;
     public DeckEngine deckEngine;
+    public DrawCardButton debugbutton;
 
     public enum Turn{
         PLAYER,
@@ -32,6 +33,7 @@ public class GameEngine : MonoBehaviour
             heroGO.InitializeDeck();
         SwitchActiveCharacter(team.selectedHero);
         FindEnemies();
+        
     }
 
     private void FindEnemies(){
@@ -72,7 +74,7 @@ public class GameEngine : MonoBehaviour
                     break;
             }
             handEngine.UpdateUsedCard(_cardEngine);
-            SwitchActiveCharacter(team.selectedHero); //Refresh hand
+            //SwitchActiveCharacter(team.selectedHero); //Refresh hand
         }  
     }
 
@@ -92,6 +94,7 @@ public class GameEngine : MonoBehaviour
         else
             foreach(HeroEngine hero in team.teamGO)
                 team.selectedHero.hero.hand.UseCard(_card, hero.hero);
+        UpdateEnemyStatus();
     }
 
     /*
@@ -99,10 +102,14 @@ public class GameEngine : MonoBehaviour
     */
     private void UseSingle(Card _card, bool isDefensive, CharacterEngine target){
         team.selectedHero.hero.hand.UseCard(_card, target.ReturnAssociatedCharacter());
-        if (target.UpdateStatus()){
-            if(!isDefensive && target.ReturnAssociatedCharacter() is EnemyEngine) //If the target is not an alied and its dead then remove it from enemy list
-                enemies.Remove((EnemyEngine)target);
-        }
+        target.UpdateStatus();
+        UpdateEnemyStatus();
+    }
+
+    private void UpdateEnemyStatus(){
+        for(int i = 0; i < enemies.Count; i++)
+            if(enemies[i].UpdateStatus())
+                enemies.Remove(enemies[i]); 
     }
 
     //TODO Special interaction

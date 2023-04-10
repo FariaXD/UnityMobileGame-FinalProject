@@ -3450,6 +3450,7 @@ MonoBehaviour:
   state: 0
   handEngine: {fileID: 0}
   deckEngine: {fileID: 0}
+  debugbutton: {fileID: 460147790}
 --- !u!4 &2007107888
 Transform:
   m_ObjectHideFlags: 0
