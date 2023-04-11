@@ -1,0 +1,49 @@
+﻿{
+    "1":
+        {
+            "id": 1,
+            "name": "Slice",
+            "type": "CardDamage",
+            "cost": 1,
+            "damage": 7,
+            "duplicates": 1,            
+            "imagePath": "sprites/cards/CardExampleTextBlue"
+        },
+    "2":  
+        {
+            "id": 2,
+            "name": "Punch",
+            "type": "CardStatus",
+            "cost": 1,
+            "damage": 4,
+            "status": "Burn",
+            "duration": 3,
+            "duplicates": 1,            
+            "imagePath": "sprites/cards/CardExampleTextBlue"
+        },
+    "3":   
+        {
+            "id": 3,
+            "name": "Kick",
+            "type": "CardDefense",
+            "cost": 1,
+            "defenseType": "Shielding",
+            "ammount": 3,
+            "duplicates": 10,            
+            "imagePath": "sprites/cards/CardExampleTextBlue"
+        },
+    "4":
+        {
+            "id": 4,
+            "name": "Poke",
+            "type": "CardSpecial",
+            "cost": 1,
+            "damage": 7,
+            "status": "Shock",
+            "duration": 1,
+            "defenseType": "Shielding",
+            "ammount": 10,
+            "duplicates": 1,            
+            "imagePath": "sprites/cards/CardExampleTextBlue"
+        }
+}
