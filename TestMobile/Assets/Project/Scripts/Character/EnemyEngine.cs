@@ -8,17 +8,28 @@ public class EnemyEngine : MonoBehaviour, CharacterEngine {
     public float startingShield = 5f;
     private Animator anim;
     private GameEngine engine;
-    public Image image;
+
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
-        enemy = new Enemy(enemyName, anim, startingHealth, startingShield);
+    }
+    private void Update() {
+        if(enemy != null && enemy.currentHealth <= 0){
+            anim.SetBool("Dead", true);
+        }
+    }
+    public void SetNewEnemy(Enemy _enemy){
+        this.enemy = _enemy;
+        anim.runtimeAnimatorController = _enemy.anim;
+        //Destroy(GetComponent<PolygonCollider2D>());
+        //gameObject.AddComponent<PolygonCollider2D>();
     }
     public bool UpdateStatus(){
-        image.fillAmount = ((100*enemy.currentHealth)/startingHealth) / 100;
-        return (enemy.currentHealth <= 0);
+        /* image.fillAmount = ((100*enemy.currentHealth)/startingHealth) / 100;
+        return (enemy.currentHealth <= 0); */
+        return false;
     }
 
     public Character ReturnAssociatedCharacter()

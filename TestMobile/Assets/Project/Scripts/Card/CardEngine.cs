@@ -5,13 +5,19 @@ using UnityEngine;
 public class CardEngine : MonoBehaviour {
 
     public Card card {get; set;}
+    [HideInInspector]
     public bool moving {get; set;}
     private float startPosX, startPosY;
     private Vector3 resetPosition;
     private const float speed = 50f;
-    private bool used {get; set;}
+    [HideInInspector]
+    public bool used {get; set;}
+    private SpriteRenderer sRenderer {get; set;}
+    private CardHitmarker hitmarker;
     private void Start() {
         resetPosition = this.transform.localPosition;
+        sRenderer = this.GetComponent<SpriteRenderer>();
+        hitmarker = GetComponentInChildren<CardHitmarker>();
     }
     private void Update() {
         if(moving){
@@ -20,10 +26,14 @@ public class CardEngine : MonoBehaviour {
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
             this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
         }
-        if(!moving && Vector2.Distance(this.transform.localPosition, resetPosition) > 0)
+        else if(!moving && Vector2.Distance(this.transform.localPosition, resetPosition) > 0){
             this.gameObject.transform.localPosition = Vector2.MoveTowards(this.transform.localPosition, resetPosition, speed * Time.deltaTime);
+            
+        }
         else if(used)
             used = false;
+        if(Vector2.Distance(this.transform.localPosition, resetPosition) == 0)
+            hitmarker.SetSpriteRendererAndCollider(moving);
 
     }
     public void UpdateCard(Card c){
@@ -32,10 +42,9 @@ public class CardEngine : MonoBehaviour {
         
     }
     private void OnMouseDown()
-    {
-        Debug.Log("HELLO?");
-        
-        if(Input.GetMouseButtonDown(0)){
+    {        
+        Debug.Log(card);
+        if(Input.GetMouseButtonDown(0) && card.id != -1){
             Vector3 mousePos;
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
@@ -44,21 +53,15 @@ public class CardEngine : MonoBehaviour {
             startPosY = mousePos.y - this.transform.localPosition.y;
 
             moving = true;
-        }
-    }
 
-    private void OnCollisionStay2D(Collision2D other) {
-        if(!used && !moving){
-            if (other.gameObject.TryGetComponent<EnemyEngine>(out EnemyEngine enemy))
-                GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>().UseCard(this, enemy);
-            else if (other.gameObject.TryGetComponent<HeroEngine>(out HeroEngine hero))
-                GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>().UseCard(this, hero);
-            used = true;
-        }   
+            sRenderer.color = new Color(1f, 1f, 1f, .5f);
+            hitmarker.SetSpriteRendererAndCollider(moving);
+        }
     }
 
     private void OnMouseUp() 
     {
         moving = false;
+        sRenderer.color = new Color(1f, 1f, 1f, 1f);
     }
 }

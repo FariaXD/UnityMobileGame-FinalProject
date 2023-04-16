@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HandEngine : MonoBehaviour
 {
-    public CardEngine[] cardsEngine = new CardEngine[7];
+    public CardEngine[] cardsEngine = new CardEngine[Hand.MAX_HAND_SIZE];
     private GameEngine engine;
     private void Start() {
         engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();

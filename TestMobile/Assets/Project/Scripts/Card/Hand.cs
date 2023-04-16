@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hand
 {
-    public const int MAX_HAND_SIZE = 7;
+    public const int MAX_HAND_SIZE = 6;
     public const int NUM_STARTING_CARDS = 3;
     public List<Card> hand = new List<Card>(MAX_HAND_SIZE);
 

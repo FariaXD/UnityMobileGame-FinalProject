@@ -32,11 +32,24 @@ public class GameEngine : MonoBehaviour
         foreach(HeroEngine heroGO in team.teamGO)
             heroGO.InitializeDeck();
         SwitchActiveCharacter(team.selectedHero);
-        FindEnemies();
+        FindEnemieEngines();
         
+
+        // Hardcoded enemies to test
+        Enemy[] tmps = new Enemy[3];
+        for(int i = 0; i < tmps.GetLength(0); i++){
+            tmps[i] = EnemyInitializer.InitializeEnemyWithName("plantdog");
+        }
+        InitializeEnemies(tmps);
     }
 
-    private void FindEnemies(){
+    private void InitializeEnemies(Enemy[] _enemies){
+        for(int i = 0; i < _enemies.GetLength(0); i++){
+            enemies[i].SetNewEnemy(_enemies[i]);
+        }
+    }
+
+    private void FindEnemieEngines(){
         GameObject[] enemiesEngines = GameObject.FindGameObjectsWithTag("Enemy");
         foreach(GameObject enemy in enemiesEngines)
             enemies.Add(enemy.GetComponent<EnemyEngine>());

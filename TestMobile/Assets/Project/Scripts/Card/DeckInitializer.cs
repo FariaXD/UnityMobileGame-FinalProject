@@ -6,11 +6,7 @@ using Newtonsoft.Json;
 
 public class DeckInitializer { 
 
-    public GameEngine engine;
-    public DeckInitializer(GameEngine engine){
-        this.engine = engine;
-    }
-    public List<Card> InitializeDeck(string heroClass){
+    public static List<Card> InitializeDeck(string heroClass){
         Dictionary<string, Dictionary<string, string>> values = new Dictionary<string, Dictionary<string, string>>();
         List<Card> deck = new List<Card>();
         TextAsset mytxtData = (TextAsset)Resources.Load("data/heroes/"+heroClass); //Load from Resources folder
