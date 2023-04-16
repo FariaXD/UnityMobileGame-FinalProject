@@ -72,7 +72,7 @@ public class GameEngine : MonoBehaviour
     public void UseCard(CardEngine _cardEngine, CharacterEngine target = default(CharacterEngine))
     {  
         Card _card = _cardEngine.card;
-        if(enemies.Count > 0 && active == Turn.PLAYER){
+        if(enemies.Count > 0 && active == Turn.PLAYER && team.currentMana >= _card.manaCost){
             Debug.Log(_card.id);
             switch (_card.type)
             {  
@@ -86,6 +86,7 @@ public class GameEngine : MonoBehaviour
                     UseSpecial(_card, target);
                     break;
             }
+            team.currentMana -= _card.manaCost;
             handEngine.UpdateUsedCard(_cardEngine);
             //SwitchActiveCharacter(team.selectedHero); //Refresh hand
         }  

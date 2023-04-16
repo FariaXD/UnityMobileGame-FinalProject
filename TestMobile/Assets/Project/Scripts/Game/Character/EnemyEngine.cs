@@ -18,11 +18,13 @@ public class EnemyEngine : MonoBehaviour, CharacterEngine {
     private void Update() {
         if(enemy != null && enemy.currentHealth <= 0){
             anim.SetBool("Dead", true);
+            this.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
     public void SetNewEnemy(Enemy _enemy){
         this.enemy = _enemy;
         anim.runtimeAnimatorController = _enemy.anim;
+        this.GetComponent<BoxCollider2D>().enabled = true;
         //Destroy(GetComponent<PolygonCollider2D>());
         //gameObject.AddComponent<PolygonCollider2D>();
     }
