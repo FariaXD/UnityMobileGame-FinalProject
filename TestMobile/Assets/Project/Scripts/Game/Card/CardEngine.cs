@@ -16,6 +16,7 @@ public class CardEngine : MonoBehaviour {
     private CardHitmarker hitmarker;
     private void Start() {
         resetPosition = this.transform.localPosition;
+        Debug.Log(resetPosition);
         sRenderer = this.GetComponent<SpriteRenderer>();
         hitmarker = GetComponentInChildren<CardHitmarker>();
     }
@@ -24,10 +25,10 @@ public class CardEngine : MonoBehaviour {
             Vector3 mousePos;
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
+            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, resetPosition.z);
         }
         else if(!moving && Vector2.Distance(this.transform.localPosition, resetPosition) > 0){
-            this.gameObject.transform.localPosition = Vector2.MoveTowards(this.transform.localPosition, resetPosition, speed * Time.deltaTime);
+            this.gameObject.transform.localPosition = Vector3.MoveTowards(this.transform.localPosition, resetPosition, speed * Time.deltaTime);
             
         }
         else if(used)
@@ -39,6 +40,10 @@ public class CardEngine : MonoBehaviour {
     public void UpdateCard(Card c){
         card = c;
         this.GetComponent<SpriteRenderer>().sprite = card.cardSprite;
+        if(card.id == -1)
+            this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+        else
+            this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
         
     }
     private void OnMouseDown()

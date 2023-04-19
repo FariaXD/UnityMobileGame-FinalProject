@@ -37,16 +37,14 @@ public class GameEngine : MonoBehaviour
 
         // Hardcoded enemies to test
         Enemy[] tmps = new Enemy[3];
-        for(int i = 0; i < tmps.GetLength(0); i++){
+        for(int i = 0; i < tmps.GetLength(0); i++)
             tmps[i] = EnemyInitializer.InitializeEnemyWithName("plantdog");
-        }
         InitializeEnemies(tmps);
     }
 
     private void InitializeEnemies(Enemy[] _enemies){
-        for(int i = 0; i < _enemies.GetLength(0); i++){
+        for(int i = 0; i < _enemies.GetLength(0); i++)
             enemies[i].SetNewEnemy(_enemies[i]);
-        }
     }
 
     private void FindEnemieEngines(){

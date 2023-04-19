@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class UIEngine : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private WorldEngine worldEngine;
+    private GameEngine gameEngine;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
