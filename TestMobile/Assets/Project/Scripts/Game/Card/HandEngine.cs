@@ -20,6 +20,6 @@ public class HandEngine : MonoBehaviour
         _cardEngine.UpdateCard(GenerateEmpty());
     }
     private Card GenerateEmpty(){
-        return new CardDamage(-1, null,-1,-1,null) as Card;
+        return new CardDamage(-1, null,-1, false, -1,null) as Card;
     }
 }

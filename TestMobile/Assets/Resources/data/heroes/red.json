@@ -1,33 +1,36 @@
 ﻿{
     "1":
         {
-            "id": 10,
-            "name": "Slice",
-            "type": "CardDamage",
-            "cost": 1,
-            "damage": 7,
-            "duplicates": 9,
-            "imagePath": "sprites/cards/CardExampleTextRed"
+          "id": 10,
+          "name": "Slice",
+          "type": "CardDamage",
+          "cost": 1,
+          "area": false,
+          "damage": 7,
+          "duplicates": 9,
+          "imagePath": "sprites/cards/CardExampleTextRed"
         },
     "2":  
         {
-            "id": 20,
-            "name": "Slice",
-            "type": "CardDamage",
-            "cost": 1,
-            "damage": 7,
-            "duplicates": 1,
-            "imagePath": "sprites/cards/CardExampleTextRed"
+          "id": 20,
+          "name": "Slice",
+          "type": "CardDamage",
+          "cost": 1,
+          "area": false,
+          "damage": 7,
+          "duplicates": 1,
+          "imagePath": "sprites/cards/CardExampleTextRed"
         },
     "3":   
         {
-            "id": 30,
-            "name": "Slice",
-            "type": "CardDamage",
-            "cost": 1,
-            "damage": 7,
-            "duplicates": 1,
-            "imagePath": "sprites/cards/CardExampleTextRed"
+          "id": 30,
+          "name": "Slice",
+          "type": "CardDamage",
+          "cost": 1,
+          "area": false,
+          "damage": 7,
+          "duplicates": 1,
+          "imagePath": "sprites/cards/CardExampleTextRed"
         }
     
 }

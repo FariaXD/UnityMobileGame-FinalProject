@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Team {
     public List<HeroEngine> teamGO = new List<HeroEngine>();
-    public float startingMana = 7f;
+    public static float startingMana = 7f;
     public float currentMana = 7f;
     public HeroEngine selectedHero;
     public enum CLASS{
@@ -19,5 +19,9 @@ public class Team {
             teamGO.Add(heroGO.GetComponent<HeroEngine>());
         }
         selectedHero = teamGO[0];
+    }
+
+    public void RefreshMana(){
+        currentMana = startingMana;
     }
 }

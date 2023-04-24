@@ -12,10 +12,15 @@ public class CardDefense : Card
     }
 
     public float ammount = 7f;
-    public const Card_Type cardType = Card_Type.Defense;
+    public const Action_Type cardType = Action_Type.Defense;
     public Defense_Type defType;
-    public CardDefense(int _id, string _name, float _manaCost, Defense_Type _defType, float _ammount, string imagePath) : base(_id, _name, _manaCost, cardType, imagePath)
+    public CardDefense(int _id, string _name, float _manaCost, bool _area, Defense_Type _defType, float _ammount, string imagePath) : base(_id, _name, _manaCost, _area, cardType, imagePath)
     {
+        this.ammount = _ammount;
+        this.defType = _defType;
+    }
+
+    public CardDefense(bool _area, Defense_Type _defType, float _ammount) : base(0, "", 0, _area, cardType, ""){
         this.ammount = _ammount;
         this.defType = _defType;
     }
@@ -24,6 +29,7 @@ public class CardDefense : Card
     {
         target.GetDefense(ammount, defType);
     }
+    
     public static Defense_Type GetDefenseByName(string name)
     {
         switch (name)

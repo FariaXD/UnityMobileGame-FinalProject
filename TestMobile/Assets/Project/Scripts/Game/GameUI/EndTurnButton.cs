@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class EndTurnButton : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private GameEngine engine;
     void Start()
     {
-        
+        engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void OnMouseDown()
     {
-        
+        Debug.Log("Ending Turn");
+        engine.EndTurn();
     }
+
+   
 }

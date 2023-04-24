@@ -7,9 +7,16 @@ public class CardStatus : Card
     public StatusEffect.Effect effect = StatusEffect.Effect.Burn;
     public float duration;
     public float damage;
-    public const Card_Type cardType = Card_Type.Status;
+    public const Action_Type cardType = Action_Type.Status;
 
-    public CardStatus(int _id, string _name, float _manaCost, StatusEffect.Effect _effect, float _duration, float _damage, string imagePath) : base(_id, _name, _manaCost, cardType, imagePath)
+    public CardStatus(int _id, string _name, float _manaCost, bool _area, StatusEffect.Effect _effect, float _duration, float _damage, string imagePath) : base(_id, _name, _manaCost, _area, cardType, imagePath)
+    {
+        this.effect = _effect;
+        this.duration = _duration;
+        this.damage = _damage;
+    }
+
+    public CardStatus(bool _area, StatusEffect.Effect _effect, float _duration, float _damage) : base(0, "", 0, _area, cardType, "")
     {
         this.effect = _effect;
         this.duration = _duration;

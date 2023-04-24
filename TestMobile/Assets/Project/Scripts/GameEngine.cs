@@ -7,7 +7,6 @@ public class GameEngine : MonoBehaviour
     public List<EnemyEngine> enemies = new List<EnemyEngine>();
     public Team team = new Team();
     public Turn active = Turn.PLAYER;
-    public PlayerTurnState state = PlayerTurnState.WAITING;
     public HandEngine handEngine;
     public DeckEngine deckEngine;
     public DrawCardButton debugbutton;
@@ -15,15 +14,6 @@ public class GameEngine : MonoBehaviour
     public enum Turn{
         PLAYER,
         ENEMY
-    }
-
-    public enum PlayerTurnState{
-        WAITING,
-        VIEW_HAND,
-        USING_CARD,
-        CHOOSE_TARGET,
-        USE_CARD,
-        END_TURN
     }
 
     private void Start() {
@@ -54,17 +44,18 @@ public class GameEngine : MonoBehaviour
     }
 
     public void SwitchActiveCharacter(HeroEngine hero){
-        if(state == PlayerTurnState.WAITING){
-            team.selectedHero = hero;
-            handEngine.SwitchHand(team.selectedHero.hero.hand.hand);
-        }
+        team.selectedHero = hero;
+        handEngine.SwitchHand(team.selectedHero.hero.hand.hand); 
     }
 
-    private void EndTurn(){
+    public void EndTurn(){
         if(active == Turn.PLAYER)
             active = Turn.ENEMY;
         else
+        {
             active = Turn.PLAYER;
+            team.RefreshMana();
+        }
     }
 
     public void UseCard(CardEngine _cardEngine, CharacterEngine target = default(CharacterEngine))
@@ -80,7 +71,7 @@ public class GameEngine : MonoBehaviour
                     else
                         UseAOE(_card, false);
                     break;
-                case Card.Card_Type.Special:
+                case Card.Action_Type.Special:
                     UseSpecial(_card, target);
                     break;
             }

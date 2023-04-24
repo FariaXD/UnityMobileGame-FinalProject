@@ -16,7 +16,6 @@ public class CardEngine : MonoBehaviour {
     private CardHitmarker hitmarker;
     private void Start() {
         resetPosition = this.transform.localPosition;
-        Debug.Log(resetPosition);
         sRenderer = this.GetComponent<SpriteRenderer>();
         hitmarker = GetComponentInChildren<CardHitmarker>();
     }
@@ -48,7 +47,6 @@ public class CardEngine : MonoBehaviour {
     }
     private void OnMouseDown()
     {        
-        Debug.Log(card);
         if(Input.GetMouseButtonDown(0) && card.id != -1){
             Vector3 mousePos;
             mousePos = Input.mousePosition;
