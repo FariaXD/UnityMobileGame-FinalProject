@@ -25,6 +25,7 @@ public class EnemyEngine : MonoBehaviour, CharacterEngine {
         this.enemy = _enemy;
         anim.runtimeAnimatorController = _enemy.anim;
         this.GetComponent<BoxCollider2D>().enabled = true;
+        enemy.enemyAI.SetEngine(engine);
         //Destroy(GetComponent<PolygonCollider2D>());
         //gameObject.AddComponent<PolygonCollider2D>();
     }

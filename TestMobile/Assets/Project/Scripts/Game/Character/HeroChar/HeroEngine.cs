@@ -18,6 +18,10 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
         engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>(); 
         hero = new Hero(heroName, startingHealth, startingShield);
     }
+
+    private void Update() {
+        UpdateStatus();
+    }
     //Get Deck from JSON, and Draw 3 card
     public void InitializeDeck(){
         hero.deck.deck = DeckInitializer.InitializeDeck(heroName);//DeckInitializer.InitializeDeck(heroName);
@@ -34,6 +38,7 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
     {
         /* image.fillAmount = ((100 * hero.currentHealth) / startingHealth) / 100;
         return (hero.currentHealth <= 0); */
+        if(hero.currentHealth <= 0) anim.SetBool("Dead", true);
         return false;
     }
 

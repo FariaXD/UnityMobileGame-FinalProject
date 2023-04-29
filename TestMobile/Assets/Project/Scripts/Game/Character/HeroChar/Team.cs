@@ -24,4 +24,22 @@ public class Team {
     public void RefreshMana(){
         currentMana = startingMana;
     }
+
+    public Character GetRandomHero(){
+        int index = 0;
+        bool valid = false;
+        while(!valid){
+            index = Random.Range(0, teamGO.Count);
+            if(teamGO[index].hero.currentHealth > 0)
+                valid = true;
+        }
+        return teamGO[index].hero;
+    }
+
+    public bool GameEnded(){
+        foreach(HeroEngine en in teamGO)
+            if(en.hero.currentHealth > 0)
+                return false;
+        return true;
+    }
 }

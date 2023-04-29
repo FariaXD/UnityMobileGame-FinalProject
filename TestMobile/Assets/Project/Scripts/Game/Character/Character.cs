@@ -30,6 +30,7 @@ public abstract class Character
             shield += ammount;
     }
     public void GetStatus(StatusEffect effect){
+        Debug.Log(name + " received " + effect.effect);
         debuffs.Add(effect);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CardStatus : Card
 {
-    public StatusEffect.Effect effect = StatusEffect.Effect.Burn;
+    public StatusEffect.Effect effect;
     public float duration;
     public float damage;
     public const Action_Type cardType = Action_Type.Status;

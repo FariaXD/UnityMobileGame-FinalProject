@@ -49,13 +49,21 @@ public class GameEngine : MonoBehaviour
     }
 
     public void EndTurn(){
-        if(active == Turn.PLAYER)
+        if(active == Turn.PLAYER){
             active = Turn.ENEMY;
+            EnemyTurn();
+        }
         else
         {
             active = Turn.PLAYER;
             team.RefreshMana();
         }
+    }
+
+    private void EnemyTurn(){
+        foreach(EnemyEngine en in enemies)
+            en.enemy.enemyAI.RunEnemyAI();
+        EndTurn();
     }
 
     public void UseCard(CardEngine _cardEngine, CharacterEngine target = default(CharacterEngine))

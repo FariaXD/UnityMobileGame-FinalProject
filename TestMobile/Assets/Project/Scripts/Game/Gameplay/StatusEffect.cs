@@ -14,7 +14,7 @@ public class StatusEffect
 
     public float duration = 3f;
     public float damage = 3f;
-    public Effect effect = Effect.Burn;
+    public Effect effect ;
 
     public StatusEffect(Effect _effect, float _damage, float _duration){
         this.effect = _effect;
@@ -34,9 +34,9 @@ public class StatusEffect
             case "Burn":
                 return Effect.Burn;
             case "Poison":
-                return Effect.Burn;
+                return Effect.Poison;
             case "Shocked":
-                return Effect.Burn;   
+                return Effect.Shocked;   
         }
         return Effect.None;      
     }

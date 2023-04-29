@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroName: Blue
-  startingHealth: 20
+  startingHealth: 2000000
   startingShield: 5
   image: {fileID: 0}
 --- !u!95 &611274598
@@ -1974,7 +1974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroName: Red
-  startingHealth: 20
+  startingHealth: 2000000
   startingShield: 5
   image: {fileID: 0}
 --- !u!60 &1610078762
@@ -2261,7 +2261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroName: Green
-  startingHealth: 20
+  startingHealth: 2000000
   startingShield: 5
   image: {fileID: 0}
 --- !u!95 &1944231760
