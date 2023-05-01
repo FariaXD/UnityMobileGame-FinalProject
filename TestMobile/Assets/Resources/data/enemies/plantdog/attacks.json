@@ -1,7 +1,7 @@
 ﻿{
     "attack1":{
         "type":"Damage",
-        "area":true,
+        "area":false,
         "damage":5,
         "ammount":1
     },

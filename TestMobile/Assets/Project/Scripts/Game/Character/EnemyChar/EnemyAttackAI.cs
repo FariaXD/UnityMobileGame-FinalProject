@@ -10,6 +10,7 @@ public class EnemyAttackAI
     private Dictionary<Card.Action_Type, float[]> priorityMoves = new Dictionary<Card.Action_Type, float[]>();
     private Enemy enemy;
     private Hero selectedTarger = null;
+    private GameEngine engine;
 
     private enum PRIORITY_ACTION{
         Defense,
@@ -17,7 +18,7 @@ public class EnemyAttackAI
         Normal
     }
     
-    GameEngine engine;
+    
     // ~ Damage, Status, Defense, Special
     public EnemyAttackAI(Enemy _enemy){
         this.enemy = _enemy;
@@ -49,6 +50,9 @@ public class EnemyAttackAI
             else
                 foreach (HeroEngine hero in engine.team.teamGO)
                     preparedAttack.UseCardOnTarget(hero.hero);
+            if(preparedAttack.type == Card.Action_Type.Damage){
+                CardDamage damage = (CardDamage)preparedAttack;
+            }
         }  
     }
 
@@ -119,12 +123,11 @@ public class EnemyAttackAI
                     return heroGO.hero;
             }
         }
-
-        return engine.team.GetRandomHero();
+        Character att = engine.team.GetRandomHero();
+        return att;
     }
 
     private void SetPriorities(PRIORITY_ACTION priority){
-        Debug.Log(priority);
         switch(priority){
             case PRIORITY_ACTION.Defense:
                 priorityMoves[Card.Action_Type.Damage] = GenerateRange(100f, 55f);

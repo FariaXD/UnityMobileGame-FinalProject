@@ -44,8 +44,25 @@ public class GameEngine : MonoBehaviour
     }
 
     public void SwitchActiveCharacter(HeroEngine hero){
-        team.selectedHero = hero;
-        handEngine.SwitchHand(team.selectedHero.hero.hand.hand); 
+        if(!hero.hero.diceased){
+            team.selectedHero = hero;
+            handEngine.SwitchHand(team.selectedHero.hero.hand.hand); }
+    }
+
+    public void ForceSwitcHero(){
+        foreach(HeroEngine en in team.teamGO){
+            if(!en.hero.diceased)
+                SwitchActiveCharacter(en);
+        }
+    }
+
+    public bool HasPlayerLost(){
+        foreach (HeroEngine en in team.teamGO)
+        {
+            if (!en.hero.diceased)
+                return false;
+        }
+        return true;
     }
 
     public void EndTurn(){
@@ -57,6 +74,7 @@ public class GameEngine : MonoBehaviour
         {
             active = Turn.PLAYER;
             team.RefreshMana();
+            DrawCard();
         }
     }
 
@@ -69,7 +87,7 @@ public class GameEngine : MonoBehaviour
     public void UseCard(CardEngine _cardEngine, CharacterEngine target = default(CharacterEngine))
     {  
         Card _card = _cardEngine.card;
-        if(enemies.Count > 0 && active == Turn.PLAYER && team.currentMana >= _card.manaCost){
+        if(enemies.Count > 0 && active == Turn.PLAYER && !team.selectedHero.hero.diceased && team.currentMana >= _card.manaCost){
             Debug.Log(_card.id);
             switch (_card.type)
             {  
@@ -90,7 +108,7 @@ public class GameEngine : MonoBehaviour
     }
 
     public void DrawCard(){
-        team.selectedHero.hero.hand.DrawCard();
+        team.DrawCardForEachHero();
         SwitchActiveCharacter(team.selectedHero);
     }
 

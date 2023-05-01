@@ -38,7 +38,11 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
     {
         /* image.fillAmount = ((100 * hero.currentHealth) / startingHealth) / 100;
         return (hero.currentHealth <= 0); */
-        if(hero.currentHealth <= 0) anim.SetBool("Dead", true);
+        if(hero.currentHealth <= 0){ 
+            anim.SetBool("Dead", true);
+            hero.diceased = true;
+            engine.ForceSwitcHero();
+        }
         return false;
     }
 

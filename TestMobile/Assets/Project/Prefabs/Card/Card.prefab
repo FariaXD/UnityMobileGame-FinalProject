@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2585180435219807442}
-  - component: {fileID: 2585180435219807443}
   - component: {fileID: 2585180435219807444}
   - component: {fileID: 6625251719623681478}
+  - component: {fileID: 2842748634393093547}
   m_Layer: 3
   m_Name: Card
   m_TagString: Card
@@ -28,14 +28,55 @@ Transform:
   m_GameObject: {fileID: 2585180435219807440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.63, y: -5.34, z: 0}
-  m_LocalScale: {x: 0.73483, y: 0.73483, z: 0.73483}
+  m_LocalScale: {x: 6.1298146, y: 6.1298146, z: 6.1298146}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6515827067319923321}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2585180435219807443
+--- !u!114 &2585180435219807444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585180435219807440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ec03d9d6a409442a265313e5dc9f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &6625251719623681478
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585180435219807440}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.42857146, y: 0}
+    oldSize: {x: 0.42, y: 0.64}
+    newSize: {x: 0.42, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.18000002, y: 0.64}
+      - {x: -0.18000002, y: 0}
+      - {x: 0.23999998, y: 0}
+      - {x: 0.23999998, y: 0.64}
+--- !u!212 &2842748634393093547
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,58 +117,17 @@ SpriteRenderer:
   m_SortingLayerID: -768317929
   m_SortingLayer: 10
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b0fe1206b0d11b34fa0799bdb0a5a3ad, type: 3}
+  m_Sprite: {fileID: -2816748121982681410, guid: 0e77a938166424f40be25bbd76f403bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 6}
+  m_Size: {x: 0.42, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2585180435219807444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2585180435219807440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0ec03d9d6a409442a265313e5dc9f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!60 &6625251719623681478
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2585180435219807440}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 6}
-    newSize: {x: 4, y: 6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -2, y: 3}
-      - {x: -2, y: -3}
-      - {x: 2, y: -3}
-      - {x: 2, y: 3}
 --- !u!1 &5809302448005335863
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,8 +155,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5809302448005335863}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 1.5, z: 0}
-  m_LocalScale: {x: 0.27534756, y: 0.27534756, z: 0.27534756}
+  m_LocalPosition: {x: 0.036, y: 0.451, z: 0}
+  m_LocalScale: {x: 0.04512039, y: 0.0466921, z: 0.27534756}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2585180435219807442}
@@ -242,3 +242,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9e37c3fb2e488c469fa6972f2e1c891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onTarget: 0

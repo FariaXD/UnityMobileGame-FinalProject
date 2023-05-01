@@ -7,11 +7,6 @@ public class Team {
     public static float startingMana = 7f;
     public float currentMana = 7f;
     public HeroEngine selectedHero;
-    public enum CLASS{
-        RED,
-        BLUE,
-        GREEN
-    }
 
     public void SetHeroes(GameObject[] heroesGO){
         foreach (GameObject heroGO in heroesGO)
@@ -41,5 +36,11 @@ public class Team {
             if(en.hero.currentHealth > 0)
                 return false;
         return true;
+    }
+
+    public void DrawCardForEachHero(){
+        foreach(HeroEngine en in teamGO){
+            en.hero.hand.DrawCard();
+        }
     }
 }

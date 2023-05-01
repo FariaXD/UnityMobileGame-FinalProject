@@ -9,6 +9,7 @@ public abstract class Character
     public float currentHealth;
     public float shield;
     public RuntimeAnimatorController anim;
+    public bool diceased = false;
     //List containing all the status affecting the character
     public List<StatusEffect> debuffs = new List<StatusEffect>(); 
     public Character(string _name, float _maxHealth, float _shield, RuntimeAnimatorController _anim = default(RuntimeAnimatorController)){
@@ -30,7 +31,6 @@ public abstract class Character
             shield += ammount;
     }
     public void GetStatus(StatusEffect effect){
-        Debug.Log(name + " received " + effect.effect);
         debuffs.Add(effect);
     }
 }

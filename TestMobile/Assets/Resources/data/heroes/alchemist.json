@@ -1,14 +1,14 @@
 ﻿{
     "1":
         {
-          "id": 1,
-          "name": "Slice",
-          "type": "CardDamage",
-          "cost": 1,
-          "area": true,
-          "damage": 7,
-          "duplicates": 40,
-          "imagePath": "sprites/cards/CardExampleTextGreen"
+            "id": 1,
+            "name": "Slice",
+            "type": "CardDamage",
+            "cost": 1,
+            "area": false,
+            "damage": 7,
+            "duplicates": 1,            
+            "imagePath": "sprites/cards/Alchemist_Card_Attack"
         },
     "2":  
         {
@@ -16,12 +16,12 @@
           "name": "Punch",
           "type": "CardStatus",
           "cost": 1,
-          "area": true,
+          "area": false,
           "damage": 4,
           "status": "Burn",
           "duration": 3,
-          "duplicates": 2,
-          "imagePath": "sprites/cards/CardExampleTextGreen"
+          "duplicates": 1,
+          "imagePath": "sprites/cards/Alchemist_Card_Attack"
         },
     "3":   
         {
@@ -29,11 +29,11 @@
           "name": "Kick",
           "type": "CardDefense",
           "cost": 1,
-          "area": true,
+          "area": false,
           "defenseType": "Shielding",
           "ammount": 3,
-          "duplicates": 3,
-          "imagePath": "sprites/cards/CardExampleTextGreen"
+          "duplicates": 10,
+          "imagePath": "sprites/cards/Alchemist_Card_Shield"
         },
     "4":
         {
@@ -41,13 +41,13 @@
           "name": "Poke",
           "type": "CardSpecial",
           "cost": 1,
-          "area": true,
+          "area": false,
           "damage": 7,
           "status": "Shock",
           "duration": 1,
           "defenseType": "Shielding",
           "ammount": 10,
           "duplicates": 1,
-          "imagePath": "sprites/cards/CardExampleTextGreen"
+          "imagePath": "sprites/cards/Alchemist_Card_Attack"
         }
 }

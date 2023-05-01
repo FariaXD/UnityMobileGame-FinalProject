@@ -6,15 +6,9 @@ public class EnemyEngine : MonoBehaviour, CharacterEngine {
     public Enemy enemy;
     public float startingHealth = 20f;
     public float startingShield = 5f;
-    private Animator anim;
-    private GameEngine engine;
+    public Animator anim;
+    public GameEngine engine;
 
-
-    private void Start()
-    {
-        anim = GetComponent<Animator>();
-        engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
-    }
     private void Update() {
         if(enemy != null && enemy.currentHealth <= 0){
             anim.SetBool("Dead", true);
