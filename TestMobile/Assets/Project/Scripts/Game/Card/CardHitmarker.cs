@@ -37,7 +37,7 @@ public class CardHitmarker : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>().UseCard(associatedCard, enemy);
             }
             else if (other.gameObject.TryGetComponent<HeroEngine>(out HeroEngine hero))
-                GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>().UseCard(associatedCard, enemy);
+                GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>().UseCard(associatedCard, hero);
             associatedCard.used = true;
             SetSpriteRendererAndCollider(false);
         }

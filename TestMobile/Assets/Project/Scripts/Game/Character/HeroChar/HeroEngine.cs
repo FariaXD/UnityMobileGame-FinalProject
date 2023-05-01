@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class HeroEngine : MonoBehaviour, CharacterEngine {
 
@@ -11,12 +11,14 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
     public float startingShield = 5f;
     private Animator anim;
     private GameEngine engine;
-    public Image image;
+    public Image healthImage;
+    public TextMeshProUGUI healthText;
 
     private void Start() {
         anim = GetComponent<Animator>();
         engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>(); 
         hero = new Hero(heroName, startingHealth, startingShield);
+        UpdateStatus();
     }
 
     private void Update() {
@@ -34,16 +36,16 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
     private void OnMouseDown() {
         engine.SwitchActiveCharacter(this);
     }
-    public bool UpdateStatus()
+    public void UpdateStatus()
     {
-        /* image.fillAmount = ((100 * hero.currentHealth) / startingHealth) / 100;
-        return (hero.currentHealth <= 0); */
+        healthImage.fillAmount = ((100 * hero.currentHealth) / startingHealth) / 100;
+        healthText.text = hero.currentHealth + "/" + hero.maxHealth;
         if(hero.currentHealth <= 0){ 
             anim.SetBool("Dead", true);
             hero.diceased = true;
-            engine.ForceSwitcHero();
+            if(engine.team.selectedHero.heroName == heroName)
+                engine.ForceSwitcHero();
         }
-        return false;
     }
 
     public Character ReturnAssociatedCharacter(){

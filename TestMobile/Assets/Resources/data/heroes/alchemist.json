@@ -34,20 +34,5 @@
           "ammount": 3,
           "duplicates": 10,
           "imagePath": "sprites/cards/Alchemist_Card_Shield"
-        },
-    "4":
-        {
-          "id": 4,
-          "name": "Poke",
-          "type": "CardSpecial",
-          "cost": 1,
-          "area": false,
-          "damage": 7,
-          "status": "Shock",
-          "duration": 1,
-          "defenseType": "Shielding",
-          "ammount": 10,
-          "duplicates": 1,
-          "imagePath": "sprites/cards/Alchemist_Card_Attack"
         }
 }

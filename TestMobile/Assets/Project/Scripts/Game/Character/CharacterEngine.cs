@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public interface CharacterEngine {
-    public bool UpdateStatus();
+    public void UpdateStatus();
 
     public Character ReturnAssociatedCharacter();
 }

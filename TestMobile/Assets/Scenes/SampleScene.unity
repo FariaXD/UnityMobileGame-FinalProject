@@ -952,7 +952,8 @@ MonoBehaviour:
   heroName: Alchemist
   startingHealth: 25
   startingShield: 5
-  image: {fileID: 0}
+  healthImage: {fileID: 1900212727}
+  healthText: {fileID: 1900212726}
 --- !u!95 &611274598
 Animator:
   serializedVersion: 4
@@ -2543,6 +2544,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
+--- !u!114 &1484024955 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8503739566477591088, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
+  m_PrefabInstance: {fileID: 1484024954}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1484024956 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1513762846713811669, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
+  m_PrefabInstance: {fileID: 1484024954}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &1607982991 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8756942482040105059, guid: ca6697bf735c764438afedca74b6544d, type: 3}
@@ -2672,7 +2695,8 @@ MonoBehaviour:
   heroName: Warrior
   startingHealth: 55
   startingShield: 5
-  image: {fileID: 0}
+  healthImage: {fileID: 5691274056984954755}
+  healthText: {fileID: 5691274056984954754}
 --- !u!60 &1610078762
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3149,6 +3173,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
+--- !u!114 &1900212726 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8503739566477591088, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
+  m_PrefabInstance: {fileID: 1900212725}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1900212727 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1513762846713811669, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
+  m_PrefabInstance: {fileID: 1900212725}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1930266847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3294,7 +3340,8 @@ MonoBehaviour:
   heroName: Ranger
   startingHealth: 35
   startingShield: 5
-  image: {fileID: 0}
+  healthImage: {fileID: 1484024956}
+  healthText: {fileID: 1484024955}
 --- !u!95 &1944231760
 Animator:
   serializedVersion: 4
@@ -3894,6 +3941,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
+--- !u!114 &5691274056984954754 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8503739566477591088, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
+  m_PrefabInstance: {fileID: 5691274056984954753}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5691274056984954755 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1513762846713811669, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
+  m_PrefabInstance: {fileID: 5691274056984954753}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8756942483522829219
 PrefabInstance:
   m_ObjectHideFlags: 0

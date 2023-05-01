@@ -29,9 +29,12 @@ public class EnemyAttackAI
     }
 
     public void RunEnemyAI(){
-        PriorityUpdate();
-        UseAttack();
-        PrepareAttack();
+        if (!engine.team.GameEnded()){
+            PriorityUpdate();
+            UseAttack();
+            PrepareAttack();
+        }
+        
     }
 
     public void SetEngine(GameEngine _engine){
@@ -44,16 +47,23 @@ public class EnemyAttackAI
     }
 
     private void UseAttack(){
-        if(!engine.team.GameEnded()){
-            if (!preparedAttack.area)
-                preparedAttack.UseCardOnTarget(ChooseTargetForAttack(preparedAttack.type));
-            else
+        if (!preparedAttack.area)
+            preparedAttack.UseCardOnTarget(ChooseCharacterToCast());
+        else
+            if(preparedAttack.type != Card.Action_Type.Defense)
                 foreach (HeroEngine hero in engine.team.teamGO)
                     preparedAttack.UseCardOnTarget(hero.hero);
-            if(preparedAttack.type == Card.Action_Type.Damage){
-                CardDamage damage = (CardDamage)preparedAttack;
-            }
-        }  
+            else
+                foreach (EnemyEngine enemy in engine.enemies)
+                    if(!enemy.enemy.diceased)
+                        preparedAttack.UseCardOnTarget(enemy.enemy);
+        
+    }
+
+    private Character ChooseCharacterToCast(){
+        if(preparedAttack.type == Card.Action_Type.Defense)
+            return enemy;
+        return ChooseTargetForAttack(preparedAttack.type);
     }
 
     private void PrepareAttack(){

@@ -27,5 +27,6 @@ public class CardStatus : Card
     {
         StatusEffect newEffect = new StatusEffect(effect, damage, duration);
         target.GetStatus(newEffect);
+        target.TakeDamage(damage);
     }
 }

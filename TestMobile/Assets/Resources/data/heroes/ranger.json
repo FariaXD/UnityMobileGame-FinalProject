@@ -34,20 +34,5 @@
           "ammount": 3,
           "duplicates": 3,
           "imagePath": "sprites/cards/Ranger_Card_Shield"
-        },
-    "4":
-        {
-          "id": 4,
-          "name": "Poke",
-          "type": "CardSpecial",
-          "cost": 1,
-          "area": true,
-          "damage": 7,
-          "status": "Shock",
-          "duration": 1,
-          "defenseType": "Shielding",
-          "ammount": 10,
-          "duplicates": 1,
-          "imagePath": "sprites/cards/Ranger_Card_Attack"
         }
 }

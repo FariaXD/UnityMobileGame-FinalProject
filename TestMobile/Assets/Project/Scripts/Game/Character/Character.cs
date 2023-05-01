@@ -21,10 +21,12 @@ public abstract class Character
     }
     
     public void TakeDamage(float damage){
+        Debug.Log(damage);
         currentHealth -= damage;
     }
     public void GetDefense(float ammount, CardDefense.Defense_Type type)
     {
+        Debug.Log("wat");
         if(type == CardDefense.Defense_Type.Healing)
             currentHealth = (currentHealth + ammount > maxHealth)? maxHealth : currentHealth + ammount;
         else

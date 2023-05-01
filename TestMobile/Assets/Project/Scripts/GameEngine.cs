@@ -62,6 +62,7 @@ public class GameEngine : MonoBehaviour
             if (!en.hero.diceased)
                 return false;
         }
+        Debug.Log("PLAYER LOST");
         return true;
     }
 
@@ -87,15 +88,14 @@ public class GameEngine : MonoBehaviour
     public void UseCard(CardEngine _cardEngine, CharacterEngine target = default(CharacterEngine))
     {  
         Card _card = _cardEngine.card;
-        if(enemies.Count > 0 && active == Turn.PLAYER && !team.selectedHero.hero.diceased && team.currentMana >= _card.manaCost){
-            Debug.Log(_card.id);
+        if(!HasPlayerLost() && enemies.Count > 0 && active == Turn.PLAYER && (!_card.area || !target.ReturnAssociatedCharacter().diceased) && team.currentMana >= _card.manaCost){
             switch (_card.type)
             {  
                 default:
-                    if (target != null)
-                        UseSingle(_card, false, target);
+                    if (!_card.area)
+                        UseSingle(_card, target);
                     else
-                        UseAOE(_card, false);
+                        UseAOE(_card, _card.type == Card.Action_Type.Defense);
                     break;
                 case Card.Action_Type.Special:
                     UseSpecial(_card, target);
@@ -129,7 +129,7 @@ public class GameEngine : MonoBehaviour
     /*
         Use a card on single target, and check if target died (if enemy remove it from list of enemies)
     */
-    private void UseSingle(Card _card, bool isDefensive, CharacterEngine target){
+    private void UseSingle(Card _card, CharacterEngine target){
         team.selectedHero.hero.hand.UseCard(_card, target.ReturnAssociatedCharacter());
         target.UpdateStatus();
         UpdateEnemyStatus();
@@ -137,7 +137,7 @@ public class GameEngine : MonoBehaviour
 
     private void UpdateEnemyStatus(){
         for(int i = 0; i < enemies.Count; i++)
-            if(enemies[i].UpdateStatus())
+            if(enemies[i].enemy.diceased)
                 enemies.Remove(enemies[i]); 
     }
 
