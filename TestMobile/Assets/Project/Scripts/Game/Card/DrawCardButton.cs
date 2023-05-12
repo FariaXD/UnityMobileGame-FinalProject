@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DrawCardButton : MonoBehaviour
 {
+    // !DEBUG CLASS
     private GameEngine engine;
     private SpriteRenderer debug;
     void Start()

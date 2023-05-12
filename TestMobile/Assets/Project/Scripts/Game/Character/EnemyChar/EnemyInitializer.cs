@@ -6,6 +6,10 @@ using Newtonsoft.Json;
 
 public class EnemyInitializer{
 
+    /*
+        Loads enemy from JSON file
+        Loads enemy attacks from JSON file
+    */
     public static Enemy InitializeEnemyWithName(string _name){
 
         Dictionary<string, string> val = new Dictionary<string, string>();

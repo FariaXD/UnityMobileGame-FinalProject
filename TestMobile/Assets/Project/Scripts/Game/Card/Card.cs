@@ -4,13 +4,17 @@ using UnityEngine;
 
 public abstract class Card{
 
-    public string cardName;
-    public float manaCost;
-    public bool area;
-    public Action_Type type;
-    public int id;
-    public Sprite cardSprite;
+    /*
+    Character action class represented as a card
+    */
+    public string cardName; //Name of card
+    public float manaCost; //Cost of using
+    public bool area; //If it targets every char or just one
+    public Action_Type type; //Type of card
+    public int id; //ID of card
+    public Sprite cardSprite; //Image of card
 
+    //Type of each card
     public enum Action_Type
     {
         Damage,
@@ -28,6 +32,7 @@ public abstract class Card{
         this.cardSprite = Resources.Load<Sprite>(imagePath);
     }
     
+    //Abstract method
     public abstract void UseCardOnTarget(Character target);
 
 }

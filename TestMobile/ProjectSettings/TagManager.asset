@@ -10,6 +10,8 @@ TagManager:
   - Deck
   - Card
   - CardHit
+  - WorldEngine
+  - UIEngine
   layers:
   - Default
   - TransparentFX

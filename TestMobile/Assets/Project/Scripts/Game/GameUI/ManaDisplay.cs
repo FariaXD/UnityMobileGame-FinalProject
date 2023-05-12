@@ -2,6 +2,11 @@
 using TMPro;
 
 public class ManaDisplay : MonoBehaviour {
+
+    /*
+        *Runtime class
+        Displays current mana
+    */
     private GameEngine engine;
     private TextMeshProUGUI text;
     private float manaDisplayed = Team.startingMana;

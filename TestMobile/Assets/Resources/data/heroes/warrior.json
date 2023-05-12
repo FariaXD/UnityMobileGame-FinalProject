@@ -7,7 +7,7 @@
     "area": false,
     "damage": 7,
     "duplicates": 10,
-    "imagePath": "sprites/cards/Warrior_Card_Attack"
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Attack"
   },
   "2": {
     "id": 3,
@@ -18,7 +18,7 @@
     "defenseType": "Healing",
     "ammount": 3,
     "duplicates": 3,
-    "imagePath": "sprites/cards/Warrior_Card_Heal"
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Heal"
   },
   "3": {
     "id": 3,
@@ -29,6 +29,6 @@
     "defenseType": "Shielding",
     "ammount": 3,
     "duplicates": 3,
-    "imagePath": "sprites/cards/Warrior_Card_Shield"
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Shield"
   }
 }

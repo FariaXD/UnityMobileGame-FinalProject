@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class StatusEffect
 {
+    /*
+        Method containing information regardind a status effect or debuff
+    */
     public enum Effect
     {
         Burn, //End of turn damage
         Poison, //Action damage
-        Shocked, //Stun
+        Shock, //Stun can't use actions
         None
     }
 
-    public float duration = 3f;
-    public float damage = 3f;
-    public Effect effect ;
+    public float duration = 3f; //duration of status decreasing each turn
+    public float damage = 3f; //damage 
+    public Effect effect ; //effect type
 
     public StatusEffect(Effect _effect, float _damage, float _duration){
         this.effect = _effect;
@@ -22,21 +25,22 @@ public class StatusEffect
         this.duration = _duration;
     }
 
+    //Decrese duration
     public bool DecreaseDuration(float quantity){
         duration-=quantity;
         if(duration <= 0)
             return true;
         return false;
     }
-
+    //Get respective effect via string
     public static Effect GetEffectByName(string name){
         switch (name){
             case "Burn":
                 return Effect.Burn;
             case "Poison":
                 return Effect.Poison;
-            case "Shocked":
-                return Effect.Shocked;   
+            case "Shock":
+                return Effect.Shock;   
         }
         return Effect.None;      
     }

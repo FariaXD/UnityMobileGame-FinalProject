@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CardSpecial : Card
 {
+    //TODO still to be determined
     public CardDamage damage;
     public CardStatus status;
     public CardDefense defense;

@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class CardEngine : MonoBehaviour {
 
-    public Card card {get; set;}
+    /*
+        *Runtime class
+        Player hand cards loaded dynamically
+        May be invisible if card not loaded
+    */
+    public Card card {get; set;} //Current card can be null
     [HideInInspector]
-    public bool moving {get; set;}
-    private float startPosX, startPosY;
-    private Vector3 resetPosition;
-    private const float speed = 50f;
+    public bool moving {get; set;} //If player is moving card
+    private float startPosX, startPosY; //World positions
+    private Vector3 resetPosition; //Starting positions
+    private const float speed = 50f; //Speed of reseting position
     [HideInInspector]
-    public bool used {get; set;}
-    private SpriteRenderer sRenderer {get; set;}
-    private CardHitmarker hitmarker;
+    public bool used {get; set;} //If card has been used
+    private SpriteRenderer sRenderer {get; set;} //Sprite renderer object
+    private CardHitmarker hitmarker; //Hitmarker object
     private void Start() {
         resetPosition = this.transform.localPosition;
         sRenderer = this.GetComponent<SpriteRenderer>();
         hitmarker = GetComponentInChildren<CardHitmarker>();
     }
+    //Move Card 
     private void Update() {
         if(moving){
             Vector3 mousePos;
@@ -36,6 +42,7 @@ public class CardEngine : MonoBehaviour {
             hitmarker.SetSpriteRendererAndCollider(moving);
 
     }
+    //Change card dynamically
     public void UpdateCard(Card c){
         card = c;
         this.GetComponent<SpriteRenderer>().sprite = card.cardSprite;
@@ -45,6 +52,7 @@ public class CardEngine : MonoBehaviour {
             this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
         
     }
+    //If card is pressed
     private void OnMouseDown()
     {        
         if(Input.GetMouseButtonDown(0) && card.id != -1){
@@ -61,7 +69,7 @@ public class CardEngine : MonoBehaviour {
             hitmarker.SetSpriteRendererAndCollider(moving);
         }
     }
-
+    //Is player releases card
     private void OnMouseUp() 
     {
         moving = false;

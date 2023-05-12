@@ -7,10 +7,10 @@
     },
     "attack2":{
         "type":"Status",
-        "status":"Poison",
+        "status":"Shock",
         "damage":3,
         "area":false,
-        "duration":3
+        "duration":1
     },
     "attack3":{
         "type":"Damage",
@@ -22,6 +22,6 @@
         "type":"Defense",
         "defense":"Healing",
         "area":true,
-        "ammount":15
+        "ammount":5
     }
 }

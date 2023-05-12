@@ -7,8 +7,8 @@
           "cost": 1,
           "area": true,
           "damage": 7,
-          "duplicates": 40,
-          "imagePath": "sprites/cards/Ranger_Card_Attack"
+          "duplicates": 10,
+          "imagePath": "sprites/cards/Ranger/Ranger_Card_Attack"
         },
     "2":  
         {
@@ -18,10 +18,10 @@
           "cost": 1,
           "area": true,
           "damage": 4,
-          "status": "Burn",
+          "status": "Poison",
           "duration": 3,
           "duplicates": 2,
-          "imagePath": "sprites/cards/Ranger_Card_Attack"
+          "imagePath": "sprites/cards/Ranger/Ranger_Card_Status_Poison"
         },
     "3":   
         {
@@ -33,6 +33,6 @@
           "defenseType": "Shielding",
           "ammount": 3,
           "duplicates": 3,
-          "imagePath": "sprites/cards/Ranger_Card_Shield"
+          "imagePath": "sprites/cards/Ranger/Ranger_Card_Shield"
         }
 }

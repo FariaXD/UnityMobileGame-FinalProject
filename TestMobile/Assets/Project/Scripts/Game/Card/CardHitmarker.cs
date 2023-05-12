@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 
 public class CardHitmarker : MonoBehaviour {
-    private CardEngine associatedCard;
-    public bool onTarget = false;
+    /*
+        When card is being hold a hitmarker shows
+    */
+    private CardEngine associatedCard; //Associated cardEngine
+    public bool onTarget = false; //If a target is on hitmarker
 
     private void Start() {
         associatedCard = GetComponentInParent<CardEngine>();
@@ -13,6 +16,7 @@ public class CardHitmarker : MonoBehaviour {
         this.GetComponent<CircleCollider2D>().enabled = state;
     }
 
+    //Check if hitmarker enters target
     private void OnCollisionEnter2D(Collision2D other) {
         if(associatedCard.moving){
             if (other.gameObject.TryGetComponent<EnemyEngine>(out EnemyEngine enemy)){
@@ -23,6 +27,7 @@ public class CardHitmarker : MonoBehaviour {
         }
     }
 
+    //If hitmarker leaves target
     private void OnCollisionExit2D(Collision2D other) {
         if (other.gameObject.TryGetComponent<EnemyEngine>(out EnemyEngine enemy)){
             onTarget = false;
@@ -31,6 +36,7 @@ public class CardHitmarker : MonoBehaviour {
             onTarget = false;
     }
 
+    //If hitmarker stays on target and is released uses card
     private void OnCollisionStay2D(Collision2D other) {
        if(!associatedCard.moving && onTarget && !associatedCard.used){
             if (other.gameObject.TryGetComponent<EnemyEngine>(out EnemyEngine enemy)){

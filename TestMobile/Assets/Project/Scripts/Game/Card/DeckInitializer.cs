@@ -6,22 +6,26 @@ using Newtonsoft.Json;
 
 public class DeckInitializer { 
 
+    /*
+        This class is responsible for initializing a Player Characters deck
+        Reading the information from a JSON file and creating the Card objects
+    */
     public static List<Card> InitializeDeck(string heroClass){
-        Dictionary<string, Dictionary<string, string>> values = new Dictionary<string, Dictionary<string, string>>();
-        List<Card> deck = new List<Card>();
+        Dictionary<string, Dictionary<string, string>> values = new Dictionary<string, Dictionary<string, string>>(); //Creates Dictionary for JSON
+        List<Card> deck = new List<Card>(); //Temporary deck
         TextAsset mytxtData = (TextAsset)Resources.Load("data/heroes/"+heroClass); //Load from Resources folder
         string txt = mytxtData.text; 
         values = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(txt); //Convert to JSON
         foreach (var val in values)
         {
             // stats common for all cards
-            int id = int.Parse(val.Key);
-            string name = val.Value["name"];
-            int cost = int.Parse(val.Value["cost"]);
-            int duplicates = int.Parse(val.Value["duplicates"]);
-            bool area = (val.Value["area"] == "true");
-            string imagePath = val.Value["imagePath"];
-            switch (val.Value["type"])
+            int id = int.Parse(val.Key); //card id
+            string name = val.Value["name"]; //card name
+            int cost = int.Parse(val.Value["cost"]); //card cost
+            int duplicates = int.Parse(val.Value["duplicates"]); //ammount of duplicates to be created
+            bool area = (val.Value["area"] == "true"); //card isArea
+            string imagePath = val.Value["imagePath"]; //card image
+            switch (val.Value["type"]) //Create object for specific type
             {
                 case "CardDamage":
                     int damageC = int.Parse(val.Value["damage"]);
@@ -59,6 +63,6 @@ public class DeckInitializer {
                     break;
             }
         }
-        return deck;
+        return deck; //Returns deck object
     }
 }

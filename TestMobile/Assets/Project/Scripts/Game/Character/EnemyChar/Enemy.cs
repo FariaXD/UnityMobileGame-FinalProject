@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    public EnemyAttackAI enemyAI;
+    /*
+        Enemy class containing enemy info and AI
+    */
+    public EnemyActionAI enemyAI;
+    public AttackIcon icons;
     public Enemy(string _name, float _health, float _shield, RuntimeAnimatorController _anim = default(RuntimeAnimatorController)) : base(_name, _health, _shield, _anim)
     {
-        enemyAI = new EnemyAttackAI(this);
+        enemyAI = new EnemyActionAI(this);
+        icons = new AttackIcon();
     }
 }
