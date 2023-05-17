@@ -18,6 +18,8 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
     private GameEngine engine; //GameEngine reference
     public Image healthImage; //Associated health Image obj
     public TextMeshProUGUI healthText; //Health text obj
+    public Image shieldIcon;
+    public TextMeshProUGUI shieldText;
     private bool heroSet = false; //If hero isnt loaded yet
     public List<SpriteRenderer> statusImages = new List<SpriteRenderer>(); //List of status imagerenderer obj
     public List<TextMeshProUGUI> statusTexts = new List<TextMeshProUGUI>(); //list of status text obj
@@ -25,6 +27,8 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
     private void Start() {
         anim = GetComponent<Animator>();
         engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
+        shieldIcon.enabled = false;
+        shieldText.enabled = false;
     }
     //Load hero if set or not
     public void SetHero(Hero _hero = default(Hero)){
@@ -70,6 +74,16 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
                 statusTexts[i].text = null;
             }
         }
+        if(hero.shield > 0){
+            shieldIcon.enabled = true;
+            shieldText.enabled = true;
+        }
+        else{
+            shieldIcon.enabled = false;
+            shieldText.enabled = false;
+        }
+        shieldText.text = Mathf.Round(hero.shield).ToString();
+
     }
     //Return associated character
     public Character ReturnAssociatedCharacter(){

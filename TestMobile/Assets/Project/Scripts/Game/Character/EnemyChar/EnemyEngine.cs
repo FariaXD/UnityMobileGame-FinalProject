@@ -18,6 +18,8 @@ public class EnemyEngine : MonoBehaviour, CharacterEngine {
     public GameEngine engine; //GameEngine reference
     public Image healthImage; //Health Image obj
     public Image healthBGImage; //Health bg Image obj
+    public Image shieldIcon;
+    public TextMeshProUGUI shieldText;
     public TextMeshProUGUI healthText; //Health Text obj
     public TextMeshProUGUI attackInfo; //Attack Text obj
     public SpriteRenderer attackIcon; //Atack Image obj
@@ -26,6 +28,8 @@ public class EnemyEngine : MonoBehaviour, CharacterEngine {
 
     void Awake(){
         SetEnemyUI(false);
+        shieldIcon.enabled = false;
+        shieldText.enabled = false;
     }
 
     void Update() {
@@ -129,6 +133,17 @@ public class EnemyEngine : MonoBehaviour, CharacterEngine {
                     statusTexts[i].text = null;
                 }
             }
+            if (enemy.shield > 0)
+            {
+                shieldIcon.enabled = true;
+                shieldText.enabled = true;
+            }
+            else
+            {
+                shieldIcon.enabled = false;
+                shieldText.enabled = false;
+            }
+            shieldText.text = Mathf.Round(enemy.shield).ToString();
         }
     }
 

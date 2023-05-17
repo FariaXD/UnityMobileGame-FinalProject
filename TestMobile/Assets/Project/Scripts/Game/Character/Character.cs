@@ -29,7 +29,17 @@ public abstract class Character
     
     //Receive damage
     public void TakeDamage(float damage){
-        currentHealth -= damage;
+        float damageToShield = 0;
+        if(shield>damage){
+            damageToShield = shield;
+            shield = shield-damage;
+            damageToShield = damageToShield-shield;
+        }
+        else{
+            damageToShield = shield;
+            shield = 0;
+        }
+        currentHealth = currentHealth - (damage-damageToShield);
     }
     //Receive defense type (shield or heal)
     public void GetDefense(float ammount, CardDefense.Defense_Type type)
