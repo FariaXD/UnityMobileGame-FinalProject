@@ -1,0 +1,47 @@
+﻿{
+  "1": {
+    "id": 1,
+    "name": "Slice",
+    "type": "CardDamage",
+    "cost": 1,
+    "area": false,
+    "damage": 7,
+    "duplicates": 4,
+    "imagePath": "sprites/cards/Alchemist/Alchemist_Card_Attack"
+  },
+  "2": {
+    "id": 2,
+    "name": "Punch",
+    "type": "CardStatus",
+    "cost": 1,
+    "area": false,
+    "damage": 4,
+    "status": "Burn",
+    "duration": 3,
+    "duplicates": 10,
+    "imagePath": "sprites/cards/Alchemist/Alchemist_Card_Status_Burn"
+  },
+  "3": {
+    "id": 3,
+    "name": "Kick",
+    "type": "CardDefense",
+    "cost": 1,
+    "area": false,
+    "defenseType": "Shielding",
+    "ammount": 3,
+    "duplicates": 3,
+    "imagePath": "sprites/cards/Alchemist/Alchemist_Card_Shield"
+  },
+  "4": {
+    "id": 4,
+    "name": "Punch",
+    "type": "CardStatus",
+    "cost": 1,
+    "area": false,
+    "damage": 4,
+    "status": "Shock",
+    "duration": 1,
+    "duplicates": 5,
+    "imagePath": "sprites/cards/Alchemist/Alchemist_Card_Status_Shock"
+  }
+}

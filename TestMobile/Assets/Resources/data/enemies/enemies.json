@@ -1,1 +1,13 @@
-﻿
+﻿{
+    "normal": {
+        "1": ["plantdog"]
+    },
+
+    "elite": {
+        "1": ["plantdog", "plantdog"]
+    },
+    
+    "boss": {
+      "1": ["plantdog", "plantdog", "plantdog"]
+    }
+}

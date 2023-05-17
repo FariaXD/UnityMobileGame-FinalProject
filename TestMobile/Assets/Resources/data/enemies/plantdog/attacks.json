@@ -1,0 +1,27 @@
+﻿{
+    "attack1":{
+        "type":"Damage",
+        "area":false,
+        "damage":5,
+        "ammount":1
+    },
+    "attack2":{
+        "type":"Status",
+        "status":"Shock",
+        "damage":3,
+        "area":false,
+        "duration":1
+    },
+    "attack3":{
+        "type":"Damage",
+        "area":false,
+        "damage":10,
+        "ammount":1
+    },
+    "attack4":{
+        "type":"Defense",
+        "defense":"Healing",
+        "area":true,
+        "ammount":5
+    }
+}

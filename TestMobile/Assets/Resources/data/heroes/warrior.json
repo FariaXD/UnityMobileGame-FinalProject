@@ -1,0 +1,34 @@
+﻿{
+  "1": {
+    "id": 10,
+    "name": "Slice",
+    "type": "CardDamage",
+    "cost": 1,
+    "area": false,
+    "damage": 7,
+    "duplicates": 10,
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Attack"
+  },
+  "2": {
+    "id": 3,
+    "name": "Kick",
+    "type": "CardDefense",
+    "cost": 1,
+    "area": false,
+    "defenseType": "Healing",
+    "ammount": 3,
+    "duplicates": 3,
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Heal"
+  },
+  "3": {
+    "id": 3,
+    "name": "Kick",
+    "type": "CardDefense",
+    "cost": 1,
+    "area": false,
+    "defenseType": "Shielding",
+    "ammount": 3,
+    "duplicates": 3,
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Shield"
+  }
+}
