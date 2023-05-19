@@ -13,15 +13,31 @@ public class StageEngine : MonoBehaviour {
 
     public void SetStage(Stage stage){
         this.stage = stage;
+        ReloadIcon();
+    }
+
+    public void IsCompleted(){
+        stage.completed = true;
+        stage.LoadImage();
+        ReloadIcon();
+    }
+
+    public void ReloadIcon(){
+        spriteRenderer.sprite = stage.image;
     }
 
     public void LoadStage(){
         if(stage != null){
-            engine.LoadStage(stage);
+            engine.LoadStage(this);
         }
     }
 
+    public void StageCompleted(){
+        stage.completed = true;
+    }
+
     private void OnMouseDown() {
-        LoadStage();
+        if(!stage.completed)
+            LoadStage();
     }
 }

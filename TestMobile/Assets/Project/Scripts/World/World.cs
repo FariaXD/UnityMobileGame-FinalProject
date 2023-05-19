@@ -13,6 +13,7 @@ public class World
 
 
     public World(string _name){
+        this.name = _name;
         stageProb.Add(Stage.StageType.COMBAT, 80f);
         stageProb.Add(Stage.StageType.EVENT, 20f);
         GenerateStages();

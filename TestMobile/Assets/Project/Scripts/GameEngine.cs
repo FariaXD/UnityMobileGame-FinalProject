@@ -12,33 +12,41 @@ public class GameEngine : MonoBehaviour
     */
     public List<EnemyEngine> enemies = new List<EnemyEngine>(); //List of Enemy Engines
     public Team team = new Team(); //Player's Team
-    public Turn active = Turn.PLAYER; //Active side
+    public Turn active = Turn.None; //Active side
     public HandEngine handEngine; //Hand Engine (displays current character hand)
     public float difficultyModifier = 1f; //Difficulty modifier has the turns increase so does the diff
     public int turnCount = 0; //Turn counter
     public int enemyCount = 0; //How many enemies stage has
     public WorldEngine worldEngine;
+    public UIEngine uiEngine;
 
     public enum Turn{
         PLAYER,
-        ENEMY
+        ENEMY,
+        None
     }
 
     private void Start() {
         worldEngine = GameObject.FindGameObjectWithTag("WorldEngine").GetComponent<WorldEngine>();
         team.SetHeroes(GameObject.FindGameObjectsWithTag("Player")); //SetHeroes
+        uiEngine = GameObject.FindGameObjectWithTag("UIEngine").GetComponent<UIEngine>();
         handEngine = GameObject.FindGameObjectWithTag("Hand").GetComponent<HandEngine>(); //SetHand
-        team.teamGO.ForEach(heroGO => heroGO.InitializeDeck()); //Initialize heroes deck
         SwitchActiveCharacter(team.selectedHero); //switch active character and update UI
     }
+    private void Update() {
+        if(active != Turn.None)
+            CheckGameEnded();
+    }
+
 
     public void NewStageSelected(){
         RestartValues();
-        switch(worldEngine.currentStage.type){
+        switch(worldEngine.currentStage.stage.type){
             case Stage.StageType.COMBAT:
-                StageCombat sc = (StageCombat) worldEngine.currentStage;
+                StageCombat sc = (StageCombat) worldEngine.currentStage.stage;
                 InitializeEnemies(sc.enemies);
                 enemyCount = sc.enemies.GetLength(0);
+                active = Turn.PLAYER;
             break;
             case Stage.StageType.EVENT:
             break;
@@ -54,6 +62,7 @@ public class GameEngine : MonoBehaviour
     }
 
     private void RestartValues(){
+        team.RefreshMana();
         team.teamGO.ForEach(heroGO => heroGO.InitializeDeck()); //Initialize heroes deck
         SwitchActiveCharacter(team.selectedHero); //switch active character and update UI
         difficultyModifier = 1f; //Difficulty modifier has the turns increase so does the diff
@@ -101,6 +110,23 @@ public class GameEngine : MonoBehaviour
         }
     }
 
+    public void CheckGameEnded(){
+        if (CheckIfStageCompleted())
+        {
+            worldEngine.CurrentStageIsCompleted();
+            active = Turn.None;
+            enemies.ForEach(enemy => enemy.UnLoadEnemy());
+            team.HealHeroesPercentage();
+        }
+        else if (team.GameEnded())
+        {
+            worldEngine.PlayerLostGame();
+            team.RestartHeroes();
+            active = Turn.None;
+            enemies.ForEach(enemy => enemy.UnLoadEnemy());
+        }
+    }
+
     //Runs enemy attack AI engine
     private void EnemyTurn(){
         enemies.ForEach(en => en.RunEnemyAI());
@@ -129,7 +155,7 @@ public class GameEngine : MonoBehaviour
             }
             team.currentMana -= _card.manaCost;
             handEngine.UpdateUsedCard(_cardEngine); //updates used card
-        }  
+        }
     }
     /*
         Can use card if
@@ -160,10 +186,13 @@ public class GameEngine : MonoBehaviour
     */
     private void UseAOE(Card _card, bool isDefensive){
         if (isDefensive)
-            team.teamGO.ForEach(hero => team.selectedHero.hero.hand.UseCard(_card, hero.hero));
+            foreach(HeroEngine hero in team.teamGO){
+                if(!hero.hero.diceased)
+                    team.selectedHero.hero.hand.UseCard(_card, hero.hero);
+            }
         else
             foreach (EnemyEngine enemy in enemies)
-                if (enemy.enemy != null)
+                if (enemy.enemy != null && !enemy.enemy.diceased)
                     team.selectedHero.hero.hand.UseCard(_card, enemy.enemy);
     }
 
@@ -181,7 +210,7 @@ public class GameEngine : MonoBehaviour
             if(enemyEn.enemy != null && enemyEn.enemy.diceased)
                 count++;
         }
-        if(count == enemyCount)
+        if(count == enemyCount && count != 0)
             return true;
         return false;
     }

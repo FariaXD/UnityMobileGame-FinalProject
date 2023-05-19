@@ -31,11 +31,11 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
         shieldText.enabled = false;
     }
     //Load hero if set or not
-    public void SetHero(Hero _hero = default(Hero)){
-        if (!heroSet)
-            hero = new Hero(heroName, startingHealth, startingShield);
+    public void SetHero(){
+        hero = new Hero(heroName, startingHealth, startingShield);
         UpdateStatus();
         heroSet = true;
+        SetDead(false);
     }
     private void Update() {
         if(heroSet)
@@ -44,9 +44,8 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
     //Get Deck from JSON, and Draw 3 card
     public void InitializeDeck(){
         hero.deck.deck = DeckInitializer.InitializeDeck(heroName);//DeckInitializer.InitializeDeck(heroName);
-        
+        hero.hand.hand.Clear();
         hero.deck.ShuffleDeck();
-        hero.hand.EmptyHand();
         for(int i = 0; i < Hand.NUM_STARTING_CARDS;i++)
             hero.hand.DrawCard();
     }
@@ -54,13 +53,17 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
     private void OnMouseDown() {
         engine.SwitchActiveCharacter(this);
     }
+
+    public void SetDead(bool dead){
+        anim.SetBool("Dead", dead);
+    }
     //Update the hero visually
     public void UpdateStatus()
     {
         healthImage.fillAmount = ((100 * hero.currentHealth) / startingHealth) / 100;
         healthText.text = hero.currentHealth + "/" + hero.maxHealth;
-        if(hero.currentHealth <= 0){ 
-            anim.SetBool("Dead", true);
+        if(hero.currentHealth <= 0){
+            SetDead(true);
             hero.diceased = true;
             if(engine.team.selectedHero.heroName == heroName)
                 engine.ForceSwitcHero();

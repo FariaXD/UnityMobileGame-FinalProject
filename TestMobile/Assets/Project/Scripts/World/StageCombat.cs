@@ -12,10 +12,8 @@ public class StageCombat : Stage
         BOSS
         
     }
-    public CombatType difficulty;
 
-    public StageCombat(CombatType _difficulty) : base(StageType.COMBAT){
-        this.difficulty = _difficulty;
+    public StageCombat(CombatType _difficulty) : base(StageType.COMBAT, _difficulty){
         InitializeEnemies();
     }
 

@@ -10,6 +10,7 @@ public class Team {
     public static float startingMana = 7f; //Starting mana
     public float currentMana = 7f; //Current mana
     public HeroEngine selectedHero; //Currently selected hero
+    private float stageCompleteHeal = 0.1f;
 
     //Generate each hero
     public void SetHeroes(GameObject[] heroesGO){
@@ -19,8 +20,7 @@ public class Team {
             teamGO.Add(heroGO.GetComponent<HeroEngine>()); //Add hero engine
         }
         selectedHero = teamGO[0];
-        foreach(HeroEngine en in teamGO)
-                en.SetHero(); //Generate or refresh hero
+        RestartHeroes();
     }
 
     //Sets mana back to max
@@ -48,6 +48,11 @@ public class Team {
         return true;
     }
 
+    public void RestartHeroes(){
+        foreach (HeroEngine en in teamGO)
+            en.SetHero(); //Generate or refresh hero
+    }
+
     //Draw card for each hero
     public void DrawCardForEachHero(){
         foreach(HeroEngine en in teamGO){
@@ -55,6 +60,18 @@ public class Team {
         }
     }
 
+    public void HealHeroesPercentage()
+    {
+        foreach (HeroEngine en in teamGO)
+        {
+            if(en.hero.diceased)
+                en.hero.currentHealth = 0f;
+            float newHealth = Mathf.Round(en.hero.currentHealth + (en.hero.maxHealth * stageCompleteHeal));
+            en.hero.currentHealth = (newHealth > en.hero.maxHealth) ? en.hero.maxHealth : newHealth;
+            en.SetDead(false);
+            en.hero.diceased = false;
+        }
+    }
     //Reduce status effect duration
     public void RefreshStatusEffects(){
         foreach(HeroEngine en in teamGO)

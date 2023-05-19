@@ -53,7 +53,7 @@ public class EnemyEngine : MonoBehaviour, CharacterEngine {
     }
 
     public void RunEnemyAI(){
-        if(enemy != null)
+        if(enemy != null && !enemy.diceased)
             enemy.enemyAI.RunEnemyAI();
     }
 

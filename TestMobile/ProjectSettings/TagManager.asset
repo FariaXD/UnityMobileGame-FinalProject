@@ -12,6 +12,7 @@ TagManager:
   - CardHit
   - WorldEngine
   - UIEngine
+  - StageIconLoader
   layers:
   - Default
   - TransparentFX

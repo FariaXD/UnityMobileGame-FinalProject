@@ -18,10 +18,6 @@ public class Hand
             hand.Add(deck.DrawCard());
     }
 
-    public void EmptyHand(){
-        hand.Clear();
-    }
-
     //Uses card on target and shuffles it to deck
     public void UseCard(Card c, Character target){
         c.UseCardOnTarget(target); //Use on target
