@@ -14,10 +14,10 @@ public class GameEngine : MonoBehaviour
     public Team team = new Team(); //Player's Team
     public Turn active = Turn.PLAYER; //Active side
     public HandEngine handEngine; //Hand Engine (displays current character hand)
-    public Stage currentStage; //Current Stage reference
     public float difficultyModifier = 1f; //Difficulty modifier has the turns increase so does the diff
     public int turnCount = 0; //Turn counter
     public int enemyCount = 0; //How many enemies stage has
+    public WorldEngine worldEngine;
 
     public enum Turn{
         PLAYER,
@@ -25,24 +25,40 @@ public class GameEngine : MonoBehaviour
     }
 
     private void Start() {
+        worldEngine = GameObject.FindGameObjectWithTag("WorldEngine").GetComponent<WorldEngine>();
         team.SetHeroes(GameObject.FindGameObjectsWithTag("Player")); //SetHeroes
         handEngine = GameObject.FindGameObjectWithTag("Hand").GetComponent<HandEngine>(); //SetHand
-        foreach(HeroEngine heroGO in team.teamGO)
-            heroGO.InitializeDeck(); //Initialize heroes deck
+        team.teamGO.ForEach(heroGO => heroGO.InitializeDeck()); //Initialize heroes deck
         SwitchActiveCharacter(team.selectedHero); //switch active character and update UI
+    }
 
-        // Hardcoded enemies to test
-        Enemy[] tmps = new Enemy[1];
-        for(int i = 0; i < tmps.GetLength(0); i++)
-            tmps[i] = EnemyInitializer.InitializeEnemyWithName("plantdog");
-        InitializeEnemies(tmps);
-        enemyCount = tmps.GetLength(0);
+    public void NewStageSelected(){
+        RestartValues();
+        switch(worldEngine.currentStage.type){
+            case Stage.StageType.COMBAT:
+                StageCombat sc = (StageCombat) worldEngine.currentStage;
+                InitializeEnemies(sc.enemies);
+                enemyCount = sc.enemies.GetLength(0);
+            break;
+            case Stage.StageType.EVENT:
+            break;
+            case Stage.StageType.MERCHANT:
+            break;
+        }
     }
 
     //Initialize list of enemies (Attacks and Visuals)
     private void InitializeEnemies(Enemy[] _enemies){
         for(int i = 0; i < _enemies.GetLength(0); i++)
             enemies[i].SetNewEnemy(_enemies[i]);
+    }
+
+    private void RestartValues(){
+        team.teamGO.ForEach(heroGO => heroGO.InitializeDeck()); //Initialize heroes deck
+        SwitchActiveCharacter(team.selectedHero); //switch active character and update UI
+        difficultyModifier = 1f; //Difficulty modifier has the turns increase so does the diff
+        turnCount = 0; //Turn counter
+        active = Turn.PLAYER;
     }
 
     //Switch active character and display hand
@@ -87,8 +103,7 @@ public class GameEngine : MonoBehaviour
 
     //Runs enemy attack AI engine
     private void EnemyTurn(){
-        foreach(EnemyEngine en in enemies)
-            en.RunEnemyAI();
+        enemies.ForEach(en => en.RunEnemyAI());
         EndTurn();
     }
 
@@ -145,8 +160,7 @@ public class GameEngine : MonoBehaviour
     */
     private void UseAOE(Card _card, bool isDefensive){
         if (isDefensive)
-            foreach (HeroEngine hero in team.teamGO)
-                team.selectedHero.hero.hand.UseCard(_card, hero.hero);
+            team.teamGO.ForEach(hero => team.selectedHero.hero.hand.UseCard(_card, hero.hero));
         else
             foreach (EnemyEngine enemy in enemies)
                 if (enemy.enemy != null)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class World
 {
-    List<Stage> stages = new List<Stage>();
+    public List<Stage> stages = new List<Stage>();
     public string name;
 
     public const int NUM_OF_ROUNDS = 4;

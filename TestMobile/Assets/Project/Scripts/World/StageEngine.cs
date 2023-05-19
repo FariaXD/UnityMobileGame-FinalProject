@@ -4,8 +4,10 @@ public class StageEngine : MonoBehaviour {
     public Stage stage;
 
     private WorldEngine engine;
+    public SpriteRenderer spriteRenderer;
 
     private void Start() {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         engine = GameObject.FindGameObjectWithTag("WorldEngine").GetComponent<WorldEngine>();
     }
 
@@ -14,7 +16,9 @@ public class StageEngine : MonoBehaviour {
     }
 
     public void LoadStage(){
-        engine.LoadStage(stage);
+        if(stage != null){
+            engine.LoadStage(stage);
+        }
     }
 
     private void OnMouseDown() {

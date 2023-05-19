@@ -27,5 +27,4 @@ public class AttackIcon{
         }
         return null;
     }
-
 }

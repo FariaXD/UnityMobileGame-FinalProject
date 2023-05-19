@@ -46,6 +46,7 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
         hero.deck.deck = DeckInitializer.InitializeDeck(heroName);//DeckInitializer.InitializeDeck(heroName);
         
         hero.deck.ShuffleDeck();
+        hero.hand.EmptyHand();
         for(int i = 0; i < Hand.NUM_STARTING_CARDS;i++)
             hero.hand.DrawCard();
     }

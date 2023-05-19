@@ -9,4 +9,15 @@ public abstract class Stage
         EVENT,
         MERCHANT
     }
+
+    public StageType type;
+    public Sprite image;
+    public Stage(StageType _type){
+        this.type = _type;
+        LoadImage();
+    }
+
+    public void LoadImage(){
+        
+    }
 }

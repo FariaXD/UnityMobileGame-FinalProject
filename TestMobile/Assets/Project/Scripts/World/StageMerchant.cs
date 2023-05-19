@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class StageMerchant : Stage
 {
-    
+    public StageMerchant() : base(StageType.MERCHANT)
+    {
+
+    }
 }
