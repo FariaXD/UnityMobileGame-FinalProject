@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e5ab3f10810fb6c4288b4821e116ae63
+guid: 549c340f6fdf640429540d20c2c5b206
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,18 +117,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: burnIcon
+  - name: Menu_Map
     originalName: 
-    pivot: {x: 0.5, y: -0.5}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 8
-      height: 8
-    spriteID: f00ee8c9f8e2ede4ca05883d82eaa1c6
+      width: 272
+      height: 160
+    spriteID: 3d528d9460227074b8fda5c971daafd6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,23 +140,23 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 268662506
-    name: burnIcon
+    guid: -2012334368
+    name: Menu_Map
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: burnIcon
+    - name: Menu_Map
       frameIndex: 0
       cellRect:
-        x: 4
-        y: 4
-        width: 8
-        height: 8
-      spriteId: f00ee8c9f8e2ede4ca05883d82eaa1c6
+        x: 0
+        y: 0
+        width: 272
+        height: 160
+      spriteId: 3d528d9460227074b8fda5c971daafd6
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 16}
+  canvasSize: {x: 272, y: 160}

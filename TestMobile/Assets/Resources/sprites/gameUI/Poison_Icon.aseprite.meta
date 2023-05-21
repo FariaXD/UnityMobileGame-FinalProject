@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9f92209376b7b73458f615cca07faca9
+guid: 18015004325d8234f8c21ce133040e1a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,18 +117,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Background
+  - name: Poison_Icon
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: -0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 368
-      height: 176
-    spriteID: 0ac561cbad0f11449acd8ed683a44f1a
+      width: 8
+      height: 8
+    spriteID: db05ece044478db4988e56994415a0d6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,23 +140,23 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1021688250
-    name: Background
+    guid: -1531418850
+    name: Poison_Icon
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Background
+    - name: Poison_Icon
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 368
-        height: 176
-      spriteId: 0ac561cbad0f11449acd8ed683a44f1a
+        x: 4
+        y: 4
+        width: 8
+        height: 8
+      spriteId: db05ece044478db4988e56994415a0d6
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 368, y: 176}
+  canvasSize: {x: 16, y: 16}

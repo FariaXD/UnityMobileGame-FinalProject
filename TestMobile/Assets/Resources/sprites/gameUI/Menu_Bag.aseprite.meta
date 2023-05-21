@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9f92209376b7b73458f615cca07faca9
+guid: ed80d77f34712de4f88ce34157740cf0
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Background
+  - name: Menu_Bag
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -126,9 +126,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 368
-      height: 176
-    spriteID: 0ac561cbad0f11449acd8ed683a44f1a
+      width: 272
+      height: 160
+    spriteID: bce05425ef18a80478ef634008649a8e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,23 +140,23 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1021688250
-    name: Background
+    guid: -1805031672
+    name: Menu_Bag
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Background
+    - name: Menu_Bag
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
-        width: 368
-        height: 176
-      spriteId: 0ac561cbad0f11449acd8ed683a44f1a
+        width: 272
+        height: 160
+      spriteId: bce05425ef18a80478ef634008649a8e
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 368, y: 176}
+  canvasSize: {x: 272, y: 160}
