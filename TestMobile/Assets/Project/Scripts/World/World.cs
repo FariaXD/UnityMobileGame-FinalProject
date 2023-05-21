@@ -20,14 +20,14 @@ public class World
     }
 
     public void GenerateStages(){
-        stages.Add(new StageCombat(StageCombat.CombatType.NORMAL));
+        stages.Add(new StageCombat(0, StageCombat.CombatType.NORMAL));
         for(int i = 0; i < NUM_OF_ROUNDS - 2; i++){
             float r = Random.Range(0f, 100f);
             if(r <= eliteProb)
-                stages.Add(new StageCombat(StageCombat.CombatType.ELITE));
+                stages.Add(new StageCombat(i+1, StageCombat.CombatType.ELITE));
             else
-                stages.Add(new StageCombat(StageCombat.CombatType.NORMAL));
+                stages.Add(new StageCombat(i+1, StageCombat.CombatType.NORMAL));
         }
-        stages.Add(new StageCombat(StageCombat.CombatType.BOSS));
+        stages.Add(new StageCombat(NUM_OF_ROUNDS - 1, StageCombat.CombatType.BOSS));
     }
 }

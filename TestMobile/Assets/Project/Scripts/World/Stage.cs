@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Stage
 {
+    public int pathNumber;
     public enum StageType {
         COMBAT,
         EVENT,
@@ -16,7 +17,8 @@ public abstract class Stage
     public bool completed = false;
     public StageCombat.CombatType difficulty;
 
-    public Stage(StageType _type, StageCombat.CombatType _difficulty = default(StageCombat.CombatType)){
+    public Stage(int _pathNumber, StageType _type, StageCombat.CombatType _difficulty = default(StageCombat.CombatType)){
+        this.pathNumber = _pathNumber;
         this.difficulty = _difficulty;
         iconLoader = GameObject.FindGameObjectWithTag("StageIconLoader").GetComponent<StageIcon>();
         this.type = _type;
