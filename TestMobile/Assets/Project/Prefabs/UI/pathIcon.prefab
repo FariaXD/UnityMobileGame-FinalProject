@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7035832566269856233}
   - component: {fileID: 4513922468161299968}
   - component: {fileID: 772044885158037227}
-  - component: {fileID: 7650931571167574300}
+  - component: {fileID: 8410622959982295951}
   m_Layer: 0
   m_Name: pathIcon
   m_TagString: Untagged
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -1041618511
   m_SortingLayer: 20
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5142328980757149198, guid: c6ab82785526ac64b9094904f61eac65, type: 3}
+  m_Sprite: {fileID: 4229403204476149898, guid: c6ab82785526ac64b9094904f61eac65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 4513922468161299968}
---- !u!65 &7650931571167574300
+--- !u!65 &8410622959982295951
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,5 +110,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.07, y: 0.06, z: 0.2}
-  m_Center: {x: 0, y: -0.00000011920929, z: -0.00000023841858}
+  m_Size: {x: 0.13, y: 0.14, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

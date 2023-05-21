@@ -8,12 +8,12 @@ public class AttackIcon{
     public Sprite attackIcon, burnIcon, poisonIcon, shockedIcon, shieldIcon, healIcon;
 
     public AttackIcon() {
-        attackIcon = Resources.Load<Sprite>("sprites/GameUI/attackIcon");
-        burnIcon = Resources.Load<Sprite>("sprites/GameUI/burnIcon");
-        poisonIcon = Resources.Load<Sprite>("sprites/GameUI/poisonIcon");
-        shockedIcon = Resources.Load<Sprite>("sprites/GameUI/shockIcon");
-        shieldIcon = Resources.Load<Sprite>("sprites/GameUI/shieldIcon");
-        healIcon = Resources.Load<Sprite>("sprites/GameUI/healIcon");
+        attackIcon = Resources.Load<Sprite>("sprites/gameUI/attackIcon");
+        burnIcon = Resources.Load<Sprite>("sprites/gameUI/burnIcon");
+        poisonIcon = Resources.Load<Sprite>("sprites/gameUI/poisonIcon");
+        shockedIcon = Resources.Load<Sprite>("sprites/gameUI/shockIcon");
+        shieldIcon = Resources.Load<Sprite>("sprites/gameUI/shieldIcon");
+        healIcon = Resources.Load<Sprite>("sprites/gameUI/healIcon");
     }
     //Returns status icon based on effect
     public Sprite GetStatusIcon(StatusEffect eff){

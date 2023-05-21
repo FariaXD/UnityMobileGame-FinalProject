@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageEvent : Stage
 {
-    public StageEvent() : base(StageType.EVENT){
+    public StageEvent(int _pathNumber) : base(_pathNumber, StageType.EVENT){
 
     }
 }

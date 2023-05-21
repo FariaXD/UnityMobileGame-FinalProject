@@ -27,7 +27,7 @@ public class StageEngine : MonoBehaviour {
     }
 
     public void LoadStage(){
-        if(stage != null){
+        if(stage != null && stage.pathNumber == engine.currentLevel){
             engine.LoadStage(this);
         }
     }

@@ -22,6 +22,6 @@
         "type":"Defense",
         "defense":"Healing",
         "area":true,
-        "ammount":10
+        "ammount":5
     }
 }

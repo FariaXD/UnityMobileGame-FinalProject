@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class WorldEngine : MonoBehaviour
 {
+    public int currentLevel = 0;
     List<World> worlds = new List<World>();
     public List<StageEngine> stageEngines = new List<StageEngine>();
     public StageEngine currentStage;
     public World currentWorld;
-
     private GameEngine gameEngine;
     private  UIEngine uiEngine;
 
@@ -33,6 +33,7 @@ public class WorldEngine : MonoBehaviour
     public void CurrentStageIsCompleted(){
         currentStage.IsCompleted();
         uiEngine.SwitchScreen(UIEngine.Screen.STAGESELECTOR);
+        currentLevel++;
     }
 
     public void PlayerLostGame(){
@@ -41,6 +42,7 @@ public class WorldEngine : MonoBehaviour
     }
 
     private void NewGame(){
+        currentLevel = 0;
         worlds.Clear();
         World world = new World("Mystical Forest");
         currentWorld = world;

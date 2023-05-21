@@ -13,7 +13,7 @@ public class StageCombat : Stage
         
     }
 
-    public StageCombat(CombatType _difficulty) : base(StageType.COMBAT, _difficulty){
+    public StageCombat(int _pathNumber, CombatType _difficulty) : base(_pathNumber, StageType.COMBAT, _difficulty){
         InitializeEnemies();
     }
 
