@@ -66,15 +66,12 @@ public abstract class Character
     }
     //Reduces each status effect duration by a turn
     public void ReduceStatusEffectDurations(){
-        int i = 0;
-        List<int> index = new List<int>();
-        foreach(StatusEffect debuff in debuffs){
-            if(debuff.DecreaseDuration(1))
-                index.Add(i);
-            i++;
+        debuffs.ForEach(debuff => debuff.duration -= 1);
+        List<StatusEffect> tmp = new List<StatusEffect>(debuffs);
+        for(int i = tmp.Count - 1; i >= 0; i--){
+            if(tmp[i].duration <= 0)
+                debuffs.RemoveAt(i);
         }
-        foreach(int j in index)
-            debuffs.RemoveAt(j);
     }
 
     //Returns true if the user cant use attacks

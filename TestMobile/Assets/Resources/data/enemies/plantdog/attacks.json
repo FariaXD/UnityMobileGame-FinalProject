@@ -2,15 +2,15 @@
     "attack1":{
         "type":"Damage",
         "area":false,
-        "damage":5,
-        "ammount":1
+        "damage":4,
+        "ammount":2
     },
     "attack2":{
         "type":"Status",
-        "status":"Shock",
-        "damage":3,
+        "status":"Poison",
+        "damage":5,
         "area":false,
-        "duration":1
+        "duration":3
     },
     "attack3":{
         "type":"Damage",
@@ -22,6 +22,6 @@
         "type":"Defense",
         "defense":"Healing",
         "area":true,
-        "ammount":5
+        "ammount":10
     }
 }

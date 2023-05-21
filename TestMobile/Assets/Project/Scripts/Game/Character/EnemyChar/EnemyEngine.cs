@@ -12,8 +12,6 @@ public class EnemyEngine : MonoBehaviour, CharacterEngine {
 
     public string enemyName = "Enemy"; //Enemy name
     public Enemy enemy; //Associated enemy
-    public float startingHealth = 20f; //Starting health
-    public float startingShield = 5f; //Starting shield
     public Animator anim; //Associated Animation Controller
     public GameEngine engine; //GameEngine reference
     public Image healthImage; //Health Image obj
@@ -111,7 +109,7 @@ public class EnemyEngine : MonoBehaviour, CharacterEngine {
 
     public void UpdateStatus(){
         if(enemy != null){
-            healthImage.fillAmount = ((100 * enemy.currentHealth) / startingHealth) / 100;
+            healthImage.fillAmount = ((100 * enemy.currentHealth) / enemy.maxHealth) / 100;
             healthText.text = enemy.currentHealth + "/" + enemy.maxHealth;
             if (enemy != null && enemy.currentHealth <= 0)
             {
