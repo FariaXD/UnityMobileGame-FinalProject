@@ -117,7 +117,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Background
+  - name: background
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -128,7 +128,7 @@ ScriptedImporter:
       y: 4
       width: 368
       height: 176
-    spriteID: 0ac561cbad0f11449acd8ed683a44f1a
+    spriteID: e6f08f35ceaa60a4b90e0754684d39ae
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,20 +140,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1021688250
-    name: Background
+    guid: 1978471590
+    name: background
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Background
+    - name: background
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
         width: 368
         height: 176
-      spriteId: 0ac561cbad0f11449acd8ed683a44f1a
+      spriteId: e6f08f35ceaa60a4b90e0754684d39ae
     linkedCells: []
     parentIndex: -1
   platformSettings: []
