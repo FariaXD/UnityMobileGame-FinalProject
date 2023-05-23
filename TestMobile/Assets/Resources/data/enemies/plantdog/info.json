@@ -1,6 +1,0 @@
-﻿{
-    "name":"plantdog",
-    "hp":45,
-    "shield":10,
-    "anim":"sprites/enemies/plantdog/controller"
-}
