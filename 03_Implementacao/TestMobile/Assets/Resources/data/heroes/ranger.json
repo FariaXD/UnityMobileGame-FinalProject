@@ -1,0 +1,38 @@
+﻿{
+    "1":
+        {
+          "id": 1,
+          "name": "Slice",
+          "type": "CardDamage",
+          "cost": 1,
+          "area": true,
+          "damage": 4,
+          "duplicates": 10,
+          "imagePath": "sprites/cards/Ranger/Ranger_Card_Attack"
+        },
+    "2":  
+        {
+          "id": 2,
+          "name": "Punch",
+          "type": "CardStatus",
+          "cost": 1,
+          "area": true,
+          "damage": 2,
+          "status": "Poison",
+          "duration": 3,
+          "duplicates": 4,
+          "imagePath": "sprites/cards/Ranger/Ranger_Card_Status_Poison"
+        },
+    "3":   
+        {
+          "id": 3,
+          "name": "Kick",
+          "type": "CardDefense",
+          "cost": 1,
+          "area": false,
+          "defenseType": "Healing",
+          "ammount": 20,
+          "duplicates": 2,
+          "imagePath": "sprites/cards/Ranger/Ranger_Card_Heal"
+        }
+}

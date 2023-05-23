@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Engine
+  - Hand
+  - Deck
+  - Card
+  - CardHit
+  - WorldEngine
+  - UIEngine
+  - StageIconLoader
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Card
+  - Water
+  - UI
+  - CardHit
+  - Hero
+  - Enemy
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Bg3
+    uniqueID: 3678207943
+    locked: 0
+  - name: Bg1
+    uniqueID: 2769198223
+    locked: 0
+  - name: Bg0
+    uniqueID: 2119615339
+    locked: 0
+  - name: Prop1
+    uniqueID: 2508916331
+    locked: 0
+  - name: Prop0
+    uniqueID: 110800673
+    locked: 0
+  - name: Health
+    uniqueID: 851514301
+    locked: 0
+  - name: Enemies
+    uniqueID: 1209347547
+    locked: 0
+  - name: Player
+    uniqueID: 3446778099
+    locked: 0
+  - name: Hit1
+    uniqueID: 2918123629
+    locked: 0
+  - name: Card1
+    uniqueID: 3526649367
+    locked: 0
+  - name: Hit2
+    uniqueID: 3453306119
+    locked: 0
+  - name: Card2
+    uniqueID: 3288752871
+    locked: 0
+  - name: Hit3
+    uniqueID: 2598569513
+    locked: 0
+  - name: Card3
+    uniqueID: 777401693
+    locked: 0
+  - name: Hit4
+    uniqueID: 1212048103
+    locked: 0
+  - name: Card4
+    uniqueID: 2125385867
+    locked: 0
+  - name: Hit5
+    uniqueID: 2771260567
+    locked: 0
+  - name: Card5
+    uniqueID: 4029994093
+    locked: 0
+  - name: Hit6
+    uniqueID: 3181052287
+    locked: 0
+  - name: Card6
+    uniqueID: 3253348785
+    locked: 0

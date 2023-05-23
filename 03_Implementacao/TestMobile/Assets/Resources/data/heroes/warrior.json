@@ -1,0 +1,35 @@
+﻿{
+  "1": {
+    "id": 10,
+    "name": "Slice",
+    "type": "CardDamage",
+    "cost": 1,
+    "area": false,
+    "damage": 7,
+    "duplicates": 10,
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Attack"
+  },
+  "2": {
+    "id": 3,
+    "name": "Kick",
+    "type": "CardDefense",
+    "cost": 1,
+    "area": false,
+    "defenseType": "Shielding",
+    "ammount": 5,
+    "duplicates": 4,
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Shield"
+  },
+  "3": {
+    "id": 2,
+    "name": "Punch",
+    "type": "CardStatus",
+    "cost": 1,
+    "area": false,
+    "damage": 5,
+    "status": "Burn",
+    "duration": 3,
+    "duplicates": 2,
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Status_Burn"
+  }
+}
