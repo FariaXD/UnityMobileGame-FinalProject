@@ -20,7 +20,7 @@ public class EnemyEngine : MonoBehaviour, CharacterEngine {
     public TextMeshProUGUI shieldText;
     public TextMeshProUGUI healthText; //Health Text obj
     public TextMeshProUGUI attackInfo; //Attack Text obj
-    public SpriteRenderer attackIcon; //Atack Image obj
+    public SpriteRenderer attackIcon, targetedIcon; //Atack Image obj
     public List<SpriteRenderer> statusImages = new List<SpriteRenderer>(); //List of status images obj
     public List<TextMeshProUGUI> statusTexts = new List<TextMeshProUGUI>(); //List of status text obj
 

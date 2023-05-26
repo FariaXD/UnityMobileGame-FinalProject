@@ -48,6 +48,21 @@ public class Team {
         return true;
     }
 
+    public void TargetingAllAllies(bool state, bool force = default(bool))
+    {
+        foreach (HeroEngine hero in teamGO)
+        {
+            if (hero.hero != null && !hero.hero.diceased)
+            {
+                hero.targetedIcon.enabled = state;
+            }
+            else if (force)
+            {
+                hero.targetedIcon.enabled = state;
+            }
+        }
+    }
+
     public void RestartHeroes(){
         foreach (HeroEngine en in teamGO)
             en.SetHero(); //Generate or refresh hero

@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CardEngine : MonoBehaviour {
@@ -19,6 +21,8 @@ public class CardEngine : MonoBehaviour {
     public bool used {get; set;} //If card has been used
     private SpriteRenderer sRenderer {get; set;} //Sprite renderer object
     private CardHitmarker hitmarker; //Hitmarker object
+    public TextMeshProUGUI cardMana, cardText, cardAmmount;
+
     private void Start() {
         resetPosition = this.transform.localPosition;
         sRenderer = this.GetComponent<SpriteRenderer>();
@@ -47,10 +51,21 @@ public class CardEngine : MonoBehaviour {
         card = c;
         this.GetComponent<SpriteRenderer>().sprite = card.cardSprite;
         if(card.id == -1)
-            this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+            SetCardVisible(false);
         else
-            this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+        {
+            SetCardVisible(true);
+            cardMana.text = card.manaCost.ToString();
+            cardText.text = Card.GetCardDescriptionDynamically(card);
+            cardAmmount.text = Card.GetAmmountDynamically(card).ToString();
+        }
         
+    }
+    public void SetCardVisible(bool status){
+        this.gameObject.GetComponent<PolygonCollider2D>().enabled = status;
+        cardMana.enabled = status;
+        cardText.enabled = status;
+        cardAmmount.enabled = status;
     }
     //If card is pressed
     private void OnMouseDown()

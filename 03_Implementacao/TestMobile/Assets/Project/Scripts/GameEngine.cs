@@ -155,6 +155,21 @@ public class GameEngine : MonoBehaviour
             }
             team.currentMana -= _card.manaCost;
             handEngine.UpdateUsedCard(_cardEngine); //updates used card
+            TargetingAllEnemies(false, true);
+            team.TargetingAllAllies(false, true);
+        }
+    }
+    /*
+        Targets all enemies highlighting them
+    */
+    public void TargetingAllEnemies(bool state, bool force = default(bool)){
+        foreach(EnemyEngine enemy in enemies){
+            if(enemy.enemy != null && !enemy.enemy.diceased){
+                enemy.targetedIcon.enabled = state;
+            }
+            else if(force){
+                enemy.targetedIcon.enabled = state;
+            }
         }
     }
     /*
@@ -171,7 +186,19 @@ public class GameEngine : MonoBehaviour
           active == Turn.PLAYER &&
            team.selectedHero.hero.CheckActionForStatus(Character.Character_Action.USE_ATTACK) &&
             (!_card.area || !_target.ReturnAssociatedCharacter().diceased) &&
-             team.currentMana >= _card.manaCost);
+             team.currentMana >= _card.manaCost &&
+             CheckIfUseCardIsPlayedCorrectly(_card, _target));
+    }
+
+    /*
+    Damage cards cant be used on allies
+    Defense cards cant be used on enemies
+    */
+    public bool CheckIfUseCardIsPlayedCorrectly(Card _card, CharacterEngine _target){
+       if(((_card.type == Card.Action_Type.Damage || _card.type == Card.Action_Type.Status) && _target.ReturnAssociatedCharacter() is Hero) ||
+        _card.type == Card.Action_Type.Defense && _target.ReturnAssociatedCharacter() is Enemy)
+            return false;
+       return true;
     }
 
     //Draws a card for each hero

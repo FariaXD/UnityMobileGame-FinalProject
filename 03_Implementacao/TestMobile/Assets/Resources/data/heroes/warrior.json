@@ -3,7 +3,7 @@
     "id": 10,
     "name": "Slice",
     "type": "CardDamage",
-    "cost": 1,
+    "cost": 5,
     "area": false,
     "damage": 7,
     "duplicates": 10,

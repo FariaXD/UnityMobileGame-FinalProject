@@ -15,7 +15,7 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
     public float startingHealth = 20f; //The hero starting hp
     public float startingShield = 5f; //The hero starting shield
     private Animator anim; //Animation Controller obj
-    private GameEngine engine; //GameEngine reference
+    public GameEngine engine; //GameEngine reference
     public Image healthImage; //Associated health Image obj
     public TextMeshProUGUI healthText; //Health text obj
     public Image shieldIcon;
@@ -23,6 +23,7 @@ public class HeroEngine : MonoBehaviour, CharacterEngine {
     private bool heroSet = false; //If hero isnt loaded yet
     public List<SpriteRenderer> statusImages = new List<SpriteRenderer>(); //List of status imagerenderer obj
     public List<TextMeshProUGUI> statusTexts = new List<TextMeshProUGUI>(); //list of status text obj
+    public SpriteRenderer targetedIcon;
 
     private void Start() {
         anim = GetComponent<Animator>();
