@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyActionAI
+public class EnemyActionMachine
 {
     /*
         This class is responsible for determining the attack
@@ -26,7 +26,7 @@ public class EnemyActionAI
     
     
     // ~ Damage, Status, Defense, Special
-    public EnemyActionAI(Enemy _enemy){
+    public EnemyActionMachine(Enemy _enemy){
         this.enemy = _enemy;
         priorityMoves.Add(Card.Action_Type.Damage, GenerateRange(100f,35f));
         priorityMoves.Add(Card.Action_Type.Status, GenerateRange(35f, 5f));
@@ -35,25 +35,26 @@ public class EnemyActionAI
     }
 
     //Runs the sequence to use attack and prepare the next one
-    public void RunEnemyAI(){
+    public void RunEnemyMachine(){
         if (!engine.team.GameEnded()){
             PriorityUpdate();
             UseAttack();
             PrepareAttack();
         }
-        
     }
 
     public void SetEngine(GameEngine _engine, EnemyEngine _enemyEngine){
         this.engine = _engine;
         this.enemyEngine = _enemyEngine;
-        enemyEngine.SetNewPreparedAttack(preparedAttack);
+        enemyEngine.SetNewPreparedAttack(preparedAttack); //Prepares next attack
     }
+
     //Adds attack do list
     public void AddAttack(Card c){
         enemyAttacks.Add(c);
         preparedAttack = enemyAttacks[0];
     }
+
     /*
         Attack method
         Determines if attack is single target or multi-target
@@ -100,24 +101,24 @@ public class EnemyActionAI
         }
     }
 
-    //When the type is chosen, chooses an attack on the attack list
+    //When the type is chosen, chooses an attack on the attack list based on the type given
     private bool ChooseNextAttackByType(Card.Action_Type type){
-        List<Card> tmp = new List<Card>();
+        List<Card> attackByTypeList = new List<Card>();
         foreach(Card att in enemyAttacks){
-            Card tmpC = att;
+            Card typeAtt = att;
             if(att.type == type)
-                tmp.Add(tmpC);
+                attackByTypeList.Add(typeAtt);
         }
-        if(tmp.Count == 0)
-            return false;
-        int random = Random.Range(0, tmp.Count);
-        preparedAttack = tmp[random];
-        ChangeAttackValuesBasedOnModifier();
+        if(attackByTypeList.Count == 0)
+            return false; //If no attack is found
+        int random = Random.Range(0, attackByTypeList.Count);
+        preparedAttack = attackByTypeList[random];
+        ChangeAttackValuesBasedOnModifier(); //Updates attack values based on stage diff
         enemyEngine.SetNewPreparedAttack(preparedAttack);
         return true;
     }
 
-    //Every 5 turns the enemies attacks increase in value 
+    //Every X turns the enemies attacks increase in value 
     private void ChangeAttackValuesBasedOnModifier()
     {
         Card c = null;
@@ -171,25 +172,30 @@ public class EnemyActionAI
         return false;
     }
 
-    //Choose a target for attack if a target already has status try to find new target
+    /*
+        Choose a target for attack if a target already has status try to find new target
+        TODO - Randomize enemy in Status
+    */
     private Character ChooseTargetForAttack(Card.Action_Type type){
         if(type == Card.Action_Type.Defense)
             return enemy;
         else if(type == Card.Action_Type.Status){
-            CardStatus tmp = (CardStatus) preparedAttack;
-            foreach(HeroEngine heroGO in engine.team.teamGO){
-                if(!heroGO.hero.diceased){
+            int[] heroIndex = new int[]{0,1,2};
+            Shuffle(heroIndex);
+            CardStatus statusCard = (CardStatus) preparedAttack;
+            for(int i = 0; i < heroIndex.GetLength(0); i++){
+                if(!engine.team.teamGO[heroIndex[i]].hero.diceased){
                     bool hasEffect = false;
-                    foreach (StatusEffect eff in heroGO.hero.debuffs)
-                        if (tmp.effect == eff.effect)
+                    foreach (StatusEffect eff in engine.team.teamGO[heroIndex[i]].hero.debuffs)
+                        if (statusCard.effect == eff.effect)
                             hasEffect = true;
                     if (!hasEffect)
-                        return heroGO.hero;
+                        return engine.team.teamGO[heroIndex[i]].hero;
                 }
             }
         }
-        Character att = engine.team.GetRandomHero(); //Ask for random target if all targets already have status
-        return att;
+        Character target = engine.team.GetRandomHero(); //Ask for random target if all targets already have status
+        return target;
     }
 
     //Changes priority system values
@@ -221,5 +227,18 @@ public class EnemyActionAI
     //Generate a range
     private float[] GenerateRange(float range0, float range1){
         return new float[]{range0, range1};
+    }
+
+    private void Shuffle<T>(T[] array)
+    {
+        int n = array.Length;
+        while (n > 1)
+        {
+            int k = Random.Range(0, n);
+            n--;
+            T temp = array[n];
+            array[n] = array[k];
+            array[k] = temp;
+        }
     }
 }

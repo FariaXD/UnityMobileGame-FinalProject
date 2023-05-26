@@ -31,16 +31,15 @@ public class GameEngine : MonoBehaviour
         team.SetHeroes(GameObject.FindGameObjectsWithTag("Player")); //SetHeroes
         uiEngine = GameObject.FindGameObjectWithTag("UIEngine").GetComponent<UIEngine>();
         handEngine = GameObject.FindGameObjectWithTag("Hand").GetComponent<HandEngine>(); //SetHand
-        SwitchActiveCharacter(team.selectedHero); //switch active character and update UI
     }
     private void Update() {
         if(active != Turn.None)
             CheckGameEnded();
     }
 
-
     public void NewStageSelected(){
         RestartValues();
+        SwitchActiveCharacter(team.selectedHero); //switch active character and update UI
         switch(worldEngine.currentStage.stage.type){
             case Stage.StageType.COMBAT:
                 StageCombat sc = (StageCombat) worldEngine.currentStage.stage;
@@ -71,9 +70,9 @@ public class GameEngine : MonoBehaviour
     }
 
     //Switch active character and display hand
-    public void SwitchActiveCharacter(HeroEngine hero){
-        if(!hero.hero.diceased){
-            team.selectedHero = hero;
+    public void SwitchActiveCharacter(HeroEngine _hero){
+        if(!_hero.hero.diceased){
+            team.selectedHero = _hero;
             handEngine.SwitchHand(team.selectedHero.hero.hand.hand); }
     }
 
@@ -129,7 +128,7 @@ public class GameEngine : MonoBehaviour
 
     //Runs enemy attack AI engine
     private void EnemyTurn(){
-        enemies.ForEach(en => en.RunEnemyAI());
+        enemies.ForEach(en => en.RunEnemyMachine());
         EndTurn();
     }
 
@@ -162,21 +161,23 @@ public class GameEngine : MonoBehaviour
     /*
         Targets all enemies highlighting them
     */
-    public void TargetingAllEnemies(bool state, bool force = default(bool)){
+    public void TargetingAllEnemies(bool _state, bool _force = default(bool)){
         foreach(EnemyEngine enemy in enemies){
             if(enemy.enemy != null && !enemy.enemy.diceased){
-                enemy.targetedIcon.enabled = state;
+                enemy.targetedIcon.enabled = _state;
             }
-            else if(force){
-                enemy.targetedIcon.enabled = state;
+            else if(_force){
+                enemy.targetedIcon.enabled = _state;
             }
         }
     }
     /*
         Can use card if
         Hasnt lost
-        1 or more enemies are alive
+        if stage is not completed
         its player turn
+        is not affected by status effect SHOCK
+        can only use single at alive char
         has mana to cast
         if target isnt diceased
     */
@@ -184,10 +185,10 @@ public class GameEngine : MonoBehaviour
         return (!team.GameEnded() &&
          !CheckIfStageCompleted() &&
           active == Turn.PLAYER &&
-           team.selectedHero.hero.CheckActionForStatus(Character.Character_Action.USE_ATTACK) &&
             (!_card.area || !_target.ReturnAssociatedCharacter().diceased) &&
              team.currentMana >= _card.manaCost &&
-             CheckIfUseCardIsPlayedCorrectly(_card, _target));
+             CheckIfUseCardIsPlayedCorrectly(_card, _target) &&
+             team.selectedHero.hero.CheckActionForStatus(Character.Character_Action.USE_ATTACK));
     }
 
     /*

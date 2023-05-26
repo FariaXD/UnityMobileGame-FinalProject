@@ -113,3 +113,6 @@ TagManager:
   - name: Menu
     uniqueID: 853618509
     locked: 0
+  - name: MenuComponents
+    uniqueID: 3814948387
+    locked: 0

@@ -15,7 +15,7 @@ public class CardStatus : Card
     public const Action_Type cardType = Action_Type.Status; //Type
 
     //Normal constructor for player characters
-    public CardStatus(int _id, string _name, float _manaCost, bool _area, StatusEffect.Effect _effect, float _duration, float _damage, string imagePath) : base(_id, _name, _manaCost, _area, cardType, imagePath)
+    public CardStatus(int _id, string _name, float _manaCost, bool _area, StatusEffect.Effect _effect, float _duration, float _damage, string _imagePath) : base(_id, _name, _manaCost, _area, cardType, _imagePath)
     {
         this.effect = _effect;
         this.duration = _duration;

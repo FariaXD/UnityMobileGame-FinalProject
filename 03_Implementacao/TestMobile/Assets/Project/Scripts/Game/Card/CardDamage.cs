@@ -12,7 +12,7 @@ public class CardDamage : Card
     public const Action_Type cardType = Action_Type.Damage;
 
     //Normal constructor mainly used for player actions
-    public CardDamage(int _id, string _name, float _manaCost, bool _area, float _damage, string imagePath) : base(_id, _name, _manaCost, _area, cardType, imagePath)
+    public CardDamage(int _id, string _name, float _manaCost, bool _area, float _damage, string _imagePath) : base(_id, _name, _manaCost, _area, cardType, _imagePath)
     {
         this.currentDamage = _damage;
         this.baseDamage = _damage;

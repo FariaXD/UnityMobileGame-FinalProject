@@ -20,7 +20,7 @@ public class CardDefense : Card
     public Defense_Type defType; //Defense type
 
     //Normal constructor for player characters
-    public CardDefense(int _id, string _name, float _manaCost, bool _area, Defense_Type _defType, float _ammount, string imagePath) : base(_id, _name, _manaCost, _area, cardType, imagePath)
+    public CardDefense(int _id, string _name, float _manaCost, bool _area, Defense_Type _defType, float _ammount, string _imagePath) : base(_id, _name, _manaCost, _area, cardType, _imagePath)
     {
         this.currentAmmount = _ammount;
         this.baseAmmount = _ammount;

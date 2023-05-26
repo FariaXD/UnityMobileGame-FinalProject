@@ -10,6 +10,8 @@ public abstract class Character
     public float shield; //Current shield of char
     public RuntimeAnimatorController anim; //Animation controller
     public bool diceased = false; //If character is dead
+    public AttackIcon icons; //Icons
+
     public List<StatusEffect> debuffs = new List<StatusEffect>(); //List containing all the status affecting the character
 
 
@@ -25,6 +27,7 @@ public abstract class Character
         this.currentHealth = _maxHealth;
         this.shield = _shield;
         this.anim = _anim;
+        this.icons = new AttackIcon();
     }
     
     //Receive damage

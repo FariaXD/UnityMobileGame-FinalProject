@@ -1,0 +1,6 @@
+﻿{
+  "maxHealth": 60,
+  "startingShield": 20,
+  "cardTemplate": "data/heroes/classes/warrior/warriorTemplate",
+  "anim": "sprites/heroes/warrior/controller"
+}

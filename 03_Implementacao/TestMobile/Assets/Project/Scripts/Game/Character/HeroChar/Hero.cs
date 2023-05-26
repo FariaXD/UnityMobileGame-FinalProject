@@ -9,12 +9,12 @@ public class Hero : Character
     */
     public Deck deck = new Deck(); //Player's deck
     public Hand hand; //Players's Hand
-    public AttackIcon icons; //Icons
+    public Sprite cardTemplate;
 
 
-    public Hero(string _name, float _health, float _shield, RuntimeAnimatorController _anim = default(RuntimeAnimatorController)) : base(_name, _health, _shield, _anim){
+    public Hero(string _name, float _health, float _shield, string _cardTemplate, RuntimeAnimatorController _anim) : base(_name, _health, _shield, _anim){
         this.hand = new Hand(deck);
-        this.icons = new AttackIcon();
+        this.cardTemplate = Resources.Load<Sprite>(_cardTemplate);
     }
 
 }

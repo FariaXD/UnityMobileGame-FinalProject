@@ -19,13 +19,14 @@ public class CardEngine : MonoBehaviour {
     private const float speed = 50f; //Speed of reseting position
     [HideInInspector]
     public bool used {get; set;} //If card has been used
-    private SpriteRenderer sRenderer {get; set;} //Sprite renderer object
+    public SpriteRenderer cardTemplate, cardTypeIcon, cardImage; //Sprite renderer object
     private CardHitmarker hitmarker; //Hitmarker object
     public TextMeshProUGUI cardMana, cardText, cardAmmount;
+    public GameEngine engine;
 
     private void Start() {
+        engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
         resetPosition = this.transform.localPosition;
-        sRenderer = this.GetComponent<SpriteRenderer>();
         hitmarker = GetComponentInChildren<CardHitmarker>();
     }
     //Move Card 
@@ -49,7 +50,9 @@ public class CardEngine : MonoBehaviour {
     //Change card dynamically
     public void UpdateCard(Card c){
         card = c;
-        this.GetComponent<SpriteRenderer>().sprite = card.cardSprite;
+        Debug.Log(engine.team.selectedHero.hero.cardTemplate);
+        cardTemplate.sprite = engine.team.selectedHero.hero.cardTemplate;
+        cardTypeIcon.sprite = card.cardTypeIcon;
         if(card.id == -1)
             SetCardVisible(false);
         else
@@ -66,6 +69,9 @@ public class CardEngine : MonoBehaviour {
         cardMana.enabled = status;
         cardText.enabled = status;
         cardAmmount.enabled = status;
+        cardTemplate.enabled = status;
+        cardTypeIcon.enabled = status;
+        cardImage.enabled = status;
     }
     //If card is pressed
     private void OnMouseDown()
@@ -80,7 +86,7 @@ public class CardEngine : MonoBehaviour {
 
             moving = true;
 
-            sRenderer.color = new Color(1f, 1f, 1f, .5f);
+            cardTemplate.color = new Color(1f, 1f, 1f, .5f);
             hitmarker.SetSpriteRendererAndCollider(moving);
         }
     }
@@ -88,6 +94,6 @@ public class CardEngine : MonoBehaviour {
     private void OnMouseUp() 
     {
         moving = false;
-        sRenderer.color = new Color(1f, 1f, 1f, 1f);
+        cardTemplate.color = new Color(1f, 1f, 1f, 1f);
     }
 }

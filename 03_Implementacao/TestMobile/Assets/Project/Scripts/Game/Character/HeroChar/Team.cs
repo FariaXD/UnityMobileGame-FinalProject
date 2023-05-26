@@ -64,8 +64,10 @@ public class Team {
     }
 
     public void RestartHeroes(){
-        foreach (HeroEngine en in teamGO)
-            en.SetHero(); //Generate or refresh hero
+        List<Hero> heroList = HeroInitializer.InitializeHeroes();
+        for(int i = 0; i < heroList.Count; i++){
+            teamGO[i].SetHero(heroList[i]);
+        }
     }
 
     //Draw card for each hero
