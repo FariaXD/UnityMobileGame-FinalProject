@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 910de154f4b4ede4ab3c589857f04f73
+guid: 5e4bf62d10eb2094b8bfccc5f6cdcd6b
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,7 +93,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638207433606425702
+  platformSettingsDirtyTick: 638209556320149148
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,16 +119,16 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Poison
     originalName: 
-    pivot: {x: 0.5, y: -0.5}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 8
-      height: 8
-    spriteID: a66d6e431615c464f9966c96509dc407
+      width: 13
+      height: 13
+    spriteID: d2ee7857b1b449543993b496507fcd33
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -149,11 +149,11 @@ ScriptedImporter:
     - name: Poison
       frameIndex: 0
       cellRect:
-        x: 4
-        y: 4
-        width: 8
-        height: 8
-      spriteId: a66d6e431615c464f9966c96509dc407
+        x: 1
+        y: 2
+        width: 13
+        height: 13
+      spriteId: d2ee7857b1b449543993b496507fcd33
     linkedCells: []
     parentIndex: -1
   platformSettings:

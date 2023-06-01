@@ -52,7 +52,8 @@ public class CardEngine : MonoBehaviour {
         card = c;
         Debug.Log(engine.team.selectedHero.hero.cardTemplate);
         cardTemplate.sprite = engine.team.selectedHero.hero.cardTemplate;
-        cardTypeIcon.sprite = card.cardTypeIcon;
+        cardTypeIcon.sprite = Card.LoadCardTypeDynamically(card);
+        cardImage.sprite = card.cardImage;
         if(card.id == -1)
             SetCardVisible(false);
         else
@@ -87,6 +88,7 @@ public class CardEngine : MonoBehaviour {
             moving = true;
 
             cardTemplate.color = new Color(1f, 1f, 1f, .5f);
+            cardImage.color = new Color(1f, 1f, 1f, .5f);
             hitmarker.SetSpriteRendererAndCollider(moving);
         }
     }
@@ -95,5 +97,6 @@ public class CardEngine : MonoBehaviour {
     {
         moving = false;
         cardTemplate.color = new Color(1f, 1f, 1f, 1f);
+        cardImage.color = new Color(1f, 1f, 1f, 1f);
     }
 }

@@ -119,7 +119,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Shielding
     originalName: 
-    pivot: {x: 0.53333336, y: -0.06666667}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:

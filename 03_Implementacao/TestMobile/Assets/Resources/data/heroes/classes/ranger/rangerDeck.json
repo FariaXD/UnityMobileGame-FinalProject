@@ -8,7 +8,7 @@
           "area": true,
           "damage": 4,
           "duplicates": 10,
-          "imagePath": "sprites/cards/Ranger/Ranger_Card_Attack"
+          "imagePath": "sprites/cards/Common/Card_Attack_Image"
         },
     "2":  
         {
@@ -21,18 +21,18 @@
           "status": "Poison",
           "duration": 3,
           "duplicates": 4,
-          "imagePath": "sprites/cards/Ranger/Ranger_Card_Status_Poison"
+          "imagePath": "sprites/cards/Common/Card_Status_Poison_Image"
         },
     "3":   
         {
           "id": 3,
           "name": "Kick",
           "type": "CardDefense",
-          "cost": 1,
+          "cost": 3,
           "area": false,
           "defenseType": "Healing",
           "ammount": 20,
           "duplicates": 2,
-          "imagePath": "sprites/cards/Ranger/Ranger_Card_Heal"
+          "imagePath": "sprites/cards/Common/Card_Heal_Image"
         }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 42c80132df06683479abff76623133e2
+guid: 13f0e778ecb8ea249bd8f7898dbec63c
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,7 +93,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638207433571085432
+  platformSettingsDirtyTick: 638209556355165712
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,16 +119,16 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Shock
     originalName: 
-    pivot: {x: 0.5, y: -0.5}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 8
-      height: 8
-    spriteID: c9c26282a9ebe1840a22e32038525e2d
+      width: 13
+      height: 13
+    spriteID: e843baa6106be184dbfa09feaa9c8f50
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -149,11 +149,11 @@ ScriptedImporter:
     - name: Shock
       frameIndex: 0
       cellRect:
-        x: 4
-        y: 4
-        width: 8
-        height: 8
-      spriteId: c9c26282a9ebe1840a22e32038525e2d
+        x: 1
+        y: 2
+        width: 13
+        height: 13
+      spriteId: e843baa6106be184dbfa09feaa9c8f50
     linkedCells: []
     parentIndex: -1
   platformSettings:
