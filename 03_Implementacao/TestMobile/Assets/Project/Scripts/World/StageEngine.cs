@@ -2,7 +2,8 @@
 
 public class StageEngine : MonoBehaviour {
     public Stage stage;
-
+    public int level = 0;
+    public int stagePos = 0;
     private WorldEngine engine;
     public SpriteRenderer spriteRenderer;
 
@@ -14,6 +15,8 @@ public class StageEngine : MonoBehaviour {
     public void SetStage(Stage stage){
         this.stage = stage;
         ReloadIcon();
+        this.GetComponent<BoxCollider>().enabled = (stage.type == Stage.StageType.NONE) ? false : true;
+        
     }
 
     public void IsCompleted(){
@@ -27,17 +30,14 @@ public class StageEngine : MonoBehaviour {
     }
 
     public void LoadStage(){
+        Debug.Log(stage.pathNumber + " " + engine.currentLevel);
         if(stage != null && stage.pathNumber == engine.currentLevel){
             engine.LoadStage(this);
         }
     }
 
-    public void StageCompleted(){
-        stage.completed = true;
-    }
-
     private void OnMouseDown() {
-        if(!stage.completed)
+        if(stage != null && !stage.completed)
             LoadStage();
     }
 }

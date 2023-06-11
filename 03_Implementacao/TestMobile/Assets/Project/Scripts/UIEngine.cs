@@ -22,19 +22,16 @@ public class UIEngine : MonoBehaviour
 
 
     public void SwitchScreen(Screen _screen){
+        cameras.DeactiveAllCameras();
         switch(_screen){
             case Screen.MAINSCREEN:
                 cameras.mainScreen.enabled = true;
-                cameras.stageSelector.enabled = false;
                 break;
             case Screen.STAGESELECTOR:
                 cameras.stageSelector.enabled = true;
-                cameras.mainScreen.enabled = false;
-                cameras.game.enabled = false;
                 break;
             case Screen.STAGE:
                 cameras.game.enabled = true;
-                cameras.stageSelector.enabled = false;
                 break;
         }
     } 

@@ -8,7 +8,8 @@ public abstract class Stage
     public enum StageType {
         COMBAT,
         EVENT,
-        MERCHANT
+        MERCHANT,
+        NONE
     }
 
     public StageIcon iconLoader;
@@ -18,19 +19,16 @@ public abstract class Stage
     public StageCombat.CombatType difficulty;
 
     public Stage(int _pathNumber, StageType _type, StageCombat.CombatType _difficulty = default(StageCombat.CombatType)){
-        this.pathNumber = _pathNumber;
-        this.difficulty = _difficulty;
-        iconLoader = GameObject.FindGameObjectWithTag("StageIconLoader").GetComponent<StageIcon>();
         this.type = _type;
-        LoadImage();
+        this.pathNumber = _pathNumber;
+        if(_type != StageType.NONE){
+            this.difficulty = _difficulty;
+            iconLoader = GameObject.FindGameObjectWithTag("StageIconLoader").GetComponent<StageIcon>();
+            LoadImage();
+        }  
     }
 
     public void LoadImage(){
-        image = iconLoader.LoadImageFromType(this);
-    }
-
-    public void IsCompleted(){
-        completed = true;
         image = iconLoader.LoadImageFromType(this);
     }
 }

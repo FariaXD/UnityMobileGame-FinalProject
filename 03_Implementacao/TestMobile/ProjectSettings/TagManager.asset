@@ -13,6 +13,8 @@ TagManager:
   - WorldEngine
   - UIEngine
   - StageIconLoader
+  - Menu
+  - StageEngine
   layers:
   - Default
   - TransparentFX
