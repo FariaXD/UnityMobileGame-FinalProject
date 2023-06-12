@@ -10,7 +10,7 @@ public abstract class CharacterEngine : MonoBehaviour {
     */
     public string heroName = "Color"; //Hero names
     public Animator anim; //Animation Controller obj
-    public GameEngine engine; //GameEngine reference
+    public CombatEngine engine; //GameEngine reference
     public Image healthImage; //Associated health Image obj
     public TextMeshProUGUI healthText; //Health text obj
     public Image shieldIcon;
@@ -22,7 +22,7 @@ public abstract class CharacterEngine : MonoBehaviour {
     private void Start()
     {
         anim = GetComponent<Animator>();
-        engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
+        engine = GameObject.FindGameObjectWithTag("CombatEngine").GetComponent<CombatEngine>();
         shieldIcon.enabled = false;
         shieldText.enabled = false;
     }

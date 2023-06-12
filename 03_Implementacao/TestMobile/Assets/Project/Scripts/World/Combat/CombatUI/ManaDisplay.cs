@@ -7,14 +7,14 @@ public class ManaDisplay : MonoBehaviour {
         *Runtime class
         Displays current mana
     */
-    private GameEngine engine;
+    private CombatEngine engine;
     private TextMeshProUGUI text;
     private float manaDisplayed = Team.startingMana;
 
     void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
-        engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
+        engine = GameObject.FindGameObjectWithTag("CombatEngine").GetComponent<CombatEngine>();
     }
 
 

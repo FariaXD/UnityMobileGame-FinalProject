@@ -16,7 +16,7 @@ public class UIEngine : MonoBehaviour
     public void Start()
     {
         worldEngine = GameObject.FindGameObjectWithTag("WorldEngine").GetComponent<WorldEngine>();
-        gameEngine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
+        gameEngine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<GameEngine>();
         cameras = GetComponent<CameraRepository>();
     }
 

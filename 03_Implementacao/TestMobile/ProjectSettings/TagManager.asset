@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Engine
   - Hand
   - Deck
   - Card
@@ -15,6 +14,10 @@ TagManager:
   - StageIconLoader
   - Menu
   - StageEngine
+  - CombatStageElements
+  - CombatEngine
+  - EventEngine
+  - GameEngine
   layers:
   - Default
   - TransparentFX

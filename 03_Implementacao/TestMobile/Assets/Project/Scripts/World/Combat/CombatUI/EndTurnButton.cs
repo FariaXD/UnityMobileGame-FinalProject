@@ -8,10 +8,10 @@ public class EndTurnButton : MonoBehaviour
         *Runtime class
         Ends the player turn when pressing the button
     */
-    private GameEngine engine;
+    private CombatEngine engine;
     void Start()
     {
-        engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
+        engine = GameObject.FindGameObjectWithTag("CombatEngine").GetComponent<CombatEngine>();
     }
 
     //If player presses the collider it ends turn

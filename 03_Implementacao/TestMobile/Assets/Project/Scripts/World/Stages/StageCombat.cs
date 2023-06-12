@@ -13,12 +13,12 @@ public class StageCombat : Stage
         
     }
 
-    public StageCombat(int _pathNumber, CombatType _difficulty) : base(_pathNumber, StageType.COMBAT, _difficulty){
-        InitializeEnemies();
+    public StageCombat(int _pathNumber, CombatType _difficulty, string _world) : base(_pathNumber, StageType.COMBAT, _difficulty){
+        InitializeEnemies(_world);
     }
 
-    public void InitializeEnemies(){
-        string[] enemyNames = EnemyEncounter.GetEnemyEncounter(difficulty);
+    public void InitializeEnemies(string _world){
+        string[] enemyNames = EnemyEncounter.GetEnemyEncounter(difficulty, _world);
         enemies = new Enemy[enemyNames.GetLength(0)];
         for(int i = 0; i < enemyNames.GetLength(0); i++){
             enemies[i] = EnemyInitializer.InitializeEnemyWithName(enemyNames[i]);
@@ -40,10 +40,10 @@ public class StageCombat : Stage
 
 public static class EnemyEncounter
 {
-    public static string[] GetEnemyEncounter(StageCombat.CombatType diff){
+    public static string[] GetEnemyEncounter(StageCombat.CombatType diff, string _world){
         Dictionary<string, Dictionary<string, string[]>> values = new Dictionary<string, Dictionary<string, string[]>>(); //Creates Dictionary for JSON
         List<Card> deck = new List<Card>(); //Temporary deck
-        TextAsset mytxtData = (TextAsset)Resources.Load("data/enemies/enemies"); //Load from Resources folder
+        TextAsset mytxtData = (TextAsset)Resources.Load("data/worlds/" + _world + "/enemies"); //Load from Resources folder
         string txt = mytxtData.text;
         values = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string[]>>>(txt); //Convert to JSON
         Dictionary<string, string[]> possibleEnemies = values[StageCombat.GetTypeString(diff)];

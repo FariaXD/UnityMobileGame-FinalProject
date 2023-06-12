@@ -48,15 +48,15 @@ public class World
             }
             levelCount++;
         }
-        bossStage = new StageCombat(levelCount, StageCombat.CombatType.BOSS);
+        bossStage = new StageCombat(levelCount, StageCombat.CombatType.BOSS, name);
     }
 
     //TODO EVENT AND SECRET
     public Stage GenerateStages(int level){
         float r = Random.Range(0f, 100f);
         if(r <= eliteProb)
-            return new StageCombat(level, StageCombat.CombatType.ELITE);
+            return new StageCombat(level, StageCombat.CombatType.ELITE, name);
         else
-            return new StageCombat(level, StageCombat.CombatType.NORMAL);
+            return new StageCombat(level, StageCombat.CombatType.NORMAL, name);
     }
 }

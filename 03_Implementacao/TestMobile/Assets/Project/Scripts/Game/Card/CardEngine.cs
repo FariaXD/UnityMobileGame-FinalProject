@@ -22,10 +22,10 @@ public class CardEngine : MonoBehaviour {
     public SpriteRenderer cardTemplate, cardTypeIcon, cardImage; //Sprite renderer object
     private CardHitmarker hitmarker; //Hitmarker object
     public TextMeshProUGUI cardMana, cardText, cardAmmount;
-    public GameEngine engine;
+    public CombatEngine engine;
 
     private void Start() {
-        engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
+        engine = GameObject.FindGameObjectWithTag("CombatEngine").GetComponent<CombatEngine>();
         resetPosition = this.transform.localPosition;
         hitmarker = GetComponentInChildren<CardHitmarker>();
     }
@@ -50,7 +50,6 @@ public class CardEngine : MonoBehaviour {
     //Change card dynamically
     public void UpdateCard(Card c){
         card = c;
-        Debug.Log(engine.team.selectedHero.hero.cardTemplate);
         cardTemplate.sprite = engine.team.selectedHero.hero.cardTemplate;
         cardTypeIcon.sprite = Card.LoadCardTypeDynamically(card);
         cardImage.sprite = card.cardImage;

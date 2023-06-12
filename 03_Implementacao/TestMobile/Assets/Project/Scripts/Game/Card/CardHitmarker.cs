@@ -63,11 +63,11 @@ public class CardHitmarker : MonoBehaviour {
     private void OnCollisionStay2D(Collision2D other) {
        if(!associatedCard.moving && onTarget && !associatedCard.used){
             if (other.gameObject.TryGetComponent<EnemyEngine>(out EnemyEngine enemy)){
-                GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>().UseCard(associatedCard, enemy);
+                GameObject.FindGameObjectWithTag("CombatEngine").GetComponent<CombatEngine>().UseCard(associatedCard, enemy);
                 enemy.engine.TargetingAllEnemies(false, true);
             }
             else if (other.gameObject.TryGetComponent<HeroEngine>(out HeroEngine hero)){
-                GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>().UseCard(associatedCard, hero);
+                GameObject.FindGameObjectWithTag("CombatEngine").GetComponent<CombatEngine>().UseCard(associatedCard, hero);
                 hero.engine.team.TargetingAllAllies(false, true);
             }
             associatedCard.used = true;

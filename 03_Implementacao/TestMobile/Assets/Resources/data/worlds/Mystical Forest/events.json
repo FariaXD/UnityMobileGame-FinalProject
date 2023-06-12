@@ -1,0 +1,86 @@
+﻿{
+  "1": {
+    "id": 1,
+    "name": "chest",
+    "prompt": "The party stumbles upon a elderwood carved chest. They feel something is watching them.",
+    "option1": {
+      "name": "Open the chest.",
+      "reward": {
+        "item": "gold",
+        "value": 350
+      },
+      "penalty": {
+        "item": "health",
+        "value": 10
+      },
+      "result": "A plant explodes on their faces. They find some gold at the bottom."
+    },
+    "option2": {
+      "name": "Attack the chest",
+      "reward": {
+        "item": "gold",
+        "value": 500
+      },
+      "penalty": {
+        "item": "none",
+        "value": 0
+      },
+      "result": "They break the chest and kill a strange creature, they find gold."
+    },
+    "option3": {
+      "name": "Ignore the chest.",
+      "reward": {
+        "item": "none",
+        "value": 0
+      },
+      "penalty": {
+        "item": "none",
+        "value": 0
+      },
+      "result": "They decide to ignore the chest and continue."
+    },
+    "sprite": "sprites/GameUI/barrels"
+  },
+  "2": {
+    "id": 2,
+    "name": "gemstone",
+    "prompt": "The party finds something shining through some roots.",
+    "option1": {
+      "name": "Try to squeeze through and grab it.",
+      "reward": {
+        "item": "platinum",
+        "value": 50
+      },
+      "penalty": {
+        "item": "none",
+        "value": 0
+      },
+      "result": "They find a red gemstone, worth some platinum."
+    },
+    "option2": {
+      "name": "Incinerate the roots to see what's on the other side",
+      "reward": {
+        "item": "platinum",
+        "value": 10
+      },
+      "penalty": {
+        "item": "health",
+        "value": 25
+      },
+      "result": "They burn the roots and some of them fall on them. Little pieces of red are found on the ground, worth some platinum."
+    },
+    "option3": {
+      "name": "Ignore.",
+      "reward": {
+        "item": "none",
+        "value": 0
+      },
+      "penalty": {
+        "item": "none",
+        "value": 0
+      },
+      "result": "They decide to ignore it and continue."
+    },
+    "sprite":"sprites/GameUI/barrels"
+  }
+}

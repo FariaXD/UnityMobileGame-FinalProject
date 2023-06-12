@@ -95,12 +95,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7802969034083033484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 778924b7a56d0d742b3112d33a701cf4, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e15c5e4b51f6ea4da0d613397069866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
   stagePos: 0
-  spriteRenderer: {fileID: 4513922468161299968}
+  spriteRenderer: {fileID: 0}
 --- !u!65 &8410622959982295951
 BoxCollider:
   m_ObjectHideFlags: 0

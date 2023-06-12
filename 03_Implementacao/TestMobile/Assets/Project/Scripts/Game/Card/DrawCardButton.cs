@@ -5,11 +5,11 @@ using UnityEngine;
 public class DrawCardButton : MonoBehaviour
 {
     // !DEBUG CLASS
-    private GameEngine engine;
+    private CombatEngine engine;
     private SpriteRenderer debug;
     void Start()
     {
-        engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
+        engine = GameObject.FindGameObjectWithTag("CombatEngine").GetComponent<CombatEngine>();
         debug = this.GetComponent<SpriteRenderer>();
     }
 

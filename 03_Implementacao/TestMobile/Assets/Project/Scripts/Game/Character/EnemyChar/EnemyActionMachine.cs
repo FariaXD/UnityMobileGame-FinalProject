@@ -14,7 +14,7 @@ public class EnemyActionMachine
     private Card preparedAttack; //Current prepared attack to be used next turn
     private Dictionary<Card.Action_Type, float[]> priorityMoves = new Dictionary<Card.Action_Type, float[]>(); //Dictionary with priority for each attack type
     private Enemy enemy; //Associated enemy
-    private GameEngine engine; //GameEngine reference
+    private CombatEngine engine; //GameEngine reference
     private EnemyEngine enemyEngine; //Associated enemy's engine
 
     //Priority Options
@@ -43,7 +43,7 @@ public class EnemyActionMachine
         }
     }
 
-    public void SetEngine(GameEngine _engine, EnemyEngine _enemyEngine){
+    public void SetEngine(CombatEngine _engine, EnemyEngine _enemyEngine){
         this.engine = _engine;
         this.enemyEngine = _enemyEngine;
         enemyEngine.SetNewPreparedAttack(preparedAttack); //Prepares next attack
