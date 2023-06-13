@@ -5,18 +5,23 @@ using UnityEngine;
 public class World
 {
     public List<List<Stage>> levels = new List<List<Stage>>();
+    List<Event> events = new List<Event>();
     public Stage bossStage;
     public string name;
     public const int NUM_OF_ROUNDS = 4;
     public Dictionary<Stage.StageType, float> stageProb = new Dictionary<Stage.StageType, float>();
     private const float eliteProb = 25f;
     private const float spawnStageProb = 50f;
+    private Dictionary<Stage.StageType, float> stageChance = new Dictionary<Stage.StageType, float>(); 
 
 
     public World(string _name, float[] _array){
         this.name = _name;
         stageProb.Add(Stage.StageType.COMBAT, 80f);
         stageProb.Add(Stage.StageType.EVENT, 20f);
+        events = StageEventInitializer.InitializeEvent(name);
+        stageChance.Add(Stage.StageType.COMBAT, 80f);
+        stageChance.Add(Stage.StageType.EVENT, 20f);
         GenerateLevels(_array);
     }
 
@@ -51,12 +56,20 @@ public class World
         bossStage = new StageCombat(levelCount, StageCombat.CombatType.BOSS, name);
     }
 
-    //TODO EVENT AND SECRET
     public Stage GenerateStages(int level){
-        float r = Random.Range(0f, 100f);
-        if(r <= eliteProb)
-            return new StageCombat(level, StageCombat.CombatType.ELITE, name);
-        else
-            return new StageCombat(level, StageCombat.CombatType.NORMAL, name);
+        float stageType = Random.Range(0f, 100f);
+        if(stageType <= stageProb[Stage.StageType.EVENT] && events.Count > 0){
+            int e = Random.Range(0, events.Count);
+            Event newEvent = events[e];
+            events.RemoveAt(e);
+            return new StageEvent(level, newEvent);
+        }
+        else{
+            float r = Random.Range(0f, 100f);
+            if (r <= eliteProb)
+                return new StageCombat(level, StageCombat.CombatType.ELITE, name);
+            else
+                return new StageCombat(level, StageCombat.CombatType.NORMAL, name);
+        }  
     }
 }

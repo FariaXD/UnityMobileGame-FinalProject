@@ -10,6 +10,8 @@ public class CombatEngine : MonoBehaviour {
     public int turnCount = 0; //Turn counter
     public int enemyCount = 0; //How many enemies stage has
     public GameEngine engine;
+    private float stageCompleteHeal = 0.1f;
+
     public enum Turn
     {
         PLAYER,
@@ -59,6 +61,10 @@ public class CombatEngine : MonoBehaviour {
             handEngine.SwitchHand(team.selectedHero.hero.hand.hand);
         }
     }
+    public void AddArtifact(Artifact artifact){
+        team.inventory.AddArtifact(artifact);
+    }
+
     //Force switch hero 
     public void ForceSwitcHero()
     {
@@ -104,7 +110,7 @@ public class CombatEngine : MonoBehaviour {
             engine.StageCompleted(true);
             active = Turn.None;
             enemies.ForEach(enemy => enemy.UnLoadEnemy());
-            team.HealHeroesPercentage();
+            team.HealHeroesPercentage(stageCompleteHeal);
         }
         else if (team.GameEnded())
         {

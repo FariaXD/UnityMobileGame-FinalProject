@@ -11,7 +11,8 @@ public class UIEngine : MonoBehaviour
     public enum Screen{
         MAINSCREEN,
         STAGESELECTOR,
-        STAGE
+        STAGECOMBAT,
+        STAGEEVENT
     }
     public void Start()
     {
@@ -30,8 +31,11 @@ public class UIEngine : MonoBehaviour
             case Screen.STAGESELECTOR:
                 cameras.stageSelector.enabled = true;
                 break;
-            case Screen.STAGE:
-                cameras.game.enabled = true;
+            case Screen.STAGECOMBAT:
+                cameras.combatStage.enabled = true;
+                break;
+            case Screen.STAGEEVENT:
+                cameras.eventStage.enabled = true;
                 break;
         }
     } 

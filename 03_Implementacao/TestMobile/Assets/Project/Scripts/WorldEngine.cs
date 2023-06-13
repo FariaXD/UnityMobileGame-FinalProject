@@ -19,7 +19,7 @@ public class WorldEngine : MonoBehaviour
     public void LoadStage(StageEngine stageEn){
         currentStage = stageEn;
         gameEngine.NewStageSelected();
-        uiEngine.SwitchScreen(UIEngine.Screen.STAGE);
+        uiEngine.SwitchScreen((stageEn.stage.type == Stage.StageType.COMBAT)?UIEngine.Screen.STAGECOMBAT:UIEngine.Screen.STAGEEVENT);
     }
 
     private void Start() {
@@ -36,7 +36,6 @@ public class WorldEngine : MonoBehaviour
         for(int i = 0; i < numbOfStages; i++){
             stageEngines.Add(new List<StageEngine>());
         }
-        Debug.Log(stageEngines.Count + " " + stageEngines[0].Count);
         foreach(GameObject engine in engines){
             StageEngine en = engine.GetComponent<StageEngine>();
             if(en.level != ((engines.Length - 1) / 3) + 1){
@@ -45,7 +44,6 @@ public class WorldEngine : MonoBehaviour
             else
                 bossStageEngine = en;
         }
-        //stageEngines.ForEach(e => e.ForEach(en => Debug.Log(en.level + " " + en.stagePos)));        
     }
 
     private void InitializeStageUI(){
@@ -58,6 +56,7 @@ public class WorldEngine : MonoBehaviour
         //InitializeConnections();
     }
 
+    //TODO
     private void InitializeConnections(){
         for (int i = 0; i < stageEngines.Count; i++)
         {

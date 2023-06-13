@@ -18,8 +18,8 @@
     "option2": {
       "name": "Attack the chest",
       "reward": {
-        "item": "gold",
-        "value": 500
+        "item": "artifact",
+        "value": "rare"
       },
       "penalty": {
         "item": "none",
@@ -48,8 +48,8 @@
     "option1": {
       "name": "Try to squeeze through and grab it.",
       "reward": {
-        "item": "platinum",
-        "value": 50
+        "item": "artifact",
+        "value": "rare"
       },
       "penalty": {
         "item": "none",

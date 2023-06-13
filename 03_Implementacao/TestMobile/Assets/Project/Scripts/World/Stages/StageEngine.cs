@@ -30,7 +30,6 @@ public class StageEngine : MonoBehaviour {
     }
 
     public void LoadStage(){
-        Debug.Log(stage.pathNumber + " " + engine.currentLevel);
         if(stage != null && stage.pathNumber == engine.currentLevel){
             engine.LoadStage(this);
         }

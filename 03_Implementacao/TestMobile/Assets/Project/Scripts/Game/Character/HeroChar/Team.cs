@@ -6,14 +6,16 @@ public class Team {
     /*
         Class holding every hero
     */
+    public Inventory inventory;
     public List<HeroEngine> teamGO = new List<HeroEngine>(); //List of HeroEngines
     public static float startingMana = 7f; //Starting mana
     public float currentMana = 7f; //Current mana
     public HeroEngine selectedHero; //Currently selected hero
-    private float stageCompleteHeal = 0.1f;
+    public float damageModifier = 1f;
 
     //Generate each hero
     public void SetHeroes(GameObject[] heroesGO){
+        inventory = new Inventory();
         teamGO.Clear(); //Refresh list
         foreach (GameObject heroGO in heroesGO)
         {
@@ -77,16 +79,24 @@ public class Team {
         }
     }
 
-    public void HealHeroesPercentage()
+    public void HealHeroesPercentage(float healPercentage)
     {
         foreach (HeroEngine en in teamGO)
         {
             if(en.hero.diceased)
                 en.hero.currentHealth = 0f;
-            float newHealth = Mathf.Round(en.hero.currentHealth + (en.hero.maxHealth * stageCompleteHeal));
+            float newHealth = Mathf.Round(en.hero.currentHealth + (en.hero.maxHealth * healPercentage));
             en.hero.currentHealth = (newHealth > en.hero.maxHealth) ? en.hero.maxHealth : newHealth;
             en.SetDead(false);
             en.hero.diceased = false;
+        }
+    }
+    public void ShieldHeroesAmmount(float ammount){
+        foreach (HeroEngine en in teamGO)
+        {
+            if (en.hero.diceased){
+                en.hero.shield += ammount;
+            }
         }
     }
     //Reduce status effect duration
