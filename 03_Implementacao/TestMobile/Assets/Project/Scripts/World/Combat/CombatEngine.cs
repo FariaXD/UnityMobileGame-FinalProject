@@ -39,7 +39,6 @@ public class CombatEngine : MonoBehaviour {
     //Initialize list of enemies (Attacks and Visuals)
     private void InitializeEnemies(Enemy[] _enemies)
     {
-        Debug.Log(_enemies.Length);
         for (int i = 0; i < _enemies.GetLength(0); i++)
             enemies[i].SetNewEnemy(_enemies[i]);
     }
@@ -82,6 +81,7 @@ public class CombatEngine : MonoBehaviour {
         {
             if (active == Turn.PLAYER)
             {
+                engine.artifactEngine.RunArtifacts(Artifact.ArtifactActivation.END_TURN);
                 team.RefreshStatusEffects(); //Decrease status turn for player
                 team.StatusEffectEndTurn();
                 active = Turn.ENEMY;
@@ -94,6 +94,7 @@ public class CombatEngine : MonoBehaviour {
                     en.StatusEffectEndTurn();
                     en.ReduceStatusEffectDurations(); //Decrease status turn for enemies
                 }
+                engine.artifactEngine.RunArtifacts(Artifact.ArtifactActivation.START_TURN);
                 active = Turn.PLAYER;
                 team.RefreshMana(); //Refresh mana
                 DrawCard(); //Draw card for each hero
@@ -103,18 +104,20 @@ public class CombatEngine : MonoBehaviour {
             }
         }
     }
+    //Checks if player won or lost
     public void CheckGameEnded()
     {
         if (CheckIfStageCompleted())
         {
-            engine.StageCompleted(true);
+            engine.StageCompletedOrWorldEnded(true);
             active = Turn.None;
             enemies.ForEach(enemy => enemy.UnLoadEnemy());
             team.HealHeroesPercentage(stageCompleteHeal);
+            engine.artifactEngine.RunArtifacts(Artifact.ArtifactActivation.END_STAGE);
         }
         else if (team.GameEnded())
         {
-            engine.StageCompleted(false);
+            engine.StageCompletedOrWorldEnded(false);
             team.RestartHeroes();
             active = Turn.None;
             enemies.ForEach(enemy => enemy.UnLoadEnemy());
@@ -135,6 +138,7 @@ public class CombatEngine : MonoBehaviour {
         Card _card = _cardEngine.card;
         if (UseCardConditions(_card, _target))
         {
+            engine.artifactEngine.RunArtifacts(Artifact.ArtifactActivation.PLAY_CARD);
             switch (_card.type)
             {
                 default:

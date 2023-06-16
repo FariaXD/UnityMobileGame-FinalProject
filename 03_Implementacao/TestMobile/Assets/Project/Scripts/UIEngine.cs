@@ -21,6 +21,10 @@ public class UIEngine : MonoBehaviour
         cameras = GetComponent<CameraRepository>();
     }
 
+    public void PlayerEndedRun(){
+        gameEngine.StageCompletedOrWorldEnded(false);
+    }
+
 
     public void SwitchScreen(Screen _screen){
         cameras.DeactiveAllCameras();

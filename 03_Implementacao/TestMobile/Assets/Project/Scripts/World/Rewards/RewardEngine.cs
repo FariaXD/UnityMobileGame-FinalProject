@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class RewardEngine : MonoBehaviour
 {
+    /*
+    *Runtime class
+    Delivers rewards to player
+    */
     private GameEngine gameEngine;
 
     public enum RewardType{

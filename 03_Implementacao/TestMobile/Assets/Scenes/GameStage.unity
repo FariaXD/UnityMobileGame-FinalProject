@@ -854,7 +854,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -5637,7 +5637,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 32, y: 167}
-  m_SizeDelta: {x: 1, y: 1}
+  m_SizeDelta: {x: 0.76, y: 0.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &838790577
 SpriteRenderer:
@@ -15046,6 +15046,7 @@ GameObject:
   - component: {fileID: 2007107891}
   - component: {fileID: 2007107890}
   - component: {fileID: 2007107889}
+  - component: {fileID: 2007107892}
   m_Layer: 0
   m_Name: GameEngine
   m_TagString: GameEngine
@@ -15108,6 +15109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd34f8d3128f90a45870c52ba0cbd18f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameEngine: {fileID: 0}
 --- !u!114 &2007107890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15130,6 +15132,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07b53d253c0057f4388fb68eebd6f76b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2007107892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007107886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97222d1d72b6ce4e9fec9fd8e6d0206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2007463132

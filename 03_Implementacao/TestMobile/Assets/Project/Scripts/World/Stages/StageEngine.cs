@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 
 public class StageEngine : MonoBehaviour {
+    /*
+    *Runtime Class
+    Stage Engine is a runtime class that loads a received stage
+    and when clicked on the game gives that information to the main program
+    engine
+    */
     public Stage stage;
     public int level = 0;
     public int stagePos = 0;

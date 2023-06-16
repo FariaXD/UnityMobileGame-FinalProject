@@ -2,6 +2,11 @@
 using TMPro;
 
 public class OptionEngine : MonoBehaviour {
+    /*
+    *Runtime Class
+    When the player clicks an option this class sets the respective values
+    */
+
     public int optionID = -1;
     public EventOption option;
     public SpriteRenderer selected;

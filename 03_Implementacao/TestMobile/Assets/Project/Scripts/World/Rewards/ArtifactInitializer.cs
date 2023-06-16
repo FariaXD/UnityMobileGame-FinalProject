@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ArtifactInitializer
 {   
+    /*
+        Responsible for returning all artifacts of given rarity
+    */
     public static List<Artifact> GetArtifactsByRarity(string worldName, string rarity)
     {
         Dictionary<string, Dictionary<string, Artifact>> artifactData = new Dictionary<string, Dictionary<string, Artifact>>();

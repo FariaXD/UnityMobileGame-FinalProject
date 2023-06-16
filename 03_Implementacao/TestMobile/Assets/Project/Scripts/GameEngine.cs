@@ -36,6 +36,7 @@ public class GameEngine : MonoBehaviour
     public void NewStageSelected(){
         switch(worldEngine.currentStage.stage.type){
             case Stage.StageType.COMBAT:
+                artifactEngine.RunArtifacts(Artifact.ArtifactActivation.START_STAGE);
                 StageCombat sc = (StageCombat)worldEngine.currentStage.stage;
                 combatEngine.NewStageCombat(sc);    
             break;
@@ -64,7 +65,7 @@ public class GameEngine : MonoBehaviour
         }
     }
 
-    public void StageCompleted(bool playerWon){
+    public void StageCompletedOrWorldEnded(bool playerWon){
         if(playerWon)
             worldEngine.CurrentStageIsCompleted();
         else

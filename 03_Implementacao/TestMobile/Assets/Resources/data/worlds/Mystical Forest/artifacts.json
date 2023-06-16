@@ -3,28 +3,32 @@
         "magicalstick":{
             "name":"Magical Stick",
             "description":"A stick so magical that gives each character a starting 5 shield.",
-            "method":"MagicStick"
+            "method":"MagicStick",
+            "activated": "Passive"
         }
     },
     "rare":{
       "magicalstick": {
         "name": "Magical Stick",
         "description": "A stick so magical that gives each character a starting 5 shield.",
-        "method": "MagicStick"
+        "method": "MagicStick",
+        "activated": "StartStage"
       }
     },
     "epic":{
       "magicalstick": {
         "name": "Magical Stick",
         "description": "A stick so magical that gives each character a starting 5 shield.",
-        "method": "MagicStick"
+        "method": "MagicStick",
+        "activated": "StartStage"
       }
     },
     "legendary":{
       "magicalstick": {
         "name": "Magical Stick",
         "description": "A stick so magical that gives each character a starting 5 shield.",
-        "method": "MagicStick"
+        "method": "MagicStick",
+        "activated": "StartStage"
       }
     }
 }

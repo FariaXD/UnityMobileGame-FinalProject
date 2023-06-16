@@ -94,7 +94,7 @@ public class Team {
     public void ShieldHeroesAmmount(float ammount){
         foreach (HeroEngine en in teamGO)
         {
-            if (en.hero.diceased){
+            if (!en.hero.diceased){
                 en.hero.shield += ammount;
             }
         }

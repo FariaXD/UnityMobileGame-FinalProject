@@ -13,5 +13,6 @@ public class EndRunButton : MonoBehaviour
     private void OnMouseDown()
     {
         uIEngine.SwitchScreen(UIEngine.Screen.MAINSCREEN);
+        uIEngine.PlayerEndedRun();
     }
 }

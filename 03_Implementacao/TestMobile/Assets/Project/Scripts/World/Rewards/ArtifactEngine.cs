@@ -2,15 +2,47 @@
 using UnityEngine;
 
 public class ArtifactEngine : MonoBehaviour {
-    private ArtifactPowers artPowers = new ArtifactPowers();
-    private GameEngine engine;
+    private List<Artifact> givenArtifacts = new List<Artifact>();
+    public GameEngine gameEngine;
+    private ArtifactPowersEngine artPowers;
+
     private void Start() {
-        engine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<GameEngine>();
+        gameEngine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<GameEngine>();
+        artPowers = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<ArtifactPowersEngine>();
 
     }
+    /**
+    Requests a new artifact based on the rarity received
+    Uncomment comments to make them unstackable
+    */
     public Artifact RequestNewArtifact(Artifact.ArtifactRarity rarity) {
-        List<Artifact> newArtifacts = ArtifactInitializer.GetArtifactsByRarity(engine.GetCurrentWorld(),Artifact.GetStringOfRarity(rarity));
-        Debug.Log(newArtifacts[0].name + " " + newArtifacts[0].description + " " + newArtifacts[0].method);
-        return newArtifacts[0];
+        List<Artifact> newArtifacts = ArtifactInitializer.GetArtifactsByRarity(gameEngine.GetCurrentWorld(),Artifact.GetStringOfRarity(rarity));
+        //bool found = true;
+        //while(found){ //Until it finds an artifact
+        //found = false;
+        int r = Random.Range(0, newArtifacts.Count);
+        Artifact art = newArtifacts[r];
+        /* foreach(Artifact given in givenArtifacts)
+            if(art.name == given.name)
+                found = true; */
+        givenArtifacts.Add(art);
+        if(art.GetArtifactActivation() == Artifact.ArtifactActivation.PASSIVE)
+            RunArtifact(art); //If its a passive effect runs the artifact function
+        return art;
+        //}
+        //return newArtifacts[0];
+    }
+
+    /*  Runs all the artifacts based on the state received
+        Example Start Turn
+    */
+    public void RunArtifacts(Artifact.ArtifactActivation state) {
+        foreach(Artifact given in givenArtifacts) 
+            if(state == given.GetArtifactActivation())
+                artPowers.ExecuteArtifactPower(given.method);
+    }
+    //Runs a singular artifact used on PASSIVE artifacts that are activated once
+    public void RunArtifact(Artifact art){
+        artPowers.ExecuteArtifactPower(art);
     }
 }

@@ -36,6 +36,7 @@ public class EventPenalty
 
 public class StageEventInitializer
 {
+    //Loads all events given a world
     public static List<Event> InitializeEvent(string worldName)
     {
         TextAsset mytxtData = Resources.Load<TextAsset>("data/worlds/" + worldName + "/events");
