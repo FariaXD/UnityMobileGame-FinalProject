@@ -10,6 +10,8 @@ public class EventEngine : MonoBehaviour {
     public TextMeshProUGUI prompt;
     public bool active = false;
     public GameEngine engine;
+    public GameObject newArtifactScreen;
+
     private void Start() {
         engine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<GameEngine>();
     }
@@ -47,5 +49,11 @@ public class EventEngine : MonoBehaviour {
     //Returns to stage selector
     public void StageSelector(){
         engine.StageCompletedOrWorldEnded(true);
+    }
+    public void ShowNewArtifact(bool state, Artifact artifact = default(Artifact))
+    {
+        newArtifactScreen.SetActive(state);
+        if(state)
+            newArtifactScreen.GetComponent<NewArtifactScreenEngine>().SetText(artifact);
     }
 }

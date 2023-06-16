@@ -12,6 +12,7 @@ public class Artifact
     public string description;
     public string method;
     public string activated;
+    public ArtifactRarity rarity;
 
     public enum ArtifactActivation{
         START_STAGE,
@@ -29,10 +30,10 @@ public class Artifact
         LEGENDARY
     }
     public List<Color> artColors = new List<Color>(){
-        new Color(173,173,173),
-        new Color(47,181,250),
-        new Color(255,69,171),
-        new Color(255,125,23)
+        new Color(173/255f,173/255f,173/255f),
+        new Color(47/255f,181/255f,250/255f),
+        new Color(255/255f,69/255f,171/255f),
+        new Color(255/255f,125/255f,23/255f)
         };
     /*<summary> 
     Receive rarity via string 
@@ -89,6 +90,7 @@ public class Artifact
     }
 
     public Color GetColorViaRarity(ArtifactRarity rarity){
+        Debug.Log(artColors[(int)rarity]);
         return artColors[(int)rarity];
     }
 }

@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class ConfirmReward : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public EventEngine eventEngine;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Start() {
+        eventEngine = GameObject.FindGameObjectWithTag("EventEngine").GetComponent<EventEngine>();
+
+    }
+    private void OnMouseDown() {
+        eventEngine.ShowNewArtifact(false);
     }
 }

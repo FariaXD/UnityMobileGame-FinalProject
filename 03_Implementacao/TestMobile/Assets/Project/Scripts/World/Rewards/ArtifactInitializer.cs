@@ -24,6 +24,7 @@ public class ArtifactInitializer
             Debug.LogWarning("Rarity not found: " + rarity);
         }
 
+        artifacts.ForEach(a => a.rarity = Artifact.GetRarityByName(rarity));
         return artifacts;
     }
 }

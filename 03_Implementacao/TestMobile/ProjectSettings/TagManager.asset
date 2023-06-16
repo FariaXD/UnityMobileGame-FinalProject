@@ -121,3 +121,6 @@ TagManager:
   - name: MenuComponents
     uniqueID: 3814948387
     locked: 0
+  - name: Dialog
+    uniqueID: 3761457067
+    locked: 0

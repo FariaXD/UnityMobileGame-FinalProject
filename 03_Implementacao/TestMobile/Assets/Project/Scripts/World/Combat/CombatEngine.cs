@@ -11,6 +11,8 @@ public class CombatEngine : MonoBehaviour {
     public int enemyCount = 0; //How many enemies stage has
     public GameEngine engine;
     private float stageCompleteHeal = 0.1f;
+    public GameObject newArtifactScreen;
+
 
     public enum Turn
     {
@@ -251,6 +253,13 @@ public class CombatEngine : MonoBehaviour {
         if (count == enemyCount && count != 0)
             return true;
         return false;
+    }
+
+    public void ShowNewArtifact(bool state, Artifact artifact = default(Artifact))
+    {
+        newArtifactScreen.SetActive(state);
+        if (state)
+            newArtifactScreen.GetComponent<NewArtifactScreenEngine>().SetText(artifact);
     }
     //TODO Special interaction
     private void UseSpecial(Card _card, CharacterEngine target) { }
