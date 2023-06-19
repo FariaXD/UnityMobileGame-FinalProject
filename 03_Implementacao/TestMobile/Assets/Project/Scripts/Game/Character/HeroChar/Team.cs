@@ -99,6 +99,10 @@ public class Team {
             }
         }
     }
+
+    public void ResetShieldCharacters(){
+        teamGO.ForEach(hero => hero.hero.shield = hero.hero.maxShield);
+    }
     //Reduce status effect duration
     public void RefreshStatusEffects(){
         foreach(HeroEngine en in teamGO)

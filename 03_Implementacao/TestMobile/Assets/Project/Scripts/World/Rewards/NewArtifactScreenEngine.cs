@@ -7,8 +7,7 @@ public class NewArtifactScreenEngine : MonoBehaviour {
     public void SetText(Artifact artifact){
         artifactTitle.text = artifact.name;
         artifactDescription.text = artifact.description;
-        artifactTitle.color = artifact.GetColorViaRarity(artifact.rarity);
-        Debug.Log(artifact.rarity);
+        artifactTitle.color = Artifact.GetColorViaRarity(artifact.rarity);
     }
     
 }

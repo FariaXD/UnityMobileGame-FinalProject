@@ -37,7 +37,7 @@ public class ArtifactEngine : MonoBehaviour {
         Example Start Turn
     */
     public void RunArtifacts(Artifact.ArtifactActivation state) {
-        foreach(Artifact given in givenArtifacts) 
+        foreach(Artifact given in gameEngine.combatEngine.team.inventory.artifacts) 
             if(state == given.GetArtifactActivation())
                 artPowers.ExecuteArtifactPower(given.method);
     }

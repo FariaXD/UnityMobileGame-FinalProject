@@ -9,11 +9,10 @@ public class CombatEngine : MonoBehaviour {
     public float difficultyModifier = 1f; //Difficulty modifier has the turns increase so does the diff
     public int turnCount = 0; //Turn counter
     public int enemyCount = 0; //How many enemies stage has
-    public GameEngine engine;
+    private GameEngine engine;
+    public RewardEngine rewardEngine;
     private float stageCompleteHeal = 0.1f;
-    public GameObject newArtifactScreen;
-
-
+    public CombatRewardEngine cRewardEngine;
     public enum Turn
     {
         PLAYER,
@@ -23,20 +22,25 @@ public class CombatEngine : MonoBehaviour {
 
     private void Start() {
         engine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<GameEngine>();
+        rewardEngine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<RewardEngine>();
+        cRewardEngine = GameObject.FindGameObjectWithTag("CombatRewardEngine").GetComponent<CombatRewardEngine>();
         team.SetHeroes(GameObject.FindGameObjectsWithTag("Player")); //SetHeroes
         handEngine = GameObject.FindGameObjectWithTag("Hand").GetComponent<HandEngine>(); //SetHand
     }
+
     private void Update()
     {
         if (active != Turn.None)
             CheckGameEnded();
     }
+
     public void NewStageCombat(StageCombat sc){
         RestartValues();
         SwitchActiveCharacter(team.selectedHero); //switch active character and update UI
         InitializeEnemies(sc.enemies);
         enemyCount = sc.enemies.GetLength(0);
         active = Turn.PLAYER;
+        engine.rewardEngine.ReceiveRewardChoiceCombatSetReward(sc);
     }
     //Initialize list of enemies (Attacks and Visuals)
     private void InitializeEnemies(Enemy[] _enemies)
@@ -61,6 +65,12 @@ public class CombatEngine : MonoBehaviour {
             team.selectedHero = _hero;
             handEngine.SwitchHand(team.selectedHero.hero.hand.hand);
         }
+    }
+    public void ResetCharacters(){
+        team.inventory.artifacts.Clear();
+        team.HealHeroesPercentage(100f);
+        team.ResetShieldCharacters();
+        team.teamGO.ForEach(hero => hero.hero.ClearStatus());
     }
     public void AddArtifact(Artifact artifact){
         team.inventory.AddArtifact(artifact);
@@ -109,8 +119,9 @@ public class CombatEngine : MonoBehaviour {
     //Checks if player won or lost
     public void CheckGameEnded()
     {
-        if (CheckIfStageCompleted())
+        if (CheckIfStageCompleted() || cRewardEngine.rewardChosen)
         {
+            cRewardEngine.rewardChosen = false;
             engine.StageCompletedOrWorldEnded(true);
             active = Turn.None;
             enemies.ForEach(enemy => enemy.UnLoadEnemy());
@@ -157,6 +168,15 @@ public class CombatEngine : MonoBehaviour {
             handEngine.UpdateUsedCard(_cardEngine); //updates used card
             TargetingAllEnemies(false, true);
             team.TargetingAllAllies(false, true);
+            CheckIfCardEndedGame();
+        }
+    }
+
+    private void CheckIfCardEndedGame(){
+        int count = CountDiceasedEnemies();
+        if (count == enemyCount && count != 0)
+        {
+            cRewardEngine.Show(true);
         }
     }
     /*
@@ -244,23 +264,21 @@ public class CombatEngine : MonoBehaviour {
 
     public bool CheckIfStageCompleted()
     {
+        int count = CountDiceasedEnemies();
+        if (count == enemyCount && count != 0 && cRewardEngine.rewardChosen)
+            return true;
+        return false;
+    }
+    private int CountDiceasedEnemies(){
         int count = 0;
         foreach (EnemyEngine enemyEn in enemies)
         {
             if (enemyEn.enemy != null && enemyEn.enemy.diceased)
                 count++;
         }
-        if (count == enemyCount && count != 0)
-            return true;
-        return false;
+        return count;
     }
 
-    public void ShowNewArtifact(bool state, Artifact artifact = default(Artifact))
-    {
-        newArtifactScreen.SetActive(state);
-        if (state)
-            newArtifactScreen.GetComponent<NewArtifactScreenEngine>().SetText(artifact);
-    }
     //TODO Special interaction
     private void UseSpecial(Card _card, CharacterEngine target) { }
 }

@@ -10,7 +10,6 @@ public class PlayButton : MonoBehaviour
 
     }
     private void OnMouseDown() {
-        Debug.Log("Switching screen");
         uIEngine.SwitchScreen(UIEngine.Screen.STAGESELECTOR);
     }
 }

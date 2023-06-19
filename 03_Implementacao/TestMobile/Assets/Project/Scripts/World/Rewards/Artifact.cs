@@ -12,6 +12,7 @@ public class Artifact
     public string description;
     public string method;
     public string activated;
+    public string sprite;
     public ArtifactRarity rarity;
 
     public enum ArtifactActivation{
@@ -22,22 +23,25 @@ public class Artifact
         END_STAGE,
         PASSIVE
     }
-    //Rariry
+    //Rarity
     public enum ArtifactRarity{
         COMMON,
         RARE,
         EPIC,
         LEGENDARY
     }
-    public List<Color> artColors = new List<Color>(){
+    public static List<Color> artColors = new List<Color>(){
         new Color(173/255f,173/255f,173/255f),
         new Color(47/255f,181/255f,250/255f),
         new Color(255/255f,69/255f,171/255f),
         new Color(255/255f,125/255f,23/255f)
         };
+
+    public Sprite GetSpriteViaString(){
+        return Resources.Load<Sprite>(sprite);
+    }
     /*<summary> 
     Receive rarity via string 
-
     </summary>*/
 
     public static ArtifactRarity GetRarityByName(string rarity){
@@ -89,8 +93,7 @@ public class Artifact
         return ArtifactActivation.START_STAGE;
     }
 
-    public Color GetColorViaRarity(ArtifactRarity rarity){
-        Debug.Log(artColors[(int)rarity]);
+    public static Color GetColorViaRarity(ArtifactRarity rarity){
         return artColors[(int)rarity];
     }
 }

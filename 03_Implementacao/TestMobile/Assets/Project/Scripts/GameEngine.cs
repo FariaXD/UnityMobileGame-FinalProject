@@ -74,18 +74,7 @@ public class GameEngine : MonoBehaviour
 
     public void AddArtifact(Artifact.ArtifactRarity rarity){
         Artifact artifact = artifactEngine.RequestNewArtifact(rarity);
-        switch(worldEngine.currentStage.stage.type){
-            case Stage.StageType.COMBAT:
-                combatEngine.ShowNewArtifact(true,artifact);
-                break;
-            case Stage.StageType.EVENT:
-                eventEngine.ShowNewArtifact(true, artifact);
-                break;
-        }
+        eventEngine.ShowNewArtifact(true, artifact);
         combatEngine.AddArtifact(artifact);
-    }
-
-    public void NewReward(EventReward reward){
-        rewardEngine.ReceiveReward(RewardEngine.GetRewardTypeByName(reward.item), reward.value);
     }
 }

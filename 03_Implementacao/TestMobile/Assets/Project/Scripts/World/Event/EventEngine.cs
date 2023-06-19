@@ -9,11 +9,14 @@ public class EventEngine : MonoBehaviour {
     public StageEvent sEvent;
     public TextMeshProUGUI prompt;
     public bool active = false;
-    public GameEngine engine;
+    public RewardEngine rewardEngine;
+    public GameEngine gameEngine;
     public GameObject newArtifactScreen;
 
     private void Start() {
-        engine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<GameEngine>();
+        rewardEngine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<RewardEngine>();
+        gameEngine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<GameEngine>();
+
     }
     //Loads the stage
     public void NewStageEvent(StageEvent _event){
@@ -44,16 +47,21 @@ public class EventEngine : MonoBehaviour {
         active = false;
         prompt.text = optionEngines[checkedOption].option.result;
         optionEngines[checkedOption].SetConfirmed(true);
-        engine.NewReward(optionEngines[checkedOption].option.reward);
+        NewReward(optionEngines[checkedOption].option.reward);
     }
     //Returns to stage selector
     public void StageSelector(){
-        engine.StageCompletedOrWorldEnded(true);
+        gameEngine.StageCompletedOrWorldEnded(true);
     }
     public void ShowNewArtifact(bool state, Artifact artifact = default(Artifact))
     {
         newArtifactScreen.SetActive(state);
         if(state)
             newArtifactScreen.GetComponent<NewArtifactScreenEngine>().SetText(artifact);
+    }
+
+    public void NewReward(EventReward reward)
+    {
+        rewardEngine.ReceiveReward(RewardEngine.GetRewardTypeByName(reward.item), reward.value);
     }
 }

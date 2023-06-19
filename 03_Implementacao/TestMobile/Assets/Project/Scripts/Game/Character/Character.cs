@@ -8,6 +8,7 @@ public abstract class Character
     public float maxHealth; //Max health of char
     public float currentHealth; //Current health of char
     public float shield; //Current shield of char
+    public float maxShield;
     public RuntimeAnimatorController anim; //Animation controller
     public bool diceased = false; //If character is dead
     public AttackIcon icons; //Icons
@@ -25,6 +26,7 @@ public abstract class Character
         this.name = _name;
         this.maxHealth = _maxHealth;
         this.currentHealth = _maxHealth;
+        this.maxShield = _shield;
         this.shield = _shield;
         this.anim = _anim;
         this.icons = new AttackIcon();
@@ -94,6 +96,10 @@ public abstract class Character
             break;
         }
         return true;
+    }
+
+    public void ClearStatus(){
+        debuffs.Clear();
     }
 
     //New Stage clears debuffs

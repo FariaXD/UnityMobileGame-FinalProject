@@ -18,6 +18,8 @@ TagManager:
   - CombatEngine
   - EventEngine
   - GameEngine
+  - Combat
+  - Event
   layers:
   - Default
   - TransparentFX

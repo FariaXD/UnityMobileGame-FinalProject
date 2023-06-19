@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5473a09efbc3fdc4aa292b8dfa31c6ba
+guid: 731c3b4e8b26022459ac8d522e98425d
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,18 +117,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Heal_Icon
+  - name: platinum
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: -0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 12
-      height: 12
-    spriteID: 7705d81a0e86f494f993482c3fcedb04
+      width: 6
+      height: 8
+    spriteID: 56693e7590b46c44aabcb932c13daf75
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,20 +140,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1616783024
-    name: Heal_Icon
+    guid: 1122562918
+    name: platinum
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Heal_Icon
+    - name: platinum
       frameIndex: 0
       cellRect:
-        x: 2
-        y: 2
-        width: 12
-        height: 12
-      spriteId: 7705d81a0e86f494f993482c3fcedb04
+        x: 5
+        y: 4
+        width: 6
+        height: 8
+      spriteId: 56693e7590b46c44aabcb932c13daf75
     linkedCells: []
     parentIndex: -1
   platformSettings: []

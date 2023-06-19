@@ -121,17 +121,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6badc84a96b0a884493521435e3431fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Enemy
+  heroName: Color
   anim: {fileID: 0}
   engine: {fileID: 0}
   healthImage: {fileID: 212129805889160807}
-  healthBGImage: {fileID: 6360582923995380361}
+  healthText: {fileID: 7058002300153927298}
   shieldIcon: {fileID: 3354060400960904169}
   shieldText: {fileID: 9170703551864255354}
-  healthText: {fileID: 7058002300153927298}
-  attackInfo: {fileID: 4208570840570582660}
-  attackIcon: {fileID: 3329575605014875781}
-  targetedIcon: {fileID: 4559298571500659808}
   statusImages:
   - {fileID: 6203230796124140863}
   - {fileID: 7028025024421962945}
@@ -140,6 +136,12 @@ MonoBehaviour:
   - {fileID: 8110647928096828157}
   - {fileID: 7158204866727464932}
   - {fileID: 4468819882348893608}
+  targetedIcon: {fileID: 4559298571500659808}
+  startingHealth: 20
+  enemyName: Enemy
+  healthBGImage: {fileID: 6360582923995380361}
+  attackInfo: {fileID: 4208570840570582660}
+  attackIcon: {fileID: 3329575605014875781}
 --- !u!50 &8756942482040105062
 Rigidbody2D:
   serializedVersion: 4
@@ -213,7 +215,7 @@ PrefabInstance:
     - target: {fileID: 1513762846713811669, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -6337967123409033956, guid: 6fbaf2d5309b3b347add60a430517b12, type: 3}
+      objectReference: {fileID: -1108998516687688311, guid: fdd40e9b9d9efd94db1f41a47f99723a, type: 3}
     - target: {fileID: 3537597543468206936, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -361,7 +363,7 @@ PrefabInstance:
     - target: {fileID: 5743498957001895483, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2563530229083608007, guid: 6fbaf2d5309b3b347add60a430517b12, type: 3}
+      objectReference: {fileID: 7288809993091373297, guid: fdd40e9b9d9efd94db1f41a47f99723a, type: 3}
     - target: {fileID: 5821421060055741687, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
       propertyPath: m_Camera
       value: 

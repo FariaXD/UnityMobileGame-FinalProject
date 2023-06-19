@@ -15,21 +15,19 @@ public class WorldEngine : MonoBehaviour
     public World currentWorld;
     private GameEngine gameEngine;
     private  UIEngine uiEngine;
-
-    public void LoadStage(StageEngine stageEn){
-        currentStage = stageEn;
-        gameEngine.NewStageSelected();
-        uiEngine.SwitchScreen((stageEn.stage.type == Stage.StageType.COMBAT)?UIEngine.Screen.STAGECOMBAT:UIEngine.Screen.STAGEEVENT);
-    }
-
-    private void Start() {
+    private void Start()
+    {
         gameEngine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<GameEngine>();
         uiEngine = GameObject.FindGameObjectWithTag("UIEngine").GetComponent<UIEngine>();
         InitializeWorldNames();
         InitializeStageEngines();
         NewGame();
     }
-
+    public void LoadStage(StageEngine stageEn){
+        currentStage = stageEn;
+        gameEngine.NewStageSelected();
+        uiEngine.SwitchScreen((stageEn.stage.type == Stage.StageType.COMBAT)?UIEngine.Screen.STAGECOMBAT:UIEngine.Screen.STAGEEVENT);
+    }
     private void InitializeStageEngines(){
         GameObject[] engines = GameObject.FindGameObjectsWithTag("StageEngine");
         int numbOfStages = (engines.Length - 1) / 3;
@@ -45,7 +43,6 @@ public class WorldEngine : MonoBehaviour
                 bossStageEngine = en;
         }
     }
-
     private void InitializeStageUI(){
         for(int i = 0; i < currentWorld.levels.Count; i++){
             for(int j = 0; j < currentWorld.levels[0].Count; j++){
@@ -54,21 +51,6 @@ public class WorldEngine : MonoBehaviour
         }
         bossStageEngine.SetStage(currentWorld.bossStage);
         //InitializeConnections();
-    }
-
-    //TODO
-    private void InitializeConnections(){
-        for (int i = 0; i < stageEngines.Count; i++)
-        {
-            for (int j = 0; j < stageEngines[0].Count; j++)
-            {
-                for (int k = 0; k < stageEngines[0].Count; k++){
-                    //if(i==5)
-                    //else
-
-                }
-            }
-        }
     }
 
     public void CurrentStageIsCompleted(){
@@ -80,6 +62,7 @@ public class WorldEngine : MonoBehaviour
     public void PlayerLostGame(){
         uiEngine.SwitchScreen(UIEngine.Screen.MAINSCREEN);
         NewGame();
+        gameEngine.combatEngine.ResetCharacters();
     }
 
     private void NewGame(){
