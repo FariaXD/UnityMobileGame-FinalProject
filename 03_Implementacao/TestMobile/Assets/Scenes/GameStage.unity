@@ -2795,7 +2795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventEngine: {fileID: 0}
-  combatEngine: {fileID: 0}
+  cRewardEngine: {fileID: 0}
 --- !u!61 &273297679
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5537,6 +5537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 661280809}
   - component: {fileID: 661280810}
+  - component: {fileID: 661280811}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -5552,7 +5553,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661280808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9766.406}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 2385.2395, y: 1371.5127, z: 2385.2395}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5616,6 +5617,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &661280811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661280808}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!1 &673581574
 GameObject:
   m_ObjectHideFlags: 0
@@ -10516,7 +10530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventEngine: {fileID: 0}
-  combatEngine: {fileID: 0}
+  cRewardEngine: {fileID: 0}
 --- !u!212 &1325882709
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12366,7 +12380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventEngine: {fileID: 0}
-  combatEngine: {fileID: 0}
+  cRewardEngine: {fileID: 0}
 --- !u!61 &1476238247
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12500,12 +12514,8 @@ MonoBehaviour:
   difficultyModifier: 1
   turnCount: 0
   enemyCount: 0
-  engine: {fileID: 0}
-  newArtifactScreen: {fileID: 1951314269}
-  options:
-  - {fileID: 5720957638299147635}
-  - {fileID: 1806113300}
-  - {fileID: 1978690053}
+  rewardEngine: {fileID: 0}
+  cRewardEngine: {fileID: 0}
 --- !u!1 &1483874328
 GameObject:
   m_ObjectHideFlags: 0
@@ -16691,9 +16701,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1951314270}
+  - component: {fileID: 1951314271}
   m_Layer: 0
   m_Name: RewardScreen
-  m_TagString: Untagged
+  m_TagString: CombatRewardEngine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16718,9 +16729,26 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 10000}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1951314271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951314269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90c8eedfd5d7ed40a014cc4ae8e44b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  options:
+  - {fileID: 5720957638299147635}
+  - {fileID: 1806113300}
+  - {fileID: 1978690053}
+  rewardChosen: 0
 --- !u!1 &1955215803
 GameObject:
   m_ObjectHideFlags: 0
@@ -17136,7 +17164,8 @@ MonoBehaviour:
   checkedOption: 0
   prompt: {fileID: 94544150}
   active: 0
-  engine: {fileID: 0}
+  rewardEngine: {fileID: 0}
+  gameEngine: {fileID: 0}
   newArtifactScreen: {fileID: 2032099991}
 --- !u!1 &2000291404
 GameObject:
