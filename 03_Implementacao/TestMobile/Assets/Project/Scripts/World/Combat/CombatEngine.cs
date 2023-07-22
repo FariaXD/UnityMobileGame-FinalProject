@@ -168,16 +168,18 @@ public class CombatEngine : MonoBehaviour {
             handEngine.UpdateUsedCard(_cardEngine); //updates used card
             TargetingAllEnemies(false, true);
             team.TargetingAllAllies(false, true);
-            CheckIfCardEndedGame();
         }
     }
 
-    private void CheckIfCardEndedGame(){
+    private bool CheckIfCardEndedGame(){
         int count = CountDiceasedEnemies();
-        if (count == enemyCount && count != 0)
+        foreach (EnemyEngine en in enemies)
         {
-            cRewardEngine.Show(true);
+            if(en.enemy != null && !en.enemy.diceased)
+                return false;
         }
+        cRewardEngine.Show(true);
+        return true;
     }
     /*
         Targets all enemies highlighting them
@@ -244,13 +246,19 @@ public class CombatEngine : MonoBehaviour {
         if (isDefensive)
             foreach (HeroEngine hero in team.teamGO)
             {
-                if (!hero.hero.diceased)
+                if (!hero.hero.diceased){
                     team.selectedHero.hero.hand.UseCard(_card, hero.hero);
+                    hero.UpdateStatus();
+                }
             }
         else
-            foreach (EnemyEngine enemy in enemies)
-                if (enemy.enemy != null && !enemy.enemy.diceased)
+            foreach (EnemyEngine enemy in enemies){
+                if (enemy.enemy != null && !enemy.enemy.diceased){
                     team.selectedHero.hero.hand.UseCard(_card, enemy.enemy);
+                    enemy.UpdateStatus();
+                }
+            }
+        CheckIfCardEndedGame();
     }
 
     /*
@@ -260,6 +268,7 @@ public class CombatEngine : MonoBehaviour {
     {
         team.selectedHero.hero.hand.UseCard(_card, target.ReturnAssociatedCharacter());
         target.UpdateStatus();
+        CheckIfCardEndedGame();
     }
 
     public bool CheckIfStageCompleted()
