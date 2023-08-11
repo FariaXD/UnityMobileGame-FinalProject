@@ -8,7 +8,6 @@ public class World
     List<Event> events = new List<Event>();
     public Stage bossStage;
     public string name;
-    public const int NUM_OF_ROUNDS = 4;
     public Dictionary<Stage.StageType, float> stageProb = new Dictionary<Stage.StageType, float>();
     private const float eliteProb = 25f;
     private const float spawnStageProb = 50f;

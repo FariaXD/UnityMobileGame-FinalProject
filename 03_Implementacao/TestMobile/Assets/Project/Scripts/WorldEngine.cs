@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 public class WorldEngine : MonoBehaviour
 {
     public int currentLevel = 0;
+    public int currentWorldIndex = 0;
     List<World> worlds = new List<World>();
     List<string> worldNames = new List<string>();
     public List<List<StageEngine>> stageEngines = new List<List<StageEngine>>();
@@ -57,6 +58,15 @@ public class WorldEngine : MonoBehaviour
         currentStage.IsCompleted();
         uiEngine.SwitchScreen(UIEngine.Screen.STAGESELECTOR);
         currentLevel++;
+        if(currentStage.stage.difficulty == StageCombat.CombatType.BOSS)
+           NewWorld();    
+    }
+    public void NewWorld(){
+        World world = new World(worldNames[(currentWorldIndex % worldNames.Count)], new float[] { stageEngines.Count, stageEngines[0].Count });
+        currentWorld = world;
+        worlds.Add(world);
+        currentLevel = 0;
+        InitializeStageUI();
     }
 
     public void PlayerLostGame(){
@@ -82,5 +92,6 @@ public class WorldEngine : MonoBehaviour
         for(int i = 1; i <= worldsText.Count; i++){
             worldNames.Add(worldsText[i.ToString()]);
         }
+        
     }
 }

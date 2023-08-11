@@ -114,4 +114,10 @@ public class Team {
             if(!en.hero.diceased)
                 en.hero.CheckActionForStatus(Character.Character_Action.END_TURN);
     }
+
+    public List<Hero> GetHeroObjects(){
+        List<Hero> result = new List<Hero>();
+        teamGO.ForEach(x => result.Add(x.hero));
+        return result;
+    }
 }

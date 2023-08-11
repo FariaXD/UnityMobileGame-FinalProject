@@ -21,6 +21,9 @@ TagManager:
   - Combat
   - Event
   - CombatRewardEngine
+  - InventoryEngine
+  - CardSlot
+  - DeckInventory
   layers:
   - Default
   - TransparentFX

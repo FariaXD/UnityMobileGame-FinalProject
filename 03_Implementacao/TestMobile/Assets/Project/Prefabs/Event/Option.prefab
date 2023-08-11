@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -480018909
-  m_SortingLayer: 22
+  m_SortingLayerID: -1041618511
+  m_SortingLayer: 20
   m_SortingOrder: 0
   m_Sprite: {fileID: -7498071774924743947, guid: 569b5eec740c0164e87c264453a619d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -304,8 +304,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -480018909
-  m_SortingLayer: 22
+  m_SortingLayerID: -1113915009
+  m_SortingLayer: 19
   m_SortingOrder: 0
   m_Sprite: {fileID: 4850422862464752368, guid: a57bb619637cd88428d371024c8f45a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -407,7 +407,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -480018909
+  m_SortingLayerID: -1041618511
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3683168858987202198
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7785418639668783557
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -52,6 +52,7 @@ public class CombatEngine : MonoBehaviour {
     {
         team.RefreshMana();
         team.teamGO.ForEach(heroGO => heroGO.InitializeDeck()); //Initialize heroes deck
+        engine.inventoryEngine.Initialize();
         SwitchActiveCharacter(team.selectedHero); //switch active character and update UI
         difficultyModifier = 1f; //Difficulty modifier has the turns increase so does the diff
         turnCount = 0; //Turn counter
