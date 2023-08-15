@@ -119,7 +119,7 @@ public class RewardEngine : MonoBehaviour
     }
 
     public void ReceiveReward(Artifact art){
-        gameEngine.combatEngine.team.inventory.AddArtifact(art);
+        gameEngine.combatEngine.AddArtifact(art);
     }
 
     public static RewardType GetRewardTypeByName(string name){

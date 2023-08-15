@@ -25,6 +25,10 @@ public class Team {
         RestartHeroes();
     }
 
+    public void AddArtifact(Artifact artifact){
+        inventory.AddArtifact(artifact);
+    }
+
     //Sets mana back to max
     public void RefreshMana(){
         currentMana = startingMana;

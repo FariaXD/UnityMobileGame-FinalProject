@@ -47,6 +47,10 @@ public class EnemyEngine : CharacterEngine {
             enemy.enemyActionMachine.RunEnemyMachine();
     }
 
+    public void AttackAnimation(){
+        anim.SetTrigger("Attack");
+    }
+
     public void ReduceStatusEffectDurations(){
         if(enemy != null)
             enemy.ReduceStatusEffectDurations();

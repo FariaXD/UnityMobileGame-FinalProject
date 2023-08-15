@@ -5,7 +5,7 @@
           "description":"A stick so magical that gives each character a starting 5 shield.",
           "method":"MagicStick",
           "activated": "StartStage",
-          "sprite": "sprites/artifacts/testartifact"
+          "sprite": "sprites/artifacts/Magic_Stick"
       }
     },
     "rare":{
@@ -14,7 +14,7 @@
         "description": "A stick so magical that gives each character a starting 5 shield.",
         "method": "MagicStick",
         "activated": "StartStage",
-        "sprite": "sprites/artifacts/testartifact"
+        "sprite": "sprites/artifacts/Magic_Stick"
       }
     },
     "epic":{
@@ -23,7 +23,7 @@
         "description": "A stick so magical that gives each character a starting 5 shield.",
         "method": "MagicStick",
         "activated": "StartStage",
-        "sprite": "sprites/artifacts/testartifact"
+        "sprite": "sprites/artifacts/Magic_Stick"
       }
     },
     "legendary":{
@@ -32,7 +32,7 @@
         "description": "A stick so magical that gives each character a starting 5 shield.",
         "method": "MagicStick",
         "activated": "StartStage",
-        "sprite": "sprites/artifacts/testartifact"
+        "sprite": "sprites/artifacts/Magic_Stick"
       }
     }
 }

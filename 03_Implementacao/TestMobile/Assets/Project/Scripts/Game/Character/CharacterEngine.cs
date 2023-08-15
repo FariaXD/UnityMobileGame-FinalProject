@@ -59,6 +59,10 @@ public abstract class CharacterEngine : MonoBehaviour {
             shieldText.enabled = false;
         }
         shieldText.text = Mathf.Round(character.shield).ToString();
+        if(character.damageTaken){
+            anim.SetTrigger("Hurt");
+            character.damageTaken = false;
+        }
     }
 
     public void SetDead(bool dead)

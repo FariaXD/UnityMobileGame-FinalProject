@@ -74,6 +74,7 @@ public class EnemyActionMachine
                     foreach (EnemyEngine enemy in engine.enemies)
                         if (enemy.enemy != null && !enemy.enemy.diceased)
                             preparedAttack.UseCardOnTarget(enemy.enemy);
+            enemyEngine.AttackAnimation();
         }
     }
 

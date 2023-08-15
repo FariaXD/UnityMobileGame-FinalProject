@@ -18,13 +18,13 @@ public class GameEngine : MonoBehaviour
     public RewardEngine rewardEngine;
     public PenaltyEngine penaltyEngine;
     public ArtifactEngine artifactEngine;
-    public InventoryEngine inventoryEngine;
+    public MenuEngine menuEngine;
     public List<TextMeshProUGUI> goldTexts = new List<TextMeshProUGUI>();
     public List<TextMeshProUGUI> platinumTexts = new List<TextMeshProUGUI>();
     private void Start() {
         worldEngine = GameObject.FindGameObjectWithTag("WorldEngine").GetComponent<WorldEngine>();
         uiEngine = GameObject.FindGameObjectWithTag("UIEngine").GetComponent<UIEngine>();
-        inventoryEngine = GameObject.FindGameObjectWithTag("InventoryEngine").GetComponent<InventoryEngine>();
+        menuEngine = GameObject.FindGameObjectWithTag("MenuEngine").GetComponent<MenuEngine>();
         combatEngine = GameObject.FindGameObjectWithTag("CombatEngine").GetComponent<CombatEngine>();
         eventEngine = GameObject.FindGameObjectWithTag("EventEngine").GetComponent<EventEngine>();
         rewardEngine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<RewardEngine>();

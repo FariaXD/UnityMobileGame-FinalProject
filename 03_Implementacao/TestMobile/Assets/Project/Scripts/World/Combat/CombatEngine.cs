@@ -29,7 +29,7 @@ public class CombatEngine : MonoBehaviour {
     }
 
     private void Update()
-    {
+    {   
         if (active != Turn.None)
             CheckGameEnded();
     }
@@ -52,7 +52,7 @@ public class CombatEngine : MonoBehaviour {
     {
         team.RefreshMana();
         team.teamGO.ForEach(heroGO => heroGO.InitializeDeck()); //Initialize heroes deck
-        engine.inventoryEngine.Initialize();
+        engine.menuEngine.Initialize();
         SwitchActiveCharacter(team.selectedHero); //switch active character and update UI
         difficultyModifier = 1f; //Difficulty modifier has the turns increase so does the diff
         turnCount = 0; //Turn counter
@@ -74,7 +74,8 @@ public class CombatEngine : MonoBehaviour {
         team.teamGO.ForEach(hero => hero.hero.ClearStatus());
     }
     public void AddArtifact(Artifact artifact){
-        team.inventory.AddArtifact(artifact);
+        team.AddArtifact(artifact);
+        engine.menuEngine.UpdateBag(team.inventory.artifacts);
     }
 
     //Force switch hero 
@@ -169,11 +170,11 @@ public class CombatEngine : MonoBehaviour {
             handEngine.UpdateUsedCard(_cardEngine); //updates used card
             TargetingAllEnemies(false, true);
             team.TargetingAllAllies(false, true);
+            team.selectedHero.anim.SetTrigger("Attack");
         }
     }
 
     private bool CheckIfCardEndedGame(){
-        int count = CountDiceasedEnemies();
         foreach (EnemyEngine en in enemies)
         {
             if(en.enemy != null && !en.enemy.diceased)

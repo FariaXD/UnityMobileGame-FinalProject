@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 8982609455742427469}
   m_Layer: 0
   m_Name: CardDeck
-  m_TagString: CardSlot
+  m_TagString: MenuCardSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4399586620522115573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d6ebcc5d26a3e34391f2ef018e4fa4b, type: 3}
+  m_Script: {fileID: 11500000, guid: efc12ce687cb9064eaed7360953faa1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   countInDeck: 0

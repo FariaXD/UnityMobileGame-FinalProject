@@ -161,7 +161,7 @@ RectTransform:
   m_GameObject: {fileID: 3005263959655493437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.0000020933255}
-  m_LocalScale: {x: 2.7236, y: 2.7236, z: 2.7236}
+  m_LocalScale: {x: 1.2791932, y: 1.2791932, z: 1.2791932}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6585268175495221113}
@@ -169,7 +169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.419, y: 0.003}
+  m_AnchoredPosition: {x: -0.368, y: -0.001}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &6170365567399240196
@@ -213,7 +213,7 @@ SpriteRenderer:
   m_SortingLayerID: -533510229
   m_SortingLayer: 23
   m_SortingOrder: 5
-  m_Sprite: {fileID: 1990419677369509017, guid: fdd40e9b9d9efd94db1f41a47f99723a, type: 3}
+  m_Sprite: {fileID: -8806836549346698405, guid: 1d9e3fdf6bf05854ca6f9947f7140341, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -474,7 +474,6 @@ MonoBehaviour:
   combatEngine: {fileID: 0}
   heal: 0
   platinum: 0
-  tReward: 0
 --- !u!61 &5991974050596270940
 BoxCollider2D:
   m_ObjectHideFlags: 0

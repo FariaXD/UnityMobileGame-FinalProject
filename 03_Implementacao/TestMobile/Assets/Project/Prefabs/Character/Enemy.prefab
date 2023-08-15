@@ -372,6 +372,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICharacter (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7405520984246646238, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8536812927942815859, guid: 9e639a982b96d774fafeb1cac21fc2fe, type: 3}
       propertyPath: m_Size.x
       value: 0.08

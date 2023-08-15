@@ -12,6 +12,7 @@ public abstract class Character
     public RuntimeAnimatorController anim; //Animation controller
     public bool diceased = false; //If character is dead
     public AttackIcon icons; //Icons
+    public bool damageTaken = false; 
 
     public List<StatusEffect> debuffs = new List<StatusEffect>(); //List containing all the status affecting the character
 
@@ -34,7 +35,7 @@ public abstract class Character
     
     //Receive damage
     public void TakeDamage(float damage){
-        float damageToShield = 0;
+        float damageToShield;
         if(shield>damage){
             damageToShield = shield;
             shield = shield-damage;
@@ -45,6 +46,7 @@ public abstract class Character
             shield = 0;
         }
         currentHealth = currentHealth - (damage-damageToShield);
+        damageTaken = true;
     }
     //Receive defense type (shield or heal)
     public void GetDefense(float ammount, CardDefense.Defense_Type type)

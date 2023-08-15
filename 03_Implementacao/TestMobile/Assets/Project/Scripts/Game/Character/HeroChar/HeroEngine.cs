@@ -12,6 +12,7 @@ public class HeroEngine : CharacterEngine {
     */
     public Hero hero; //Associated hero
     private bool heroSet = false; //If hero isnt loaded yet
+    public TextMeshProUGUI cardCount;
    
     
     //Load hero if set or not
@@ -46,6 +47,8 @@ public class HeroEngine : CharacterEngine {
         UpdateStatus();
         if(hero.diceased && engine.team.selectedHero.heroName == heroName)
             engine.ForceSwitcHero();
+        cardCount.text = hero.hand.hand.Count.ToString();
+        
     }
     //Return associated character
     public override Character ReturnAssociatedCharacter(){
