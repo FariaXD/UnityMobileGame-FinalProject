@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
 public class OpenCloseMenu: MonoBehaviour {
-    public bool openMethod;
-    public bool isCombatStage;
+    public MenuEngine.MENUACTION action;
+    public MenuEngine.PLAYERSTAGE stageType;
     private MenuEngine menuEngine;
 
     private void Start() {
@@ -10,6 +10,6 @@ public class OpenCloseMenu: MonoBehaviour {
 
     }
     private void OnMouseDown() {
-        menuEngine.OpenClose(openMethod, isCombatStage);
+        menuEngine.OpenClose(action, stageType);
     }
 }

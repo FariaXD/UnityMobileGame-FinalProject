@@ -9,7 +9,7 @@ public class CombatEngine : MonoBehaviour {
     public float difficultyModifier = 1f; //Difficulty modifier has the turns increase so does the diff
     public int turnCount = 0; //Turn counter
     public int enemyCount = 0; //How many enemies stage has
-    private GameEngine engine;
+    public GameEngine engine;
     public RewardEngine rewardEngine;
     private float stageCompleteHeal = 0.1f;
     public CombatRewardEngine cRewardEngine;
@@ -76,6 +76,7 @@ public class CombatEngine : MonoBehaviour {
     public void AddArtifact(Artifact artifact){
         team.AddArtifact(artifact);
         engine.menuEngine.UpdateBag(team.inventory.artifacts);
+        engine.menuEngine.IncrementStat(MenuOptionsEngine.STATS.ARTIFACTS_COUNT);
     }
 
     //Force switch hero 
@@ -129,6 +130,7 @@ public class CombatEngine : MonoBehaviour {
             enemies.ForEach(enemy => enemy.UnLoadEnemy());
             team.HealHeroesPercentage(stageCompleteHeal);
             engine.artifactEngine.RunArtifacts(Artifact.ArtifactActivation.END_STAGE);
+            engine.uiEngine.SwitchScreen(UIEngine.Screen.STAGESELECTOR);
         }
         else if (team.GameEnded())
         {

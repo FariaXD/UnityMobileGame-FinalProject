@@ -69,8 +69,10 @@ public class GameEngine : MonoBehaviour
     }
 
     public void StageCompletedOrWorldEnded(bool playerWon){
-        if(playerWon)
+        if(playerWon){
             worldEngine.CurrentStageIsCompleted();
+            menuEngine.IncrementStat(MenuOptionsEngine.STATS.STAGES_COMPLETED);
+        }
         else
             worldEngine.PlayerLostGame();
     }

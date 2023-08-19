@@ -30,10 +30,12 @@ public abstract class CharacterEngine : MonoBehaviour {
         Character character = ReturnAssociatedCharacter();
         healthImage.fillAmount = ((100 * character.currentHealth) / character.maxHealth) / 100;
         healthText.text = character.currentHealth + "/" + character.maxHealth;
-        if (character.currentHealth <= 0)
+        if (character.currentHealth <= 0 && !character.diceased)
         {
             SetDead(true);
             character.diceased = true;
+            if(character is Enemy)
+                engine.engine.menuEngine.IncrementStat(MenuOptionsEngine.STATS.ENEMIES_SLAIN);
         }
         for (int i = 0; i < statusImages.Count; i++)
         {

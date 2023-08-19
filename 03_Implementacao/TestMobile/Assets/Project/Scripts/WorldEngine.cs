@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 public class WorldEngine : MonoBehaviour
 {
     public int currentLevel = 0;
+    public int currentWorldCount = 1;
     public int currentWorldIndex = 0;
     List<World> worlds = new List<World>();
     List<string> worldNames = new List<string>();
@@ -16,6 +17,7 @@ public class WorldEngine : MonoBehaviour
     public World currentWorld;
     private GameEngine gameEngine;
     private  UIEngine uiEngine;
+    public float difficultyRamp = 0f;
     private void Start()
     {
         gameEngine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<GameEngine>();
@@ -25,9 +27,11 @@ public class WorldEngine : MonoBehaviour
         NewGame();
     }
     public void LoadStage(StageEngine stageEn){
-        currentStage = stageEn;
-        gameEngine.NewStageSelected();
-        uiEngine.SwitchScreen((stageEn.stage.type == Stage.StageType.COMBAT)?UIEngine.Screen.STAGECOMBAT:UIEngine.Screen.STAGEEVENT);
+        if(gameEngine.menuEngine.currentStageType == MenuEngine.PLAYERSTAGE.OFF){
+            currentStage = stageEn;
+            gameEngine.NewStageSelected();
+            uiEngine.SwitchScreen((stageEn.stage.type == Stage.StageType.COMBAT) ? UIEngine.Screen.STAGECOMBAT : UIEngine.Screen.STAGEEVENT);
+        }   
     }
     private void InitializeStageEngines(){
         GameObject[] engines = GameObject.FindGameObjectsWithTag("StageEngine");
@@ -58,7 +62,9 @@ public class WorldEngine : MonoBehaviour
         currentStage.IsCompleted();
         uiEngine.SwitchScreen(UIEngine.Screen.STAGESELECTOR);
         currentLevel++;
-        if(currentStage.stage.difficulty == StageCombat.CombatType.BOSS)
+        difficultyRamp += 0.05f; 
+        uiEngine.UpdateStageNumbersUI();
+        if (currentStage.stage.difficulty == StageCombat.CombatType.BOSS)
            NewWorld();    
     }
     public void NewWorld(){
@@ -66,6 +72,9 @@ public class WorldEngine : MonoBehaviour
         currentWorld = world;
         worlds.Add(world);
         currentLevel = 0;
+        difficultyRamp += 0.1f;
+        currentWorldCount++;
+        uiEngine.UpdateStageNumbersUI();
         InitializeStageUI();
     }
 
@@ -77,6 +86,7 @@ public class WorldEngine : MonoBehaviour
 
     private void NewGame(){
         currentLevel = 0;
+        currentWorldCount = 1;
         worlds.Clear();
         World world = new World(worldNames[0], new float[]{stageEngines.Count, stageEngines[0].Count});
         currentWorld = world;
