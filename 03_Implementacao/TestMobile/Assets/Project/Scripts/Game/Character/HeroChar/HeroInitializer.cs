@@ -25,7 +25,7 @@ public class HeroInitializer {
             string heroJson = myheroData.text;
             Dictionary<string, string>  heroInfo = JsonConvert.DeserializeObject<Dictionary<string, string>>(heroJson); //Convert to JSON
             RuntimeAnimatorController anim = (RuntimeAnimatorController)Resources.Load(heroInfo["anim"]);
-            heroList.Add(new Hero(heroName, float.Parse(heroInfo["maxHealth"]), float.Parse(heroInfo["startingShield"]), heroInfo["cardTemplate"], anim));
+            heroList.Add(new Hero(heroName, float.Parse(heroInfo["maxHealth"]), float.Parse(heroInfo["startingShield"]), heroInfo["cardTemplate"], anim, heroInfo["heroToken"]));
         }
         return heroList;
     }

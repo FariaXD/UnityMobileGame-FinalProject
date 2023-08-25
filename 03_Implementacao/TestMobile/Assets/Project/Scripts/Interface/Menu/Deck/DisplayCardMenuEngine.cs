@@ -21,5 +21,6 @@ public class DisplayCardMenuEngine : MonoBehaviour {
         cardType.sprite = card.cardTypeIcon;
         cardCharacter.sprite = hero.cardTemplate;
         cardImage.sprite = card.cardImage;
+        heroIcon.sprite = hero.heroToken;
     }
 }

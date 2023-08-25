@@ -13,9 +13,10 @@ public class Hero : Character
     public Sprite heroToken; //hero token
 
 
-    public Hero(string _name, float _health, float _shield, string _cardTemplate, RuntimeAnimatorController _anim) : base(_name, _health, _shield, _anim){
+    public Hero(string _name, float _health, float _shield, string _cardTemplate, RuntimeAnimatorController _anim, string _heroToken) : base(_name, _health, _shield, _anim){
         this.hand = new Hand(deck);
         this.cardTemplate = Resources.Load<Sprite>(_cardTemplate);
+        this.heroToken = Resources.Load<Sprite>(_heroToken);
     }
 
 }

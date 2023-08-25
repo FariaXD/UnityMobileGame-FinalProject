@@ -20,7 +20,7 @@ public class HeroIconMenuEngine : MonoBehaviour {
     }
     //Set hero image
     private void SetHeroImage(Sprite heroToken) {
-        //heroImageRenderer.sprite = heroToken;
+        heroImageRenderer.sprite = heroToken;
     }
     //Select new hero
     private void OnMouseDown() {

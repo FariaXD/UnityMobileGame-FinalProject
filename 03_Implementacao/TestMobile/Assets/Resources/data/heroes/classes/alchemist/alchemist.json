@@ -2,5 +2,6 @@
     "maxHealth":25,
     "startingShield":5,
     "cardTemplate":"data/heroes/classes/alchemist/alchemistTemplate",
-    "anim":"sprites/heroes/alchemist/controller"
+    "anim":"sprites/heroes/alchemist/controller",
+    "heroToken":"sprites/heroes/alchemist/token"
 }
