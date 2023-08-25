@@ -1,0 +1,47 @@
+﻿{
+  "1": {
+    "id": 1,
+    "name": "Slice",
+    "type": "CardDamage",
+    "cost": 2,
+    "area": false,
+    "damage": 10,
+    "duplicates": 2,
+    "imagePath": "sprites/cards/Common/Card_Attack_Image"
+  },
+  "2": {
+    "id": 2,
+    "name": "Punch",
+    "type": "CardStatus",
+    "cost": 2,
+    "area": true,
+    "damage": 5,
+    "status": "Burn",
+    "duration": 5,
+    "duplicates": 6,
+    "imagePath": "sprites/cards/Common/Card_Status_Burn_Image"
+  },
+  "3": {
+    "id": 3,
+    "name": "Kick",
+    "type": "CardDefense",
+    "cost": 2,
+    "area": true,
+    "defenseType": "Healing",
+    "ammount": 10,
+    "duplicates": 2,
+    "imagePath": "sprites/cards/Common/Card_Heal_Image"
+  },
+  "4": {
+    "id": 4,
+    "name": "Punch",
+    "type": "CardStatus",
+    "cost": 3,
+    "area": false,
+    "damage": 4,
+    "status": "Shock",
+    "duration": 1,
+    "duplicates": 6,
+    "imagePath": "sprites/cards/Common/Card_Status_Shock_Image"
+  }
+}

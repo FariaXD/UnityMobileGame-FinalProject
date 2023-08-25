@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Engine
   - Hand
   - Deck
   - Card
@@ -13,6 +12,30 @@ TagManager:
   - WorldEngine
   - UIEngine
   - StageIconLoader
+  - Menu
+  - StageEngine
+  - CombatStageElements
+  - CombatEngine
+  - EventEngine
+  - GameEngine
+  - Combat
+  - Event
+  - CombatRewardEngine
+  - MenuCardSlot
+  - MenuDecks
+  - MenuDisplayedDeck
+  - MenuEngine
+  - MenuDeckEngine
+  - MenuArtifactsEngine
+  - MenuMapEngine
+  - MenuOptionsEngine
+  - MenuDisplayDeck
+  - MenuDisplayCard
+  - MenuBagEngine
+  - MenuDisplayArtifact
+  - MenuArtSlot
+  - MenuBagInventoryEngine
+  - MenuBagRarities
   layers:
   - Default
   - TransparentFX
@@ -109,4 +132,16 @@ TagManager:
     locked: 0
   - name: Card6
     uniqueID: 3253348785
+    locked: 0
+  - name: MenuBlur
+    uniqueID: 1478160357
+    locked: 0
+  - name: Menu
+    uniqueID: 853618509
+    locked: 0
+  - name: MenuComponents
+    uniqueID: 3814948387
+    locked: 0
+  - name: Dialog
+    uniqueID: 3761457067
     locked: 0

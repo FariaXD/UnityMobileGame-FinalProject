@@ -1,0 +1,7 @@
+﻿{
+  "maxHealth": 40,
+  "startingShield": 5,
+  "cardTemplate": "data/heroes/classes/ranger/rangerTemplate",
+  "anim": "sprites/heroes/ranger/controller",
+  "heroToken": "sprites/heroes/ranger/token"
+}

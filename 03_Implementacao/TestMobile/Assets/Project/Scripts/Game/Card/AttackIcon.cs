@@ -5,8 +5,9 @@ public class AttackIcon{
         Class used to load every icon so they can be displayed dynamically
     */
 
-    public Sprite attackIcon, burnIcon, poisonIcon, shockedIcon, shieldIcon, healIcon;
+    public Sprite attackIcon, burnIcon, poisonIcon, shockedIcon, shieldIcon, healIcon; //icons
 
+    //Load all the icons
     public AttackIcon() {
         attackIcon = Resources.Load<Sprite>("sprites/GameUI/Attack_Icon");
         burnIcon = Resources.Load<Sprite>("sprites/GameUI/Burn_Icon");
@@ -15,6 +16,7 @@ public class AttackIcon{
         shieldIcon = Resources.Load<Sprite>("sprites/GameUI/Shield_Icon");
         healIcon = Resources.Load<Sprite>("sprites/GameUI/Heal_Icon");
     }
+    
     //Returns status icon based on effect
     public Sprite GetStatusIcon(StatusEffect eff){
         switch(eff.effect){

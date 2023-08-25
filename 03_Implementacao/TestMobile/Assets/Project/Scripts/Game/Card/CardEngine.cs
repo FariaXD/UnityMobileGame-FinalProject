@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CardEngine : MonoBehaviour {
@@ -17,14 +19,20 @@ public class CardEngine : MonoBehaviour {
     private const float speed = 50f; //Speed of reseting position
     [HideInInspector]
     public bool used {get; set;} //If card has been used
-    private SpriteRenderer sRenderer {get; set;} //Sprite renderer object
+    public SpriteRenderer cardTemplate, cardTypeIcon, cardImage; //Sprite renderer object
     private CardHitmarker hitmarker; //Hitmarker object
+    public TextMeshProUGUI cardMana, cardText, cardAmmount; //card texts
+    public CombatEngine engine; //engine responsible
+
     private void Start() {
+        engine = GameObject.FindGameObjectWithTag("CombatEngine").GetComponent<CombatEngine>();
         resetPosition = this.transform.localPosition;
-        sRenderer = this.GetComponent<SpriteRenderer>();
         hitmarker = GetComponentInChildren<CardHitmarker>();
     }
-    //Move Card 
+    /*
+    Move a card by dragging
+    If the card can be used
+    */
     private void Update() {
         if(moving){
             Vector3 mousePos;
@@ -45,12 +53,29 @@ public class CardEngine : MonoBehaviour {
     //Change card dynamically
     public void UpdateCard(Card c){
         card = c;
-        this.GetComponent<SpriteRenderer>().sprite = card.cardSprite;
+        cardTemplate.sprite = engine.team.selectedHero.hero.cardTemplate;
+        cardTypeIcon.sprite = Card.LoadCardTypeDynamically(card);
+        cardImage.sprite = card.cardImage;
         if(card.id == -1)
-            this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+            SetCardVisible(false);
         else
-            this.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+        {
+            SetCardVisible(true);
+            cardMana.text = card.manaCost.ToString();
+            cardText.text = Card.GetCardDescriptionDynamically(card);
+            cardAmmount.text = Card.GetAmmountDynamically(card).ToString();
+        }
         
+    }
+    //Set a card object visible or invisible
+    public void SetCardVisible(bool status){
+        this.gameObject.GetComponent<PolygonCollider2D>().enabled = status;
+        cardMana.enabled = status;
+        cardText.enabled = status;
+        cardAmmount.enabled = status;
+        cardTemplate.enabled = status;
+        cardTypeIcon.enabled = status;
+        cardImage.enabled = status;
     }
     //If card is pressed
     private void OnMouseDown()
@@ -65,7 +90,8 @@ public class CardEngine : MonoBehaviour {
 
             moving = true;
 
-            sRenderer.color = new Color(1f, 1f, 1f, .5f);
+            cardTemplate.color = new Color(1f, 1f, 1f, .5f);
+            cardImage.color = new Color(1f, 1f, 1f, .5f);
             hitmarker.SetSpriteRendererAndCollider(moving);
         }
     }
@@ -73,6 +99,7 @@ public class CardEngine : MonoBehaviour {
     private void OnMouseUp() 
     {
         moving = false;
-        sRenderer.color = new Color(1f, 1f, 1f, 1f);
+        cardTemplate.color = new Color(1f, 1f, 1f, 1f);
+        cardImage.color = new Color(1f, 1f, 1f, 1f);
     }
 }

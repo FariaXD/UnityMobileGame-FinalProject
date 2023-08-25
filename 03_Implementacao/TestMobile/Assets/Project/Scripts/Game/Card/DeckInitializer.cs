@@ -13,7 +13,7 @@ public class DeckInitializer {
     public static List<Card> InitializeDeck(string heroClass){
         Dictionary<string, Dictionary<string, string>> values = new Dictionary<string, Dictionary<string, string>>(); //Creates Dictionary for JSON
         List<Card> deck = new List<Card>(); //Temporary deck
-        TextAsset mytxtData = (TextAsset)Resources.Load("data/heroes/"+heroClass); //Load from Resources folder
+        TextAsset mytxtData = (TextAsset)Resources.Load("data/heroes/classes/"+heroClass+"/"+heroClass+"Deck"); //Load from Resources folder
         string txt = mytxtData.text; 
         values = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(txt); //Convert to JSON
         foreach (var val in values)

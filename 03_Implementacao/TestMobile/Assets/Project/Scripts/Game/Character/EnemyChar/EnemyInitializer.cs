@@ -39,18 +39,18 @@ public class EnemyInitializer{
                 case "Damage":
                     dmg = float.Parse(att.Value["damage"]); //damage
                     amm = float.Parse(att.Value["ammount"]); //ammount of hits
-                    newEnemy.enemyAI.AddAttack(new CardDamage(area,dmg*amm));
+                    newEnemy.enemyActionMachine.AddAttack(new CardDamage(area,dmg*amm));
                     break;
                 case "Status":
                     status = StatusEffect.GetEffectByName(att.Value["status"]); //Status effect
                     dmg = float.Parse(att.Value["damage"]); //damage
                     duration = float.Parse(att.Value["duration"]); //duration of status
-                    newEnemy.enemyAI.AddAttack(new CardStatus(area, status, duration, dmg));
+                    newEnemy.enemyActionMachine.AddAttack(new CardStatus(area, status, duration, dmg));
                     break;
                 case "Defense":
                     amm = float.Parse(att.Value["ammount"]); //ammount of healing
                     defType = CardDefense.GetDefenseByName(att.Value["defense"]); //Healing or Shielding
-                    newEnemy.enemyAI.AddAttack(new CardDefense(area, defType, amm));
+                    newEnemy.enemyActionMachine.AddAttack(new CardDefense(area, defType, amm));
                     break;
                 case "Special":
                     //TODO boss exclusive, need to plan more

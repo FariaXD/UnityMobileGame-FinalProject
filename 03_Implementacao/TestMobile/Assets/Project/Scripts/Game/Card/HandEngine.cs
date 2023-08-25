@@ -10,10 +10,6 @@ public class HandEngine : MonoBehaviour
         of each card dynamically
     */
     public CardEngine[] cardsEngine = new CardEngine[Hand.MAX_HAND_SIZE]; //CardEngine Array
-    private GameEngine engine; //GameEngine reference
-    private void Start() {
-        engine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameEngine>();
-    }
 
     //Switch the active character hand (Switch class)
     public void SwitchHand(List<Card> cards){
