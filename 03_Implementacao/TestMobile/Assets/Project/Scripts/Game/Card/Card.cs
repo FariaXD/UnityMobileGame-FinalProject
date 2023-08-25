@@ -33,6 +33,7 @@ public abstract class Card{
         cardTypeIcon = LoadCardTypeDynamically(this);
     }
 
+    //Returns the card description
     public static string GetCardDescriptionDynamically(Card c){
         switch(c.type){
             case Action_Type.Damage:
@@ -51,6 +52,7 @@ public abstract class Card{
         return "";
     }
 
+    //Loads the card type icon returning the sprite
     public static Sprite LoadCardTypeDynamically(Card c){
         switch (c.type)
             {
@@ -66,7 +68,7 @@ public abstract class Card{
             }
             return null;
     }
-
+    //Get ammount of damage/defense a card gives
     public static int GetAmmountDynamically(Card c){
         switch (c.type)
         {
@@ -82,12 +84,7 @@ public abstract class Card{
         }
         return 0;
     }
-
-    public static bool IsCardArea(Card c){
-        return c.area;
-    }
-    
-    //Abstract method
+    //Abstract method - card effect to be implemented by different types
     public abstract void UseCardOnTarget(Character target);
 
 }

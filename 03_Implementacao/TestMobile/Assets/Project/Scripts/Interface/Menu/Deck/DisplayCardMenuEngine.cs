@@ -2,7 +2,9 @@
 using TMPro;
 
 public class DisplayCardMenuEngine : MonoBehaviour {
-
+    /*
+    Runtime class responsible for updating the detailed card interface
+    */
     public Card card;
     public TextMeshProUGUI manaCostField, cardDamageField, cardDescField, heroNameField, descriptionField, countInDeckField, typeField;
     public SpriteRenderer cardType, cardCharacter, cardImage, heroIcon;

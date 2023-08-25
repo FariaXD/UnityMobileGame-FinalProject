@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+Data classes that hold all the objects needed to create a new event stage
+*/
 public class Event
 {
     public int id;
@@ -36,7 +38,7 @@ public class EventPenalty
 
 public class StageEventInitializer
 {
-    //Loads all events given a world
+    //Loads all events given a world via a JSON text file
     public static List<Event> InitializeEvent(string worldName)
     {
         TextAsset mytxtData = Resources.Load<TextAsset>("data/worlds/" + worldName + "/events");

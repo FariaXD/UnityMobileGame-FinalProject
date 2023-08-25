@@ -6,6 +6,14 @@ using UnityEngine;
 
 public class MenuOptionsEngine : MonoBehaviour
 {
+    /*
+    Runtime class
+    Controls the menu options which displays stats and some user options
+    !TODO
+    Google play account association
+    Sound and music volume controls
+    */
+    //Stats
     private int stages_completed = 0;
     private int enemies_slain = 0;
     private int artifacts_count = 0;
@@ -16,7 +24,7 @@ public class MenuOptionsEngine : MonoBehaviour
         ENEMIES_SLAIN,
         ARTIFACTS_COUNT
     }
-
+    //Increments a stat
     public void IncrementStat(STATS stat){
         switch(stat){
             case STATS.STAGES_COMPLETED:
@@ -30,7 +38,7 @@ public class MenuOptionsEngine : MonoBehaviour
             break;
         }
     }
-
+    //Get a specific stat
     public int GetStat(STATS stat){
         switch (stat)
         {

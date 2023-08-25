@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 
 public class MenuEngine : MonoBehaviour {
-    private MenuDeckEngine menuDeckEngine;
-    private MenuBagEngine menuBagEngine;
-    private MenuOptionsEngine menuOptionsEngine;
-    private GameEngine gameEngine;
-    public List<GameObject> menus = new List<GameObject>();
-    public MENUTYPE selectedMenu = MENUTYPE.MAP;
-    public GameObject menuPositionCombat;
-    public GameObject menuPositionEvent;
-    public GameObject menuPositionOff;
-    public GameObject closePosition;
-    public PLAYERSTAGE currentStageType = PLAYERSTAGE.OFF;
+    /*
+    Runtime class
+    Controls all the different menus and switches beetween them
+    */
+    private MenuDeckEngine menuDeckEngine; //deck inventory menu engine
+    private MenuBagEngine menuBagEngine; //artifact menu engine
+    private MenuOptionsEngine menuOptionsEngine;//options menu engine
+    private GameEngine gameEngine; //main game engine
+    public List<GameObject> menus = new List<GameObject>(); //list of menu gameobjects
+    public MENUTYPE selectedMenu = MENUTYPE.MAP; //current selected menu
+    public GameObject menuPositionCombat; //position of stage combat
+    public GameObject menuPositionEvent; //position of stage event
+    public GameObject menuPositionOff; //position off stage (stage selector)
+    public GameObject closePosition; //position to hide menus
+    public PLAYERSTAGE currentStageType = PLAYERSTAGE.OFF; //current stage type
+    public bool initializedFirstTime = false; //first time initialization
+
     public enum MENUTYPE {
         DECK,
         ARTIFACTS,
@@ -35,29 +41,30 @@ public class MenuEngine : MonoBehaviour {
         menuOptionsEngine = GameObject.FindGameObjectWithTag("MenuOptionsEngine").GetComponent<MenuOptionsEngine>();
         gameEngine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<GameEngine>();
     }
+    //Initializes the menus
     public void Initialize(){
         menuDeckEngine.Initialize();
         menuBagEngine.Initialize(gameEngine.combatEngine.team.inventory.artifacts);
     }
-
+    //Update artifact bag
     public void UpdateBag(List<Artifact> artifacts){
         menuBagEngine.Initialize(artifacts);
     }
-
+    //Increment a stat
     public void IncrementStat(MenuOptionsEngine.STATS stat){
         menuOptionsEngine.IncrementStat(stat);
     }
-
+    //Get player stage
     public PLAYERSTAGE GetPlayerStageType(){
         return currentStageType;
     }
-
+    //Switch menu
     public void SwitchMenu(MENUTYPE newMenu){
         OpenClose(MENUACTION.SWITCH, currentStageType);
         selectedMenu = newMenu;
         OpenClose(MENUACTION.OPEN, currentStageType);
     }
-
+    //Open or close a menu
     public void OpenClose(MENUACTION action, PLAYERSTAGE currentStageType)
     {
         if (action == MENUACTION.CLOSE && this.currentStageType != PLAYERSTAGE.OFF){

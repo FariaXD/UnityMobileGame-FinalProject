@@ -6,6 +6,6 @@ public class StageEmpty : Stage
 {
     public StageEmpty(int _pathNumber) : base(_pathNumber, StageType.NONE)
     {
-
+        //empty stage
     }
 }

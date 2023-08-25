@@ -8,8 +8,8 @@ public class GameEngine : MonoBehaviour
     /*
         *Runtime class
         Game Engine
-        Controls the State machine of the game
-        Loads the stage
+        Loads the stages
+        Controls the core of the game (enemies, heroes, rewards)
     */
     public WorldEngine worldEngine;
     public UIEngine uiEngine;
@@ -18,13 +18,11 @@ public class GameEngine : MonoBehaviour
     public RewardEngine rewardEngine;
     public PenaltyEngine penaltyEngine;
     public ArtifactEngine artifactEngine;
-    public MenuEngine menuEngine;
     public List<TextMeshProUGUI> goldTexts = new List<TextMeshProUGUI>();
     public List<TextMeshProUGUI> platinumTexts = new List<TextMeshProUGUI>();
     private void Start() {
         worldEngine = GameObject.FindGameObjectWithTag("WorldEngine").GetComponent<WorldEngine>();
         uiEngine = GameObject.FindGameObjectWithTag("UIEngine").GetComponent<UIEngine>();
-        menuEngine = GameObject.FindGameObjectWithTag("MenuEngine").GetComponent<MenuEngine>();
         combatEngine = GameObject.FindGameObjectWithTag("CombatEngine").GetComponent<CombatEngine>();
         eventEngine = GameObject.FindGameObjectWithTag("EventEngine").GetComponent<EventEngine>();
         rewardEngine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<RewardEngine>();
@@ -33,9 +31,10 @@ public class GameEngine : MonoBehaviour
         //inventoryEngine.Initialize();
     }
     private void Update() {
-        goldTexts.ForEach(gT => gT.text = combatEngine.team.inventory.gold.ToString());
-        platinumTexts.ForEach(pT => pT.text = combatEngine.team.inventory.platinum.ToString());
+        goldTexts.ForEach(gT => gT.text = combatEngine.team.inventory.gold.ToString()); //updates gold values
+        platinumTexts.ForEach(pT => pT.text = combatEngine.team.inventory.platinum.ToString()); //updates plat values
     }
+    //Selects a new stage and executes the respective methods to load them
     public void NewStageSelected(){
         switch(worldEngine.currentStage.stage.type){
             case Stage.StageType.COMBAT:
@@ -51,32 +50,20 @@ public class GameEngine : MonoBehaviour
             break;
         }
     }
-
+    //Return current world name
     public string GetCurrentWorld(){
         return worldEngine.currentWorld.name;
     }
-
-    private void SwitchComponentsStage(Stage.StageType type){
-        switch (type)
-        {
-            case Stage.StageType.COMBAT:
-                break;
-            case Stage.StageType.EVENT:
-                break;
-            case Stage.StageType.MERCHANT:
-                break;
-        }
-    }
-
+    //Executes the respective methods when a stage ends
     public void StageCompletedOrWorldEnded(bool playerWon){
         if(playerWon){
             worldEngine.CurrentStageIsCompleted();
-            menuEngine.IncrementStat(MenuOptionsEngine.STATS.STAGES_COMPLETED);
+            uiEngine.menuEngine.IncrementStat(MenuOptionsEngine.STATS.STAGES_COMPLETED);
         }
         else
             worldEngine.PlayerLostGame();
     }
-
+    //Adds a new artifact and updates the menu
     public void AddArtifact(Artifact.ArtifactRarity rarity){
         Artifact artifact = artifactEngine.RequestNewArtifact(rarity);
         eventEngine.ShowNewArtifact(true, artifact);

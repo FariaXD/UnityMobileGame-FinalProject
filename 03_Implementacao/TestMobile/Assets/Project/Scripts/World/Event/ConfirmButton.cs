@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
 public class ConfirmButton : MonoBehaviour {
+    /*
+    Button to confirm reward
+    */
     public EventEngine engine;
     private void Start()
     {

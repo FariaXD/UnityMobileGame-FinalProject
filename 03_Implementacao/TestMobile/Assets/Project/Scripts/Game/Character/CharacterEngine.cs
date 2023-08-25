@@ -6,18 +6,19 @@ using TMPro;
 public abstract class CharacterEngine : MonoBehaviour {
     /*
         ?Interface
-        Containing common methods to be implemented
+        Containing common for Heroes And Enemies engines
+        And some methods to be implemented by them
     */
     public string heroName = "Color"; //Hero names
     public Animator anim; //Animation Controller obj
     public CombatEngine engine; //GameEngine reference
     public Image healthImage; //Associated health Image obj
     public TextMeshProUGUI healthText; //Health text obj
-    public Image shieldIcon;
-    public TextMeshProUGUI shieldText;
+    public Image shieldIcon; //shield Icon
+    public TextMeshProUGUI shieldText; //shield Number
     public List<SpriteRenderer> statusImages = new List<SpriteRenderer>(); //List of status imagerenderer obj
     public List<TextMeshProUGUI> statusTexts = new List<TextMeshProUGUI>(); //list of status text obj
-    public SpriteRenderer targetedIcon;
+    public SpriteRenderer targetedIcon; //targeted arrow sprite
     public float startingHealth = 20f; //The hero starting hp
     private void Start()
     {
@@ -26,6 +27,7 @@ public abstract class CharacterEngine : MonoBehaviour {
         shieldIcon.enabled = false;
         shieldText.enabled = false;
     }
+    //Updates character interface objects including stats, debuffs, animations
     public void UpdateStatus(){
         Character character = ReturnAssociatedCharacter();
         healthImage.fillAmount = ((100 * character.currentHealth) / character.maxHealth) / 100;
@@ -35,7 +37,7 @@ public abstract class CharacterEngine : MonoBehaviour {
             SetDead(true);
             character.diceased = true;
             if(character is Enemy)
-                engine.engine.menuEngine.IncrementStat(MenuOptionsEngine.STATS.ENEMIES_SLAIN);
+                engine.engine.uiEngine.menuEngine.IncrementStat(MenuOptionsEngine.STATS.ENEMIES_SLAIN);
         }
         for (int i = 0; i < statusImages.Count; i++)
         {
@@ -66,11 +68,11 @@ public abstract class CharacterEngine : MonoBehaviour {
             character.damageTaken = false;
         }
     }
-
+    //Sets a character animation "Dead"
     public void SetDead(bool dead)
     {
         anim.SetBool("Dead", dead);
     }
-
+    //Returns associated character
     public abstract Character ReturnAssociatedCharacter();
 }

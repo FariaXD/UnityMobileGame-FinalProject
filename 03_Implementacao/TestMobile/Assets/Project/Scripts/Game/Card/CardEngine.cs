@@ -21,15 +21,18 @@ public class CardEngine : MonoBehaviour {
     public bool used {get; set;} //If card has been used
     public SpriteRenderer cardTemplate, cardTypeIcon, cardImage; //Sprite renderer object
     private CardHitmarker hitmarker; //Hitmarker object
-    public TextMeshProUGUI cardMana, cardText, cardAmmount;
-    public CombatEngine engine;
+    public TextMeshProUGUI cardMana, cardText, cardAmmount; //card texts
+    public CombatEngine engine; //engine responsible
 
     private void Start() {
         engine = GameObject.FindGameObjectWithTag("CombatEngine").GetComponent<CombatEngine>();
         resetPosition = this.transform.localPosition;
         hitmarker = GetComponentInChildren<CardHitmarker>();
     }
-    //Move Card 
+    /*
+    Move a card by dragging
+    If the card can be used
+    */
     private void Update() {
         if(moving){
             Vector3 mousePos;
@@ -64,6 +67,7 @@ public class CardEngine : MonoBehaviour {
         }
         
     }
+    //Set a card object visible or invisible
     public void SetCardVisible(bool status){
         this.gameObject.GetComponent<PolygonCollider2D>().enabled = status;
         cardMana.enabled = status;

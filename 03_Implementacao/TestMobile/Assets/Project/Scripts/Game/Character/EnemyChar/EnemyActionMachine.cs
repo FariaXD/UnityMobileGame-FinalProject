@@ -229,7 +229,7 @@ public class EnemyActionMachine
     private float[] GenerateRange(float range0, float range1){
         return new float[]{range0, range1};
     }
-
+    //Shuffle an array
     private void Shuffle<T>(T[] array)
     {
         int n = array.Length;

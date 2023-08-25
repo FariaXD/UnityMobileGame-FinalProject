@@ -5,6 +5,11 @@ using Newtonsoft.Json;
 
 public class StageCombat : Stage
 {
+    /*
+    Combat Stage
+    Has 1-3 enemies
+    Has 3 difficulties
+    */
     public Enemy[] enemies;
     public enum CombatType {
         NORMAL,
@@ -16,7 +21,7 @@ public class StageCombat : Stage
     public StageCombat(int _pathNumber, CombatType _difficulty, string _world) : base(_pathNumber, StageType.COMBAT, _difficulty){
         InitializeEnemies(_world);
     }
-
+    //Initializes all enemies of thiss tage
     public void InitializeEnemies(string _world){
         string[] enemyNames = EnemyEncounter.GetEnemyEncounter(difficulty, _world);
         enemies = new Enemy[enemyNames.GetLength(0)];
@@ -24,7 +29,7 @@ public class StageCombat : Stage
             enemies[i] = EnemyInitializer.InitializeEnemyWithName(enemyNames[i]);
         }
     }
-
+    //Get difficulty of stage
     public static string GetTypeString(StageCombat.CombatType diff){
         switch(diff){
             case CombatType.NORMAL:
@@ -37,7 +42,7 @@ public class StageCombat : Stage
         return "";
     }
 }
-
+//Static class responsible for loading the enemies from a json file
 public static class EnemyEncounter
 {
     public static string[] GetEnemyEncounter(StageCombat.CombatType diff, string _world){

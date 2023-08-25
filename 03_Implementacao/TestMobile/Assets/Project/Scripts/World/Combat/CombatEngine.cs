@@ -9,10 +9,10 @@ public class CombatEngine : MonoBehaviour {
     public float difficultyModifier = 1f; //Difficulty modifier has the turns increase so does the diff
     public int turnCount = 0; //Turn counter
     public int enemyCount = 0; //How many enemies stage has
-    public GameEngine engine;
-    public RewardEngine rewardEngine;
-    private float stageCompleteHeal = 0.1f;
-    public CombatRewardEngine cRewardEngine;
+    public GameEngine engine; //main engine
+    public RewardEngine rewardEngine; //reward engine
+    private float stageCompleteHeal = 0.1f; //stage heal percentage
+    public CombatRewardEngine cRewardEngine; //combat reward engine
     public enum Turn
     {
         PLAYER,
@@ -33,7 +33,7 @@ public class CombatEngine : MonoBehaviour {
         if (active != Turn.None)
             CheckGameEnded();
     }
-
+    //New combat stage 
     public void NewStageCombat(StageCombat sc){
         RestartValues();
         SwitchActiveCharacter(team.selectedHero); //switch active character and update UI
@@ -48,11 +48,12 @@ public class CombatEngine : MonoBehaviour {
         for (int i = 0; i < _enemies.GetLength(0); i++)
             enemies[i].SetNewEnemy(_enemies[i]);
     }
+    //Restart values for a new stage
     private void RestartValues()
     {
         team.RefreshMana();
         team.teamGO.ForEach(heroGO => heroGO.InitializeDeck()); //Initialize heroes deck
-        engine.menuEngine.Initialize();
+        engine.uiEngine.menuEngine.Initialize();
         SwitchActiveCharacter(team.selectedHero); //switch active character and update UI
         difficultyModifier = 1f; //Difficulty modifier has the turns increase so does the diff
         turnCount = 0; //Turn counter
@@ -67,16 +68,18 @@ public class CombatEngine : MonoBehaviour {
             handEngine.SwitchHand(team.selectedHero.hero.hand.hand);
         }
     }
+    //Reset characters stats and bags
     public void ResetCharacters(){
         team.inventory.artifacts.Clear();
         team.HealHeroesPercentage(100f);
         team.ResetShieldCharacters();
         team.teamGO.ForEach(hero => hero.hero.ClearStatus());
     }
+    //Adds a new artifact while updating menus
     public void AddArtifact(Artifact artifact){
         team.AddArtifact(artifact);
-        engine.menuEngine.UpdateBag(team.inventory.artifacts);
-        engine.menuEngine.IncrementStat(MenuOptionsEngine.STATS.ARTIFACTS_COUNT);
+        engine.uiEngine.menuEngine.UpdateBag(team.inventory.artifacts);
+        engine.uiEngine.menuEngine.IncrementStat(MenuOptionsEngine.STATS.ARTIFACTS_COUNT);
     }
 
     //Force switch hero 
@@ -175,7 +178,7 @@ public class CombatEngine : MonoBehaviour {
             team.selectedHero.anim.SetTrigger("Attack");
         }
     }
-
+    //Checks if a card ended the stage
     private bool CheckIfCardEndedGame(){
         foreach (EnemyEngine en in enemies)
         {
@@ -274,7 +277,7 @@ public class CombatEngine : MonoBehaviour {
         target.UpdateStatus();
         CheckIfCardEndedGame();
     }
-
+    //Checks if all enemy are diceased and a reward has been chosen
     public bool CheckIfStageCompleted()
     {
         int count = CountDiceasedEnemies();

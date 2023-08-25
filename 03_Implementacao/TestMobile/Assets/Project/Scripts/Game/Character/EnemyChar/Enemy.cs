@@ -10,7 +10,7 @@ public class Enemy : Character
     public EnemyActionMachine enemyActionMachine;
     public Enemy(string _name, float _health, float _shield, RuntimeAnimatorController _anim = default(RuntimeAnimatorController)) : base(_name, _health, _shield, _anim)
     {
-        enemyActionMachine = new EnemyActionMachine(this);
-        icons = new AttackIcon();
+        enemyActionMachine = new EnemyActionMachine(this); //create new action machine
+        icons = new AttackIcon(); //create an icon database object
     }
 }

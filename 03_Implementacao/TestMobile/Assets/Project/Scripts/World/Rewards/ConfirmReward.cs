@@ -12,6 +12,7 @@ public class ConfirmReward : MonoBehaviour
         eventEngine = GameObject.FindGameObjectWithTag("EventEngine").GetComponent<EventEngine>();
         cRewardEngine = GameObject.FindGameObjectWithTag("CombatRewardEngine").GetComponent<CombatRewardEngine>();
     }
+    //Confirm a reward
     private void OnMouseDown() {
         if(gameObject.tag == "Event")
             eventEngine.ShowNewArtifact(false);

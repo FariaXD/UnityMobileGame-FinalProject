@@ -8,11 +8,11 @@ public abstract class Character
     public float maxHealth; //Max health of char
     public float currentHealth; //Current health of char
     public float shield; //Current shield of char
-    public float maxShield;
+    public float maxShield; //max shield of char
     public RuntimeAnimatorController anim; //Animation controller
     public bool diceased = false; //If character is dead
     public AttackIcon icons; //Icons
-    public bool damageTaken = false; 
+    public bool damageTaken = false; //if has received damage
 
     public List<StatusEffect> debuffs = new List<StatusEffect>(); //List containing all the status affecting the character
 
@@ -99,15 +99,15 @@ public abstract class Character
         }
         return true;
     }
-
+    //Clears all status effects
     public void ClearStatus(){
         debuffs.Clear();
     }
 
-    //New Stage clears debuffs
-    public void NewStage(){
+    //New Stage clears debuffs/* 
+    /* public void NewStage(){
         debuffs.Clear();
         float newHealth = currentHealth + maxHealth * 0.25f;
         currentHealth = (newHealth > maxHealth) ? maxHealth : newHealth;
-    }
+    } */
 }

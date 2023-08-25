@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 public class EventEngine : MonoBehaviour {
-    public List<int> listOfUsedEvents = new List<int>();
-    public List<OptionEngine> optionEngines = new List<OptionEngine>();
-    public int checkedOption = 0;
-    public StageEvent sEvent;
-    public TextMeshProUGUI prompt;
-    public bool active = false;
-    public RewardEngine rewardEngine;
-    public GameEngine gameEngine;
-    public GameObject newArtifactScreen;
+    /*
+    Runtime class
+    Responsible for controlling the event stage
+    */
+    public List<int> listOfUsedEvents = new List<int>(); //list of used events
+    public List<OptionEngine> optionEngines = new List<OptionEngine>(); //option buttons
+    public int checkedOption = 0; //selected option
+    public StageEvent sEvent; //associated event
+    public TextMeshProUGUI prompt; //prompt text field
+    public bool active = false; //active state
+    public RewardEngine rewardEngine; //reward engine
+    public GameEngine gameEngine; //main game engine
+    public GameObject newArtifactScreen; // object that displays a reward
 
     private void Start() {
         rewardEngine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<RewardEngine>();
@@ -53,13 +57,14 @@ public class EventEngine : MonoBehaviour {
     public void StageSelector(){
         gameEngine.StageCompletedOrWorldEnded(true);
     }
+    //Show a popup that displays an artifact received
     public void ShowNewArtifact(bool state, Artifact artifact = default(Artifact))
     {
         newArtifactScreen.SetActive(state);
         if(state)
             newArtifactScreen.GetComponent<NewArtifactScreenEngine>().SetText(artifact);
     }
-
+    //Receives a new reward
     public void NewReward(EventReward reward)
     {
         rewardEngine.ReceiveReward(RewardEngine.GetRewardTypeByName(reward.item), reward.value);

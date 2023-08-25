@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class World
 {
-    public List<List<Stage>> levels = new List<List<Stage>>();
-    List<Event> events = new List<Event>();
-    public Stage bossStage;
-    public string name;
-    public Dictionary<Stage.StageType, float> stageProb = new Dictionary<Stage.StageType, float>();
-    private const float eliteProb = 25f;
-    private const float spawnStageProb = 50f;
-    private Dictionary<Stage.StageType, float> stageChance = new Dictionary<Stage.StageType, float>(); 
-
+    /*
+    Class that holds all the information about a world including events and stages
+    Each level has 1-3 stages
+    */
+    public List<List<Stage>> levels = new List<List<Stage>>(); //list of stages
+    List<Event> events = new List<Event>(); //list of events
+    public Stage bossStage; //final stage
+    public string name; //world name
+    public Dictionary<Stage.StageType, float> stageProb = new Dictionary<Stage.StageType, float>(); //stage probabilities
+    private const float eliteProb = 25f; // chance of spawning an elite difficulty stage
+    private const float spawnStageProb = 50f; // chance of spawning a stage
 
     public World(string _name, float[] _array){
         this.name = _name;
-        stageProb.Add(Stage.StageType.COMBAT, 80f);
-        stageProb.Add(Stage.StageType.EVENT, 20f);
-        events = StageEventInitializer.InitializeEvent(name);
-        stageChance.Add(Stage.StageType.COMBAT, 80f);
-        stageChance.Add(Stage.StageType.EVENT, 20f);
+        stageProb.Add(Stage.StageType.COMBAT, 80f); //adds the chance of a combat stage
+        stageProb.Add(Stage.StageType.EVENT, 20f); //adds the change of an event stage
+        events = StageEventInitializer.InitializeEvent(name); //initialize events
         GenerateLevels(_array);
     }
-
+    //Feel levels with empty stages
     private void GenerateList(float[] size){
         for(int i = 0; i < size[0]; i++){
             List<Stage> newLevel = new List<Stage>();
@@ -33,6 +33,7 @@ public class World
             levels.Add(newLevel);
         }
     }
+    //Generate all the levels of a world given the initialized probabilities
     private void GenerateLevels(float[] size){
         GenerateList(size);
         int levelCount = 0;
@@ -54,7 +55,7 @@ public class World
         }
         bossStage = new StageCombat(levelCount, StageCombat.CombatType.BOSS, name);
     }
-
+    //Return a new generated stage
     public Stage GenerateStages(int level){
         float stageType = Random.Range(0f, 100f);
         if(stageType <= stageProb[Stage.StageType.EVENT] && events.Count > 0){

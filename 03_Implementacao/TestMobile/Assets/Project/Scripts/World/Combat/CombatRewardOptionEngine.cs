@@ -3,22 +3,26 @@ using TMPro;
 using System;
 
 public class CombatRewardOptionEngine : MonoBehaviour {
-    public RewardEngine.RewardType type;
-    public SpriteRenderer rewardSprite;
-    public SpriteRenderer targeted;
-    public TextMeshProUGUI title;
-    public TextMeshProUGUI desc;
-    public TextMeshProUGUI typeReward;
-    public int index;
-    public CombatEngine combatEngine;
-    public Artifact artifact;
-    public float heal;
-    public float platinum;
+    /*
+    Runtime class
+    Responsible for being an option in the select screen and getting assigned a reward
+    */
+    public RewardEngine.RewardType type; //reward type
+    public SpriteRenderer rewardSprite; //reward image
+    public SpriteRenderer targeted; //reward selected target
+    public TextMeshProUGUI title; //title field
+    public TextMeshProUGUI desc; //desc field
+    public TextMeshProUGUI typeReward; //type field
+    public int index; //index of option
+    public CombatEngine combatEngine; //combat engine responsible for managing this
+    public Artifact artifact; //assigned artifact can be null
+    public float heal; //assigned heal value
+    public float platinum; //assigned platinum value
     private CombatRewardEngine cRewardEngine;
     private void Start() {
         cRewardEngine = GameObject.FindGameObjectWithTag("CombatRewardEngine").GetComponent<CombatRewardEngine>();
     }
-
+    //Set reward to option
     public void SetReward<T>(T reward, RewardEngine.RewardType type)
     {
         this.type = type;
@@ -59,11 +63,11 @@ public class CombatRewardOptionEngine : MonoBehaviour {
                 break;
         }
     }
-
+    //Set this option has selected
     public void SetSelected(bool state){
         targeted.enabled = state;
     }
-
+    //Select this option
     private void OnMouseDown() {
         cRewardEngine.SelectReward(index);
     }

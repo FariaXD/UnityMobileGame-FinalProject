@@ -10,6 +10,7 @@ public class EndRunButton : MonoBehaviour
         uIEngine = GameObject.FindGameObjectWithTag("UIEngine").GetComponent<UIEngine>();
 
     }
+    //Button to end the current adventure and return to main screen
     private void OnMouseDown()
     {
         uIEngine.SwitchScreen(UIEngine.Screen.MAINSCREEN);

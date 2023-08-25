@@ -5,16 +5,17 @@ using UnityEngine;
 public class Artifact
 {
     /*
-    Artifact data class that holds all the methods needed to create
-    to succesfully generate and run an artifact
+    Artifact data class that holds all the methods needed to
+    succesfully generate and run an artifact
     */
-    public string name;
-    public string description;
-    public string method;
-    public string activated;
-    public string sprite;
-    public ArtifactRarity rarity;
+    public string name; //artifact name
+    public string description; //artifact description
+    public string method; //artifact method name to execute
+    public string activated; //artifact activate condition
+    public string sprite; //sprite
+    public ArtifactRarity rarity; //artifact rarity
 
+    //Activation conditions
     public enum ArtifactActivation{
         START_STAGE,
         START_TURN,
@@ -30,20 +31,18 @@ public class Artifact
         EPIC,
         LEGENDARY
     }
+    //Artifact rarity colors
     public static List<Color> artColors = new List<Color>(){
         new Color(173/255f,173/255f,173/255f),
         new Color(47/255f,181/255f,250/255f),
         new Color(255/255f,69/255f,171/255f),
         new Color(255/255f,125/255f,23/255f)
-        };
-
+    };
+    //Load the sprite object via string 
     public Sprite GetSpriteViaString(){
         return Resources.Load<Sprite>(sprite);
     }
-    /*<summary> 
-    Receive rarity via string 
-    </summary>*/
-
+    //Receive rarity via string 
     public static ArtifactRarity GetRarityByName(string rarity){
         switch(rarity){
             case "common":
@@ -92,7 +91,7 @@ public class Artifact
         }
         return ArtifactActivation.START_STAGE;
     }
-
+    //Get the color via the rarity
     public static Color GetColorViaRarity(ArtifactRarity rarity){
         return artColors[(int)rarity];
     }

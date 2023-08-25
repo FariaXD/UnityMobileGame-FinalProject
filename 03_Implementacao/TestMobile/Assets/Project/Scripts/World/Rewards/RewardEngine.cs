@@ -6,16 +6,17 @@ public class RewardEngine : MonoBehaviour
 {
     /*
     *Runtime class
-    Delivers rewards to player
+        Delivers rewards to player
+        Responsible for creating new rewards
     */
     private GameEngine gameEngine;
     private ArtifactEngine artifactEngine;
-    private float platinumChance = 20f;
-    private float healChance = 30f;
-    private int[] platinumRewards = new int[]{20,40};
-    private int[] healRewards = new int[] { 10, 60 };
+    private float platinumChance = 20f; //platinum chance
+    private float healChance = 30f; //heal chance
+    private int[] platinumRewards = new int[]{20,40}; //reward range
+    private int[] healRewards = new int[] { 10, 60 }; //reward range
 
-    private Dictionary<StageCombat.CombatType, float[]> artifactChances = new Dictionary<StageCombat.CombatType, float[]>();
+    private Dictionary<StageCombat.CombatType, float[]> artifactChances = new Dictionary<StageCombat.CombatType, float[]>(); //Artifact rarity chances
 
     public enum RewardType{
         Gold,
@@ -32,7 +33,7 @@ public class RewardEngine : MonoBehaviour
         artifactChances.Add(StageCombat.CombatType.ELITE, new float[] { 25f, 80f, 95f, 100f });
         artifactChances.Add(StageCombat.CombatType.BOSS, new float[] { 0f, 0f, 60f, 100f });
     }
-
+    //Player receives the chosen reward
     public void ReceiveRewardChoiceCombatSetReward(StageCombat stage){
         int index = 0;
         List<RewardType> rewards = GetNumberOfRewards(3);
@@ -51,7 +52,7 @@ public class RewardEngine : MonoBehaviour
             index++;
         }
     }
-
+    //Get a new artifact depending on the diff of the stage
     private Artifact GetArtifactViaStage(StageCombat.CombatType diff){
         float r = Random.Range(0f, 100f);
         Artifact.ArtifactRarity rarity = Artifact.ArtifactRarity.COMMON;
@@ -65,7 +66,7 @@ public class RewardEngine : MonoBehaviour
             rarity = Artifact.ArtifactRarity.LEGENDARY;
         return artifactEngine.RequestNewArtifact(rarity);
     }
-
+    //Get a number of rewards
     private List<RewardType> GetNumberOfRewards(int numb){
         List<RewardType> rewards = new List<RewardType>();
         bool plat = false;
@@ -86,7 +87,7 @@ public class RewardEngine : MonoBehaviour
         } 
         return rewards;
     }
-
+    //Player receives reward
     public void ReceiveReward(RewardType type, string ammount){
         switch(type) {
             case RewardType.Gold:
@@ -106,6 +107,7 @@ public class RewardEngine : MonoBehaviour
                 break;
         }
     }
+    //Activate reward if its currency or heal
     public void ReceiveReward(RewardType type, float ammount) {
         switch (type)
         {
@@ -117,11 +119,11 @@ public class RewardEngine : MonoBehaviour
                 break;
         }
     }
-
+    //Receive a new artifact reward
     public void ReceiveReward(Artifact art){
         gameEngine.combatEngine.AddArtifact(art);
     }
-
+    //Get reward by name
     public static RewardType GetRewardTypeByName(string name){
         switch(name){
             case "gold":

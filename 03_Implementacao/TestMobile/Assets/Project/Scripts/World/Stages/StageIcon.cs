@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class StageIcon : MonoBehaviour {
-    
+    //Database type class that holds all icons needed in the stage selector menu
     public Sprite normalEncounter, normalEncounterDone;
     public Sprite eliteEncounter, eliteEncounterDone;
     public Sprite bossEncounter, bossEncounterDone;

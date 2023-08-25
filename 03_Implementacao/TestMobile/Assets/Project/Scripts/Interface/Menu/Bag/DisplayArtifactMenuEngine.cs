@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using TMPro;
 public class DisplayArtifactMenuEngine : MonoBehaviour {
+    /*
+    Runtime class responsible for displaying a detailed artifact
+    */
     public ArtifactCountPair artifact;
     public TextMeshProUGUI nameArt, desc, count;
     public SpriteRenderer artImg;
-
+    //If there are no artifacts it displays a message indicating that there are no artifacts
     public void SetArtifact(ArtifactCountPair artifact) {
         if(artifact != null){
             nameArt.text = artifact.Artifact.name;

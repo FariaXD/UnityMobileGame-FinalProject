@@ -6,6 +6,6 @@ public class StageMerchant : Stage
 {
     public StageMerchant(int _pathNumber) : base(_pathNumber, StageType.MERCHANT)
     {
-
+        //TODO - class that contains a shop
     }
 }

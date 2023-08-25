@@ -25,6 +25,7 @@ public class Team {
         RestartHeroes();
     }
 
+    //Adds new artifact
     public void AddArtifact(Artifact artifact){
         inventory.AddArtifact(artifact);
     }
@@ -53,7 +54,7 @@ public class Team {
                 return false;
         return true;
     }
-
+    //Shows/Hides targeting arrow for each non diceased hero
     public void TargetingAllAllies(bool state, bool force = default(bool))
     {
         foreach (HeroEngine hero in teamGO)
@@ -68,7 +69,7 @@ public class Team {
             }
         }
     }
-
+    //Restars heroes decks and stats
     public void RestartHeroes(){
         List<Hero> heroList = HeroInitializer.InitializeHeroes();
         for(int i = 0; i < heroList.Count; i++){
@@ -82,7 +83,7 @@ public class Team {
             en.hero.hand.DrawCard();
         }
     }
-
+    //Heals each hero for a received percentage and updates graphics
     public void HealHeroesPercentage(float healPercentage)
     {
         foreach (HeroEngine en in teamGO)
@@ -95,6 +96,7 @@ public class Team {
             en.hero.diceased = false;
         }
     }
+    //Shields each hero based on the ammount received
     public void ShieldHeroesAmmount(float ammount){
         foreach (HeroEngine en in teamGO)
         {
@@ -103,7 +105,7 @@ public class Team {
             }
         }
     }
-
+    //Resets heroes shields
     public void ResetShieldCharacters(){
         teamGO.ForEach(hero => hero.hero.shield = hero.hero.maxShield);
     }
@@ -112,13 +114,13 @@ public class Team {
         foreach(HeroEngine en in teamGO)
             en.hero.ReduceStatusEffectDurations();
     }
-
+    //Runs an End Turn status effect if exists and hero not diceased
     public void StatusEffectEndTurn(){
         foreach(HeroEngine en in teamGO)
             if(!en.hero.diceased)
                 en.hero.CheckActionForStatus(Character.Character_Action.END_TURN);
     }
-
+    //Get all Hero objects
     public List<Hero> GetHeroObjects(){
         List<Hero> result = new List<Hero>();
         teamGO.ForEach(x => result.Add(x.hero));

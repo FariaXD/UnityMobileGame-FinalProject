@@ -17,7 +17,6 @@ public class OptionEngine : MonoBehaviour {
     private void Start() {
         engine = GameObject.FindGameObjectWithTag("EventEngine").GetComponent<EventEngine>();
     }
-
     public void SetOption(EventOption option){
         selected.sprite = selectedTarget;
         this.option = option;

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class Stage
 {
+    /*
+    Abstract class holding the common methods beetween stages
+    */
     public int pathNumber;
     public enum StageType {
         COMBAT,

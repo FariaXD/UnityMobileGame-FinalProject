@@ -7,7 +7,9 @@ public class EnemyEngine : CharacterEngine {
     /*
         *Runtime Class
         In the game there can be three enemies at the same time
-        This class loads the enemies dynamically based on the name received from the game engine
+        This class loads one enemy dynamically received from the combatEngine
+        Its responsible for executing every function of the enemy including
+        attacks, statusupdates, loading/unloading
     */
 
     public string enemyName = "Enemy"; //Enemy name
@@ -26,7 +28,7 @@ public class EnemyEngine : CharacterEngine {
         UpdateStatusEnemy(); //Updates status in each frame
     }
 
-    //Sets new enemy
+    //Sets new enemy, loading the objects and updating graphics
     public void SetNewEnemy(Enemy _enemy){
         this.enemy = _enemy;
         anim.runtimeAnimatorController = _enemy.anim;
@@ -35,27 +37,29 @@ public class EnemyEngine : CharacterEngine {
         UpdateStatus();
     }
 
-    //Unloads current enemy
+    //Unloads current enemy, hiding the graphics
     public void UnLoadEnemy(){
         this.enemy = null;
         anim.runtimeAnimatorController = null;
         SetEnemyUI(false);
     }
 
+    //Runs the enemy action machine
     public void RunEnemyMachine(){
         if(enemy != null && !enemy.diceased)
             enemy.enemyActionMachine.RunEnemyMachine();
     }
-
+    //Set attack animation
     public void AttackAnimation(){
         anim.SetTrigger("Attack");
     }
-
+    //Reduces all status effects duration
     public void ReduceStatusEffectDurations(){
         if(enemy != null)
             enemy.ReduceStatusEffectDurations();
     }
 
+    //Sets the enemy graphics
     public void SetEnemyUI(bool status){
         healthImage.enabled = status;
         healthText.enabled = status;
@@ -69,6 +73,7 @@ public class EnemyEngine : CharacterEngine {
         this.GetComponent<BoxCollider2D>().enabled = status;
     }
 
+    //Prepares next attack graphics, updating the icon and damage/defense ammount
     public void SetNewPreparedAttack(Card preparedAttack){
         switch(preparedAttack.type){
             case Card.Action_Type.Damage:
@@ -98,27 +103,27 @@ public class EnemyEngine : CharacterEngine {
         }
     }
 
+    //Loads the new atack graphics
     public void SwitchAttackUI(float ammount, Sprite icon){
         attackInfo.text = ammount.ToString();
         attackIcon.sprite = icon;
     }
 
-    // TODO pretty it
+    //Update enemy graphics or disable colliders if diceased
     public void UpdateStatusEnemy(){
         if(enemy != null){
             UpdateStatus();
             if (enemy.currentHealth <= 0)
-            {
                 this.GetComponent<BoxCollider2D>().enabled = false;
-            }
+            
         }
     }
-
+    //Check for end of turn status effects and execute them
     public void StatusEffectEndTurn(){
         if (enemy != null && !enemy.diceased)
             enemy.CheckActionForStatus(Character.Character_Action.END_TURN);
     }
-
+    //Returns the associated character
     public override Character ReturnAssociatedCharacter()
     {
         return enemy;
