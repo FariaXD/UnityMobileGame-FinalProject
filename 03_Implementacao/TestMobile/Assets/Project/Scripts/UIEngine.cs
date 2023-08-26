@@ -14,6 +14,8 @@ public class UIEngine : MonoBehaviour
     private CameraRepository cameras; //all cameras
     public List<TextMeshProUGUI> levelCount = new List<TextMeshProUGUI>(); //list of level text fields
     public MenuEngine menuEngine; //Engine responsible for the menu
+    public Animator mainScreenAnimator; //
+    private float mainAnimSpeed;
 
     public enum Screen{
         MAINSCREEN,
@@ -27,6 +29,7 @@ public class UIEngine : MonoBehaviour
         gameEngine = GameObject.FindGameObjectWithTag("GameEngine").GetComponent<GameEngine>();
         menuEngine = GameObject.FindGameObjectWithTag("MenuEngine").GetComponent<MenuEngine>();
         cameras = GetComponent<CameraRepository>();
+        mainAnimSpeed = mainScreenAnimator.speed;
     }
     //If player forces an end to his run
     public void PlayerEndedRun(){
@@ -42,10 +45,12 @@ public class UIEngine : MonoBehaviour
         cameras.DeactiveAllCameras();
         switch(_screen){
             case Screen.MAINSCREEN:
+                mainScreenAnimator.speed = mainAnimSpeed;
                 cameras.mainScreen.enabled = true;
                 menuEngine.selectedMenu = MenuEngine.MENUTYPE.MAP;
                 break;
             case Screen.STAGESELECTOR:
+                mainScreenAnimator.speed = 0;
                 cameras.stageSelector.enabled = true;
                 menuEngine.selectedMenu = MenuEngine.MENUTYPE.MAP;
                 menuEngine.OpenClose(MenuEngine.MENUACTION.OPEN, MenuEngine.PLAYERSTAGE.OFF);

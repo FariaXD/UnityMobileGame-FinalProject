@@ -50,7 +50,7 @@ public class Team {
     //Check if all heroes are dead 
     public bool GameEnded(){
         foreach(HeroEngine en in teamGO)
-            if(!en.hero.diceased)
+            if(!en.hero.diceased || en.hero.currentHealth > 0)
                 return false;
         return true;
     }

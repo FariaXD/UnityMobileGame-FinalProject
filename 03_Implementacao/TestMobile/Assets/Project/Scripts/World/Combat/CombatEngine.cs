@@ -112,13 +112,18 @@ public class CombatEngine : MonoBehaviour {
                     en.StatusEffectEndTurn();
                     en.ReduceStatusEffectDurations(); //Decrease status turn for enemies
                 }
-                engine.artifactEngine.RunArtifacts(Artifact.ArtifactActivation.START_TURN);
-                active = Turn.PLAYER;
-                team.RefreshMana(); //Refresh mana
-                DrawCard(); //Draw card for each hero
-                turnCount++; //increase turn
-                if (turnCount % 5 == 0) //check if diff increase
-                    difficultyModifier += 0.25f;
+                if(CountDiceasedEnemies() != enemyCount){
+                    engine.artifactEngine.RunArtifacts(Artifact.ArtifactActivation.START_TURN);
+                    active = Turn.PLAYER;
+                    team.RefreshMana(); //Refresh mana
+                    DrawCard(); //Draw card for each hero
+                    turnCount++; //increase turn
+                    if (turnCount % 5 == 0) //check if diff increase
+                        difficultyModifier += 0.25f;
+                }
+                else{
+                    cRewardEngine.Show(true);
+                }
             }
         }
     }
@@ -289,7 +294,7 @@ public class CombatEngine : MonoBehaviour {
         int count = 0;
         foreach (EnemyEngine enemyEn in enemies)
         {
-            if (enemyEn.enemy != null && enemyEn.enemy.diceased)
+            if (enemyEn.enemy != null && (enemyEn.enemy.diceased || enemyEn.enemy.currentHealth <= 0))
                 count++;
         }
         return count;
