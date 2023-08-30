@@ -26,8 +26,6 @@ public class ArtifactEngine : MonoBehaviour {
             if(art.name == given.name)
                 found = true; */
         givenArtifacts.Add(art);
-        if(art.GetArtifactActivation() == Artifact.ArtifactActivation.PASSIVE)
-            RunArtifact(art); //If its a passive effect runs the artifact function
         return art;
         //}
         //return newArtifacts[0];

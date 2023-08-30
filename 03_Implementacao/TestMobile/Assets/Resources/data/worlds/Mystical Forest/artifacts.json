@@ -2,37 +2,37 @@
     "common":{
       "magicalstick":{
           "name":"Magical Stick",
-          "description":"A stick so magical that gives each character a starting 5 shield.",
+          "description":"Shields the party for 5 at the beginning of stage.",
           "method":"MagicStick",
           "activated": "StartStage",
           "sprite": "sprites/artifacts/Magic_Stick"
       }
     },
     "rare":{
-      "magicalstick": {
-        "name": "Magical Stick",
-        "description": "A stick so magical that gives each character a starting 5 shield.",
-        "method": "MagicStick",
-        "activated": "StartStage",
-        "sprite": "sprites/artifacts/Magic_Stick"
+      "emeraldamulet": {
+        "name": "Emerald Amulet",
+        "description": "Heals each hero for 5 at the end of the turn.",
+        "method": "EmeraldAmulet",
+        "activated": "EndTurn",
+        "sprite": "sprites/artifacts/Emerald_Amulet"
       }
     },
     "epic":{
       "magicalstick": {
-        "name": "Magical Stick",
-        "description": "A stick so magical that gives each character a starting 5 shield.",
-        "method": "MagicStick",
-        "activated": "StartStage",
-        "sprite": "sprites/artifacts/Magic_Stick"
+        "name": "Corrupted Ring",
+        "description": "Status cards deal 20% more damage.",
+        "method": "CorruptedRing",
+        "activated": "Passive",
+        "sprite": "sprites/artifacts/Corrupted_Ring"
       }
     },
     "legendary":{
-      "magicalstick": {
-        "name": "Magical Stick",
-        "description": "A stick so magical that gives each character a starting 5 shield.",
-        "method": "MagicStick",
+      "divineseed": {
+        "name": "Divine Seed",
+        "description": "In the first turn the party has double the mana.",
+        "method": "DivineSeed",
         "activated": "StartStage",
-        "sprite": "sprites/artifacts/Magic_Stick"
+        "sprite": "sprites/artifacts/Divine_Seed"
       }
     }
 }

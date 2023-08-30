@@ -26,5 +26,20 @@ public class ArtifactPowersEngine : MonoBehaviour{
         int shield = 5;
         artEngine.gameEngine.combatEngine.team.ShieldHeroesAmmount(shield);
     }
-    
+
+    public void EmeraldAmulet(){
+        int heal = 5;
+        artEngine.gameEngine.combatEngine.team.HealHeroes(heal);
+
+    }
+
+    public void CorruptedRing(){
+        Debug.Log("?");
+        artEngine.gameEngine.combatEngine.partyStats.cardStatusMultipler += 0.2f;
+    }
+
+    public void DivineSeed(){
+        artEngine.gameEngine.combatEngine.team.currentMana *= 2;
+    }
+
 }

@@ -19,7 +19,7 @@ public class CardSpecial : Card
         this.defense = _defense;
     }
 
-    public override void UseCardOnTarget(Character target)
+    public override void UseCardOnTarget(Character target, PartyStats ps)
     {
         
     }

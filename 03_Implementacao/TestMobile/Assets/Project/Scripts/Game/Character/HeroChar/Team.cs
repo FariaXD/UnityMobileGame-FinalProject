@@ -31,8 +31,8 @@ public class Team {
     }
 
     //Sets mana back to max
-    public void RefreshMana(){
-        currentMana = startingMana;
+    public void RefreshMana(float manaIncrease){
+        currentMana = startingMana + manaIncrease;
     }
 
     //Return random alive hero
@@ -81,6 +81,13 @@ public class Team {
     public void DrawCardForEachHero(){
         foreach(HeroEngine en in teamGO){
             en.hero.hand.DrawCard();
+        }
+    }
+    public void HealHeroes(float ammount){
+        foreach(HeroEngine en in teamGO){
+            if(!en.hero.diceased){
+                en.hero.currentHealth = ((en.hero.currentHealth + ammount) > en.hero.maxHealth) ? en.hero.maxHealth : en.hero.currentHealth + ammount;
+            }
         }
     }
     //Heals each hero for a received percentage and updates graphics

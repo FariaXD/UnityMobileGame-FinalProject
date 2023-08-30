@@ -10,15 +10,15 @@ public class DisplayCardMenuEngine : MonoBehaviour {
     public SpriteRenderer cardType, cardCharacter, cardImage, heroIcon;
 
     public void SetCard(Hero hero, CardCountPair cardAndCount) {
-        this.card = cardAndCount.Card;
+        card = cardAndCount.Card;
         manaCostField.text = card.manaCost.ToString();
-        cardDamageField.text = Card.GetAmmountDynamically(card).ToString();
-        cardDescField.text = Card.GetCardDescriptionDynamically(card);
+        cardDamageField.text = card.GetAmmountDynamically().ToString();
+        cardDescField.text = card.GetCardDescriptionDynamically();
         heroNameField.text = hero.name;
-        descriptionField.text = Card.GetCardDescriptionDynamically(card);
+        descriptionField.text = card.GetCardDescriptionDynamically();
         countInDeckField.text = cardAndCount.Count.ToString() + " in Deck";
         typeField.text = card.type.ToString();
-        cardType.sprite = card.cardTypeIcon;
+        cardType.sprite = Card.LoadCardTypeDynamically(card);
         cardCharacter.sprite = hero.cardTemplate;
         cardImage.sprite = card.cardImage;
         heroIcon.sprite = hero.heroToken;

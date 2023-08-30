@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public abstract class Card{
@@ -13,6 +14,7 @@ public abstract class Card{
     public Action_Type type; //Type of card
     public int id; //ID of card
     public Sprite cardImage, cardTypeIcon; //Image of card
+    public PartyStats ps;
 
     //Type of each card
     public enum Action_Type
@@ -33,17 +35,21 @@ public abstract class Card{
         cardTypeIcon = LoadCardTypeDynamically(this);
     }
 
+    public void InitializeStats(PartyStats ps){
+        this.ps = ps; 
+    }
+
     //Returns the card description
-    public static string GetCardDescriptionDynamically(Card c){
-        switch(c.type){
+    public string GetCardDescriptionDynamically(){
+        switch(type){
             case Action_Type.Damage:
-                CardDamage dmg = (CardDamage) c;
+                CardDamage dmg = (CardDamage) this;
                 return "Deals " + dmg.baseDamage + " points of damage";
             case Action_Type.Status:
-                CardStatus stt = (CardStatus) c;
+                CardStatus stt = (CardStatus)this;
                 return "Deals " + stt.baseDamage + " points of damage and applies " + stt.effect;
             case Action_Type.Defense:
-                CardDefense def = (CardDefense)c;
+                CardDefense def = (CardDefense)this;
                 if(def.defType == CardDefense.Defense_Type.Healing)
                     return "Heals for " + def.baseAmmount + " points";
                 else
@@ -68,24 +74,24 @@ public abstract class Card{
             }
             return null;
     }
-    //Get ammount of damage/defense a card gives
-    public static int GetAmmountDynamically(Card c){
-        switch (c.type)
+    //Get ammount of damage/defense a card gives 
+    public int GetAmmountDynamically(){
+        switch (type)
         {
             case Action_Type.Damage:
-                CardDamage dmg = (CardDamage)c;
-                return Mathf.RoundToInt(dmg.baseDamage);
+                CardDamage dmg = (CardDamage) this;
+                return Mathf.RoundToInt(dmg.currentDamage * ps.cardDamageMultipler);
             case Action_Type.Status:
-                CardStatus stt = (CardStatus)c;
-                return Mathf.RoundToInt(stt.baseDamage);
+                CardStatus stt = (CardStatus) this;
+                return Mathf.RoundToInt(stt.currentDamage * ps.cardStatusMultipler);
             case Action_Type.Defense:
-                CardDefense def = (CardDefense)c;
-                return Mathf.RoundToInt(def.baseAmmount);
+                CardDefense def = (CardDefense) this;
+                return Mathf.RoundToInt(def.currentAmmount * ps.cardDefenseMultipler);
         }
         return 0;
     }
     //Abstract method - card effect to be implemented by different types
-    public abstract void UseCardOnTarget(Character target);
+    public abstract void UseCardOnTarget(Character target, PartyStats ps);
 
 }
     

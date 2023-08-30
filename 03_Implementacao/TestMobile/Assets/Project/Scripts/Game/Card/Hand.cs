@@ -19,8 +19,8 @@ public class Hand
     }
 
     //Uses card on target and shuffles it to deck
-    public void UseCard(Card c, Character target){
-        c.UseCardOnTarget(target); //Use on target
+    public void UseCard(Card c, Character target, PartyStats ps){
+        c.UseCardOnTarget(target, ps); //Use on target
         hand.Remove(c); //Removes from hand
         deck.ShuffleCard(c); //Adds to deck
     }

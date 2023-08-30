@@ -23,7 +23,7 @@ public class CardDamage : Card
         this.baseDamage = _damage;
     }
     //Deal damage to target
-    public override void UseCardOnTarget(Character target){
-        target.TakeDamage(currentDamage);
+    public override void UseCardOnTarget(Character target, PartyStats ps){
+        target.TakeDamage(Mathf.RoundToInt(currentDamage * ps.cardDamageMultipler));
     }
 }

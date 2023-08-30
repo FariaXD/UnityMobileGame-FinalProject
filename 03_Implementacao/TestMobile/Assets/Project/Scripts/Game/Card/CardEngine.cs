@@ -62,8 +62,8 @@ public class CardEngine : MonoBehaviour {
         {
             SetCardVisible(true);
             cardMana.text = card.manaCost.ToString();
-            cardText.text = Card.GetCardDescriptionDynamically(card);
-            cardAmmount.text = Card.GetAmmountDynamically(card).ToString();
+            cardText.text = card.GetCardDescriptionDynamically();
+            cardAmmount.text = card.GetAmmountDynamically().ToString();
         }
         
     }

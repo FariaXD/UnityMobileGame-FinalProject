@@ -31,10 +31,11 @@ public class CardStatus : Card
         this.baseDamage = _damage;
     }
     //Use card on target
-    public override void UseCardOnTarget(Character target)
+    public override void UseCardOnTarget(Character target, PartyStats ps)
     {
-        StatusEffect newEffect = new StatusEffect(effect, currentDamage, duration);
+        Debug.Log(currentDamage + " " + ps.cardStatusMultipler.ToString());
+        StatusEffect newEffect = new StatusEffect(effect, currentDamage * ps.cardStatusMultipler, duration + ps.statusDurationIncrease);
         target.GetStatus(newEffect);
-        target.TakeDamage(currentDamage);
+        target.TakeDamage(Mathf.RoundToInt(currentDamage * ps.cardStatusMultipler));
     }
 }

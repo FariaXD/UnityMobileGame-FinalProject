@@ -30,6 +30,7 @@ public class HeroEngine : CharacterEngine {
     //Get Deck from JSON, and Draw 3 card
     public void InitializeDeck(){
         hero.deck.deck = DeckInitializer.InitializeDeck(hero.name);//DeckInitializer.InitializeDeck(heroName);
+        hero.deck.deck.ForEach(c => c.InitializeStats(engine.partyStats));
         hero.hand.hand.Clear();
         hero.deck.ShuffleDeck();
         for(int i = 0; i < Hand.NUM_STARTING_CARDS;i++)

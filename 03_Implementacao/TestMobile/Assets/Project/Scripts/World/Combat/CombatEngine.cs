@@ -13,6 +13,7 @@ public class CombatEngine : MonoBehaviour {
     public RewardEngine rewardEngine; //reward engine
     private float stageCompleteHeal = 0.1f; //stage heal percentage
     public CombatRewardEngine cRewardEngine; //combat reward engine
+    public PartyStats partyStats = new PartyStats();             
     public enum Turn
     {
         PLAYER,
@@ -51,7 +52,7 @@ public class CombatEngine : MonoBehaviour {
     //Restart values for a new stage
     private void RestartValues()
     {
-        team.RefreshMana();
+        team.RefreshMana(partyStats.manaIncrease);
         team.teamGO.ForEach(heroGO => heroGO.InitializeDeck()); //Initialize heroes deck
         engine.uiEngine.menuEngine.Initialize();
         SwitchActiveCharacter(team.selectedHero); //switch active character and update UI
@@ -71,6 +72,7 @@ public class CombatEngine : MonoBehaviour {
     //Reset characters stats and bags
     public void ResetCharacters(){
         team.inventory.artifacts.Clear();
+        partyStats = new PartyStats();
         team.HealHeroesPercentage(100f);
         team.ResetShieldCharacters();
         team.teamGO.ForEach(hero => hero.hero.ClearStatus());
@@ -78,6 +80,8 @@ public class CombatEngine : MonoBehaviour {
     //Adds a new artifact while updating menus
     public void AddArtifact(Artifact artifact){
         team.AddArtifact(artifact);
+        if (artifact.GetArtifactActivation() == Artifact.ArtifactActivation.PASSIVE)
+            engine.artifactEngine.RunArtifact(artifact); //If its a passive effect runs the artifact function
         engine.uiEngine.menuEngine.UpdateBag(team.inventory.artifacts);
         engine.uiEngine.menuEngine.IncrementStat(MenuOptionsEngine.STATS.ARTIFACTS_COUNT);
     }
@@ -115,7 +119,7 @@ public class CombatEngine : MonoBehaviour {
                 if(CountDiceasedEnemies() != enemyCount){
                     engine.artifactEngine.RunArtifacts(Artifact.ArtifactActivation.START_TURN);
                     active = Turn.PLAYER;
-                    team.RefreshMana(); //Refresh mana
+                    team.RefreshMana(partyStats.manaIncrease); //Refresh mana
                     DrawCard(); //Draw card for each hero
                     turnCount++; //increase turn
                     if (turnCount % 5 == 0) //check if diff increase
@@ -259,14 +263,14 @@ public class CombatEngine : MonoBehaviour {
             foreach (HeroEngine hero in team.teamGO)
             {
                 if (!hero.hero.diceased){
-                    team.selectedHero.hero.hand.UseCard(_card, hero.hero);
+                    team.selectedHero.hero.hand.UseCard(_card, hero.hero, partyStats);
                     hero.UpdateStatus();
                 }
             }
         else
             foreach (EnemyEngine enemy in enemies){
                 if (enemy.enemy != null && !enemy.enemy.diceased){
-                    team.selectedHero.hero.hand.UseCard(_card, enemy.enemy);
+                    team.selectedHero.hero.hand.UseCard(_card, enemy.enemy, partyStats);
                     enemy.UpdateStatus();
                 }
             }
@@ -278,7 +282,7 @@ public class CombatEngine : MonoBehaviour {
     */
     private void UseSingle(Card _card, CharacterEngine target)
     {
-        team.selectedHero.hero.hand.UseCard(_card, target.ReturnAssociatedCharacter());
+        team.selectedHero.hero.hand.UseCard(_card, target.ReturnAssociatedCharacter(), partyStats);
         target.UpdateStatus();
         CheckIfCardEndedGame();
     }

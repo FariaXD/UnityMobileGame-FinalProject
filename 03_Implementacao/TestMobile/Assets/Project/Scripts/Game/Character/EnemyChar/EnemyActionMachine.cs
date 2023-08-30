@@ -16,6 +16,7 @@ public class EnemyActionMachine
     private Enemy enemy; //Associated enemy
     private CombatEngine engine; //GameEngine reference
     private EnemyEngine enemyEngine; //Associated enemy's engine
+    private PartyStats enemyStats = new PartyStats();
 
     //Priority Options
     private enum PRIORITY_ACTION{
@@ -65,15 +66,15 @@ public class EnemyActionMachine
     private void UseAttack(){
         if(enemy.CheckActionForStatus(Character.Character_Action.USE_ATTACK)){
             if (!preparedAttack.area)
-                preparedAttack.UseCardOnTarget(ChooseCharacterToCast());
+                preparedAttack.UseCardOnTarget(ChooseCharacterToCast(), enemyStats);
             else
                 if (preparedAttack.type != Card.Action_Type.Defense)
                     foreach (HeroEngine hero in engine.team.teamGO)
-                        preparedAttack.UseCardOnTarget(hero.hero);
+                        preparedAttack.UseCardOnTarget(hero.hero, enemyStats);
                 else
                     foreach (EnemyEngine enemy in engine.enemies)
                         if (enemy.enemy != null && !enemy.enemy.diceased)
-                            preparedAttack.UseCardOnTarget(enemy.enemy);
+                            preparedAttack.UseCardOnTarget(enemy.enemy, enemyStats);
             enemyEngine.AttackAnimation();
         }
     }

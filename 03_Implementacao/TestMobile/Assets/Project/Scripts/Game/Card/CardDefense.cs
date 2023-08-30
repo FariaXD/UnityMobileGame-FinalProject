@@ -33,9 +33,9 @@ public class CardDefense : Card
         this.defType = _defType;
     }
     //Give defense to target
-    public override void UseCardOnTarget(Character target)
+    public override void UseCardOnTarget(Character target, PartyStats ps)
     {
-        target.GetDefense(currentAmmount, defType);
+        target.GetDefense(Mathf.RoundToInt(currentAmmount * ps.cardDefenseMultipler), defType);
     }
     //Get defense type via a string
     public static Defense_Type GetDefenseByName(string name)

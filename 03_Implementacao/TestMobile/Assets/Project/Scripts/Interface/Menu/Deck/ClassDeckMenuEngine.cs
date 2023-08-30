@@ -6,6 +6,7 @@ public class ClassDeckMenuEngine : MonoBehaviour {
     Runtime class responsible for controlling all the card slots
     */
     public Deck currentDeck; //Current deck to be displayed
+    public Hand currentHand;
     public List<CardMenuEngine> cardInventorySlots = new List<CardMenuEngine>(); //list of card slots
     private DisplayDeckMenuEngine displayDeckMenuEngine; //display detailed card engine
 
@@ -16,8 +17,9 @@ public class ClassDeckMenuEngine : MonoBehaviour {
             cardInventorySlots.Add(cardSlots[i].GetComponent<CardMenuEngine>()); //load card slots
     }
     //Set current deck and updated inventory
-    public CardCountPair SetCurrentDeck(Deck currentDeck){
+    public CardCountPair SetCurrentDeck(Deck currentDeck, Hand currentHand){
         this.currentDeck = currentDeck;
+        this.currentHand = currentHand;
         EmptyCardFrames();
         return UpdateInventory();
     }
@@ -32,13 +34,16 @@ public class ClassDeckMenuEngine : MonoBehaviour {
     //Update inventory creating a new dictionary with unique cards and there count in deck
     private CardCountPair UpdateInventory(){
         Dictionary<Card, int> uniqueCards = new Dictionary<Card, int>();
+        List<Card> allCards = new List<Card>();
+        allCards.AddRange(currentDeck.deck);
+        allCards.AddRange(currentHand.hand);
         List<string> cardNames = new List<string>();
         int indexI = 0;
-        foreach (Card cardi in currentDeck.deck)
+        foreach (Card cardi in allCards)
         {
             int indexJ = 0;
             int count = 1;
-            foreach (Card cardj in currentDeck.deck)
+            foreach (Card cardj in allCards)
             {
                 if(indexI != indexJ && cardi.cardName == cardj.cardName){
                     count++;

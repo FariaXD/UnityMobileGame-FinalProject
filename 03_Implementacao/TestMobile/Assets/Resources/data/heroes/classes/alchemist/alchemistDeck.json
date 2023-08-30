@@ -11,7 +11,7 @@
   },
   "2": {
     "id": 2,
-    "name": "Punch",
+    "name": "Puncha",
     "type": "CardStatus",
     "cost": 2,
     "area": true,

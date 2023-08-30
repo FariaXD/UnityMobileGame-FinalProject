@@ -18,7 +18,7 @@ public class DisplayDeckMenuEngine : MonoBehaviour {
     //Selects the hero received, updating the interface 
     public void SelectHero(Hero hero){
         selectedHero = hero;
-        CardCountPair defCard = menuDeckEngine.classDeckMenuEngine.SetCurrentDeck(selectedHero.deck);
+        CardCountPair defCard = menuDeckEngine.classDeckMenuEngine.SetCurrentDeck(selectedHero.deck, selectedHero.hand);
         displayCardMenuEngine.SetCard(hero, defCard);
         int i = 0;
         foreach (Hero h in menuDeckEngine.heroes)
