@@ -28,13 +28,12 @@ public class ArtifactPowersEngine : MonoBehaviour{
     }
 
     public void EmeraldAmulet(){
-        int heal = 5;
+        int heal = 2;
         artEngine.gameEngine.combatEngine.team.HealHeroes(heal);
 
     }
 
     public void CorruptedRing(){
-        Debug.Log("?");
         artEngine.gameEngine.combatEngine.partyStats.cardStatusMultipler += 0.2f;
     }
 

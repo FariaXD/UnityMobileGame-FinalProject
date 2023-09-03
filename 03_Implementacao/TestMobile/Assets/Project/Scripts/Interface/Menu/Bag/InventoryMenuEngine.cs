@@ -50,7 +50,7 @@ public class InventoryMenuEngine : MonoBehaviour {
             for (int j = 0; j < artifacts.Count; j++)
             {
                 if(artifacts[j].Rarity == rarityButtons[i].rarity)
-                    count++;
+                    count+= artifacts[j].Count;
             }
             rarityButtons[i].ChangeCounter(count);
         }
@@ -71,9 +71,9 @@ public class InventoryMenuEngine : MonoBehaviour {
         }
         if(initialized == 0)
             AddEmptyMessage(true); //adds empty message
-        else if(initialized >= slots.Count)
+       // else if(initialized >= slots.Count)
 /*             AddPageArrows(true);
- */        if(artifacts.Count > 0)
+ */     if(artifacts.Count > 0)
             SelectArtifact(artifacts[0]); //assigns new artifact to the slot
     }
 

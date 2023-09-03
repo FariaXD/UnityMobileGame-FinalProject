@@ -11,7 +11,7 @@
     "rare":{
       "emeraldamulet": {
         "name": "Emerald Amulet",
-        "description": "Heals each hero for 5 at the end of the turn.",
+        "description": "Heals each hero for 2 at the end of the turn.",
         "method": "EmeraldAmulet",
         "activated": "EndTurn",
         "sprite": "sprites/artifacts/Emerald_Amulet"

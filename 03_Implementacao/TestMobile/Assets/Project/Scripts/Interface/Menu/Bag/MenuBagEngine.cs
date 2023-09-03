@@ -13,6 +13,7 @@ public class MenuBagEngine : MonoBehaviour {
     //Initializes all artifacts while determining how many of them are in the inventory
     public void Initialize(List<Artifact> artifacts) {
         artifactsCount.Clear(); //clears list
+        List<string> namesDups = new List<string>();
         for(int i = 0; i < artifacts.Count; i++){
             int count = 0;
             for (int j = 0; j < artifacts.Count; j++)
@@ -20,9 +21,11 @@ public class MenuBagEngine : MonoBehaviour {
                 if(artifacts[i].name == artifacts[j].name && artifacts[i].rarity == artifacts[j].rarity)
                     count++;
             }
-            artifactsCount.Add(new ArtifactCountPair(artifacts[i], count, artifacts[i].rarity)); //adds the artifact and its count
+            if(!namesDups.Contains(artifacts[i].name))
+                artifactsCount.Add(new ArtifactCountPair(artifacts[i], count, artifacts[i].rarity)); //adds the artifact and its count
+            namesDups.Add(artifacts[i].name);
         }
-        if(!inventoryMenuEngine.initialized)
+        if (!inventoryMenuEngine.initialized)
             inventoryMenuEngine.Initialize(artifactsCount); //initializes the inventory manager if not already initialized
         else
             inventoryMenuEngine.UpdateArtifacts(artifactsCount); //updates artifacts if already initialized
