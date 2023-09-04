@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d51739ffc95366745ad4bb27b6ee7c59
+guid: cbdc74a4666b6394b887dd76c60756bd
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,7 +93,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638294543262556139
+  platformSettingsDirtyTick: 0
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -117,7 +117,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Warrior_Card_Shield
+  - name: Warrior_Card_Status_Poison_Image
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 9
@@ -126,9 +126,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 43
-      height: 64
-    spriteID: eda68328eae2b3c49afeaa8bc081a2c5
+      width: 29
+      height: 29
+    spriteID: 79c32047a39a0a54c8bf1c7b73dad512
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,78 +140,23 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 115655073
-    name: Warrior_Card_Shield
+    guid: 1051573381
+    name: Warrior_Card_Status_Poison_Image
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Warrior_Card_Shield
+    - name: Warrior_Card_Status_Poison_Image
       frameIndex: 0
       cellRect:
-        x: 5
-        y: 0
-        width: 43
-        height: 64
-      spriteId: eda68328eae2b3c49afeaa8bc081a2c5
+        x: 3
+        y: 1
+        width: 29
+        height: 29
+      spriteId: 79c32047a39a0a54c8bf1c7b73dad512
     linkedCells: []
     parentIndex: -1
-  platformSettings:
-  - name: DefaultTexturePlatform
-    overridden: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Standalone
-    overridden: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Server
-    overridden: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Android
-    overridden: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Windows Store Apps
-    overridden: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
+  platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 48, y: 64}
+  canvasSize: {x: 32, y: 32}

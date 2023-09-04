@@ -6,11 +6,11 @@
     },
 
     "elite": {
-        "0": ["plantdog", "plantdog"],
-        "1": ["plantdog", "plantdog"]
+        "0": ["wolf", "plantdog"],
+        "1": ["plantdog", "plantdog", "plantdog"]
     },
     
     "boss": {
-      "0": ["plantdog", "plantdog", "plantdog"]
+      "0": ["wolf", "wolf", "wolf"]
     }
 }

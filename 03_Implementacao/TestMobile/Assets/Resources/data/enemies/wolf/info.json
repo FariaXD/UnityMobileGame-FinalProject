@@ -1,0 +1,6 @@
+﻿{
+    "name":"wolf",
+    "hp":40,
+    "shield":15,
+    "anim":"sprites/enemies/wolf/controller"
+}

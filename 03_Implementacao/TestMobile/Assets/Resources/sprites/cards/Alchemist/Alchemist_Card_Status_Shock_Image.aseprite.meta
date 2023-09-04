@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2c18432815bce2e4daad8847a641642f
+guid: 817026bcdd518124382f03ee52a37628
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -73,7 +73,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -85,7 +85,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -93,7 +93,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638194366571746524
+  platformSettingsDirtyTick: 638294573039943827
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -117,18 +117,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Warrior_Card_Status_Shock
+  - name: Alchemist_Card_Status_Shock_Image
     originalName: 
-    pivot: {x: 0.42857146, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 42
-      height: 64
-    spriteID: 67158017224fea346882f9905f4d176a
+      width: 25
+      height: 25
+    spriteID: e1493e1ec86f59541a5811add53fafc3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,20 +140,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1368796525
-    name: Warrior_Card_Status_Shock
+    guid: -183201125
+    name: Alchemist_Card_Status_Shock_Image
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Warrior_Card_Status_Shock
+    - name: Alchemist_Card_Status_Shock_Image
       frameIndex: 0
       cellRect:
-        x: 6
-        y: 0
-        width: 42
-        height: 64
-      spriteId: 67158017224fea346882f9905f4d176a
+        x: 4
+        y: 3
+        width: 25
+        height: 25
+      spriteId: e1493e1ec86f59541a5811add53fafc3
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -214,4 +214,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 48, y: 64}
+  canvasSize: {x: 32, y: 32}

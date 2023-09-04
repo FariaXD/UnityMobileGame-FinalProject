@@ -1,38 +1,59 @@
 ﻿{
-    "1":
-        {
-          "id": 1,
-          "name": "Slice",
-          "type": "CardDamage",
-          "cost": 1,
-          "area": true,
-          "damage": 4,
-          "duplicates": 10,
-          "imagePath": "sprites/cards/Common/Card_Attack_Image"
-        },
-    "2":  
-        {
-          "id": 2,
-          "name": "Punch",
-          "type": "CardStatus",
-          "cost": 1,
-          "area": true,
-          "damage": 2,
-          "status": "Poison",
-          "duration": 3,
-          "duplicates": 4,
-          "imagePath": "sprites/cards/Common/Card_Status_Poison_Image"
-        },
-    "3":   
-        {
-          "id": 3,
-          "name": "Kick",
-          "type": "CardDefense",
-          "cost": 3,
-          "area": false,
-          "defenseType": "Healing",
-          "ammount": 20,
-          "duplicates": 2,
-          "imagePath": "sprites/cards/Common/Card_Heal_Image"
-        }
+  "1": {
+    "id": 1,
+    "name": "Slice",
+    "type": "CardDamage",
+    "cost": 1,
+    "area": true,
+    "damage": 4,
+    "duplicates": 8,
+    "imagePath": "sprites/cards/Ranger/Ranger_Card_Attack_Image"
+  },
+  "2": {
+    "id": 2,
+    "name": "Burn",
+    "type": "CardStatus",
+    "cost": 2,
+    "area": false,
+    "damage": 6,
+    "status": "Burn",
+    "duration": 2,
+    "duplicates": 2,
+    "imagePath": "sprites/cards/Ranger/Ranger_Card_Status_Burn_Image"
+  },
+  "3": {
+    "id": 3,
+    "name": "Healing",
+    "type": "CardDefense",
+    "cost": 4,
+    "area": false,
+    "defenseType": "Healing",
+    "ammount": 20,
+    "duplicates": 2,
+    "imagePath": "sprites/cards/Ranger/Ranger_Card_Heal_Image"
+  },
+  "4": {
+    "id": 2,
+    "name": "Poison",
+    "type": "CardStatus",
+    "cost": 2,
+    "area": true,
+    "damage": 4,
+    "status": "Poison",
+    "duration": 3,
+    "duplicates": 2,
+    "imagePath": "sprites/cards/Ranger/Ranger_Card_Status_Poison_Image"
+  },
+  "5": {
+    "id": 2,
+    "name": "Shock",
+    "type": "CardStatus",
+    "cost": 7,
+    "area": true,
+    "damage": 3,
+    "status": "Shock",
+    "duration": 1,
+    "duplicates": 2,
+    "imagePath": "sprites/cards/Ranger/Ranger_Card_Status_Shock_Image"
+  }
 }

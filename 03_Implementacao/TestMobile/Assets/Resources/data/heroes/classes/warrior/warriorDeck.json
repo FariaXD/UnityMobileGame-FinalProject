@@ -1,35 +1,58 @@
 ﻿{
   "1": {
-    "id": 10,
+    "id": 1,
     "name": "Slice",
     "type": "CardDamage",
     "cost": 2,
     "area": false,
-    "damage": 9,
-    "duplicates": 10,
-    "imagePath": "sprites/cards/Common/Card_Attack_Image"
+    "damage": 10,
+    "duplicates": 6,
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Attack_Image"
   },
   "2": {
+    "id": 2,
+    "name": "Flame",
+    "type": "CardStatus",
+    "cost": 2,
+    "area": true,
+    "damage": 5,
+    "status": "Burn",
+    "duration": 5,
+    "duplicates": 2,
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Status_Burn_Image"
+  },
+  "3": {
     "id": 3,
-    "name": "Kick",
+    "name": "Heal",
+    "type": "CardDefense",
+    "cost": 2,
+    "area": true,
+    "defenseType": "Healing",
+    "ammount": 10,
+    "duplicates": 2,
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Heal_Image"
+  },
+  "4": {
+    "id": 4,
+    "name": "Poison",
+    "type": "CardStatus",
+    "cost": 2,
+    "area": false,
+    "damage": 4,
+    "status": "Poison",
+    "duration": 3,
+    "duplicates": 4,
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Status_Poison_Image"
+  },
+  "5": {
+    "id": 5,
+    "name": "Shield",
     "type": "CardDefense",
     "cost": 2,
     "area": false,
     "defenseType": "Shielding",
-    "ammount": 5,
-    "duplicates": 4,
-    "imagePath": "sprites/cards/Common/Card_Shield_Image"
-  },
-  "3": {
-    "id": 2,
-    "name": "Punch",
-    "type": "CardStatus",
-    "cost": 1,
-    "area": false,
-    "damage": 5,
-    "status": "Burn",
-    "duration": 3,
+    "ammount": 10,
     "duplicates": 2,
-    "imagePath": "sprites/cards/Common/Card_Status_Burn_Image"
+    "imagePath": "sprites/cards/Warrior/Warrior_Card_Shield_Image"
   }
 }

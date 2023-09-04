@@ -119,7 +119,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Alchemist_Card_Status_Shock
     originalName: 
-    pivot: {x: 0.42857146, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:

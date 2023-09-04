@@ -3,45 +3,57 @@
     "id": 1,
     "name": "Slice",
     "type": "CardDamage",
-    "cost": 2,
-    "area": false,
-    "damage": 10,
-    "duplicates": 2,
-    "imagePath": "sprites/cards/Common/Card_Attack_Image"
+    "cost": 3,
+    "area": true,
+    "damage": 7,
+    "duplicates": 4,
+    "imagePath": "sprites/cards/Alchemist/Alchemist_Card_Attack_Image"
   },
   "2": {
     "id": 2,
-    "name": "Puncha",
+    "name": "Flame",
     "type": "CardStatus",
-    "cost": 2,
+    "cost": 3,
     "area": true,
-    "damage": 5,
+    "damage": 8,
     "status": "Burn",
-    "duration": 5,
-    "duplicates": 6,
-    "imagePath": "sprites/cards/Common/Card_Status_Burn_Image"
+    "duration": 3,
+    "duplicates": 3,
+    "imagePath": "sprites/cards/Alchemist/Alchemist_Card_Status_Burn_Image"
   },
   "3": {
     "id": 3,
-    "name": "Kick",
+    "name": "Heal",
     "type": "CardDefense",
-    "cost": 2,
+    "cost": 3,
     "area": true,
     "defenseType": "Healing",
-    "ammount": 10,
-    "duplicates": 2,
-    "imagePath": "sprites/cards/Common/Card_Heal_Image"
+    "ammount": 8,
+    "duplicates": 4,
+    "imagePath": "sprites/cards/Alchemist/Alchemist_Card_Heal_Image"
   },
   "4": {
-    "id": 4,
-    "name": "Punch",
+    "id": 2,
+    "name": "Poison",
     "type": "CardStatus",
-    "cost": 3,
-    "area": false,
-    "damage": 4,
-    "status": "Shock",
+    "cost": 2,
+    "area": true,
+    "damage": 8,
+    "status": "Poison",
     "duration": 1,
-    "duplicates": 6,
-    "imagePath": "sprites/cards/Common/Card_Status_Shock_Image"
+    "duplicates": 3,
+    "imagePath": "sprites/cards/Alchemist/Alchemist_Card_Status_Poison_Image"
+  },
+  "5": {
+    "id": 2,
+    "name": "Shock",
+    "type": "CardStatus",
+    "cost": 4,
+    "area": false,
+    "damage": 8,
+    "status": "Shock",
+    "duration": 2,
+    "duplicates": 2,
+    "imagePath": "sprites/cards/Alchemist/Alchemist_Card_Status_Shock_Image"
   }
 }
