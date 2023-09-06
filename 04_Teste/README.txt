@@ -4,12 +4,13 @@ Nesta diretoria está presente o ficheiro de instalação do vídeojogo.
 
 Instalação:
 
-Correr o ficheiro .apk no telemóvel.
+	* Correr o ficheiro .apk no telemóvel.
 
-	* Se necessário permitir instalações por fontes externas
+		(Se necessário, permitir instalações por fontes externas)
 
-Iniciar o jogo.
+	* Iniciar o jogo.
 
+###############################################################################
 
 This directory has the game installation file.
 
@@ -17,8 +18,8 @@ This directory has the game installation file.
 
 Installation:
 
-Run the .apk file in the mobile device.
+	* Run the .apk file in the mobile device.
 
-	* If necessary enable aplications from external sources.
+		(If necessary, enable aplications from external sources)
 	
-Run the game.
+	* Run the game.
